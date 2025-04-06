@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+    --primary-light-blue: #BBD6FE;
+    --secondary-bright-blue: #409AFD;
+    --accent-dark-blue: #007AFF;
+    --alert-red: #ED0800;
+    --alert-green: #5DBEA3;
+    --text-black: #000000;
+    --text-white: #FFFFFF;
+    --text-josefin: "Josefin Sans", sans-serif;
+    --text-carlito: "Carlito", sans-serif;
+}
+
+body {
+    background-color: var(--primary-light-blue);
+}
+
+h1 {
+    font-family: var(--text-josefin);
+    font-size: 65px;
+    color: var(--text-black);
+}
+
+p {
+    font-family: var(--text-carlito);
+}
+
+.text-highlight {
+    color: var(--accent-dark-blue);
+}
