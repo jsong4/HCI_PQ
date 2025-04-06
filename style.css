@@ -12,8 +12,81 @@
     --text-carlito: "Carlito", sans-serif;
 }
 
+html, body {
+    overscroll-behavior: none; /* Prevents overscroll and bounce effect */
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    height: 30px;
+    filter: drop-shadow(0 0 0.5rem var(--text-black));
+}
+
+.nav-logo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-logo img {
+    height: 30px;
+    width: auto;
+}
+
+.nav-logo > h1 {
+    font-size: 25px;
+    color: var(--secondary-bright-blue);
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-black);
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.nav-links a:active {
+    color: var(--accent-dark-blue);
+    text-decoration: underline;
+}
+
+/* Changes active class based current page */
+.nav-links a.active {
+    color: var(--accent-dark-blue);
+    text-decoration: underline;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-icons img {
+    height: 30px;
+    width: auto;
+}
+
+/* General Rules after Nav  */
 body {
     background-color: var(--primary-light-blue);
+    margin: 0;
 }
 
 h1 {
