@@ -27,6 +27,12 @@ nav {
     filter: drop-shadow(0 0 0.5rem var(--text-black));
 }
 
+#logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .nav-logo {
     display: flex;
     gap: 10px;
@@ -83,6 +89,10 @@ nav {
     width: auto;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 /* General Rules after Nav  */
 body {
     background-color: var(--primary-light-blue);
@@ -101,4 +111,23 @@ p {
 
 .text-highlight {
     color: var(--accent-dark-blue);
+}
+
+/* Footer CSS Rules */
+footer {
+    height: 200px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-bright-blue);
+    width: 100%;
+}
+
+.footer-text {
+    line-height: 10px;
+    color: var(--text-white);
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
 }
