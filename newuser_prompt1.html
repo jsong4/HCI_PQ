@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prompts.css">
     <title>Polar Pals</title>
 </head>
 <body>
@@ -42,8 +43,15 @@
                 <option class="prompt" value="prompt-2">Prompt 2</option>
                 <option class="prompt" value="prompt-3">Prompt 3</option>
             </select>
+            <label for="response">Answer prompt:</label>
+            <input type="text" id="response" name="response" class="prompt-response"
+                   minlength="10" maxlength="150">
         </form>
+        <button class = "next-page-button">
+            <a class = "next-page" href = "newuser_prompt2.html">Next Question</a>
+        </button>
     </main>
     <script src="script.js"></script>
+    <script src="prompts.js"></script>
 </body>
 </html>
