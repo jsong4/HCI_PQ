@@ -134,3 +134,48 @@ footer {
     text-align: center;
     width: 100%;
 }
+
+form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+label{
+    font-size: 24px;
+    font-family: var(--text-carlito);
+    padding-bottom: 10px;
+}
+
+select {
+    appearance: base-select;
+    border: 2px solid #409AFD;
+    background: white;
+    padding: 10px;
+    transition: 0.4s;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    width: 500px;
+    margin: 0 auto;
+    cursor: url('images/Cursor.svg'), pointer;
+}
+
+::picker(select) {
+    appearance: base-select;
+    border: none;
+}
+
+select::picker-icon {
+    color: #007AFF;
+}
+
+select:open::picker-icon {
+    rotate: 180deg;
+    transition: 0.4s rotate;
+}
+
+option {
+    font-size: 15px;
+    font-family: var(--text-carlito);
+}
