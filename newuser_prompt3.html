@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prompts.css">
     <title>Polar Pals</title>
 </head>
 <body>
@@ -30,7 +31,26 @@
             </a>
         </div>
     </nav>
-
+    <main class = "user-prompts">
+        <h1>Okay, <span class="text-highlight">last response!</span></h1>
+        <form>
+            <label for="select-prompt-1">Please Select a Prompt:</label>
+            <select class="select-prompt" id="select-prompt-1">
+                <button>
+                    <selectedcontent></selectedcontent>
+                </button>
+                <option class="prompt" value="prompt-1">Prompt 1</option>
+                <option class="prompt" value="prompt-2">Prompt 2</option>
+                <option class="prompt" value="prompt-3">Prompt 3</option>
+            </select>
+            <label for="response">Answer prompt:</label>
+            <input type="text" id="response" name="response" class="prompt-response"
+                   minlength="10" maxlength="150">
+        </form>
+        <button class = "next-page-button">
+            <a class = "next-page" href = "newuser_checkbox.html">Next Question</a>
+        </button>
+    </main>
     <footer>
         <div class="footer-text">
             <p>&copy; Polar Pals 2025</p>
@@ -38,5 +58,6 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script src="prompts.js"></script>
 </body>
 </html>
