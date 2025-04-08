@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
         "A letter to future me would definitely include...",
         "One rule of society I'd totally rewrite...",
         "Three dinner guests, unlimited wine, and chaos ensues...",
-        "Option 6",
-        "Option 7",
-        "Option 8",
-        "Option 9",
-        "Option 10"
+        "The soundtrack of my life would definitely include...",
+        "If my personality were a cocktail, it would be called...",
+        "The title of my autobiography would be...",
+        "If I could have one superpower, it would be...",
+        "If my life were a meme right now, it would be..."
     ];
 
     // Retrieve stored data or initialize it
