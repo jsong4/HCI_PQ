@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="generate_new_user.css">
     <title>Polar Pals</title>
 </head>
+
 <body>
     <nav>
         <a id="logo-container" href="index.html">
             <div class="nav-logo">
-                <img src="images/logo.png"/>
+                <img src="images/logo.png" />
                 <h1>POLAR PALS</h1>
             </div>
         </a>
@@ -18,18 +21,32 @@
             <a href="about.html">About</a>
             <a href="help.html">How it Works</a>
         </div>
-        <div class="nav-icons hidden" >
+        <div class="nav-icons hidden">
             <a href="match.html">
-                <img src="images/match.png"/>
+                <img src="images/match.png" />
             </a>
             <a href="inbox.html">
-                <img src="images/inbox.png"/>
+                <img src="images/inbox.png" />
             </a>
             <a href="profile.html">
-                <img src="images/profile.png"/>
+                <img src="images/profile.png" />
             </a>
         </div>
     </nav>
+
+    <div class="createprof-container" id="profile-preview">
+        <h1 class="fade-in-up">Hello, <span class="text-highlight" id="userName">Placeholder</span></h1>
+        <div class="fade-in-up" id="profile-img"><img src="images/persona_placeholder.jpeg" class="persona-profile"></div>
+        <div id="prompt1" class="written-response fade-in-up">
+        </div>
+        <div id="prompt2" class="written-response fade-in-up"></div>
+        <div id="prompt3" class="written-response fade-in-up"></div>
+        <ul class="checkbox-list fade-in-up" id="checkbox">
+        </ul>
+    <div id="create-prof-button" class="fade-in-up">
+        <button>Create Profile →</button>
+    </div>
+    </div>
 
     <footer>
         <div class="footer-text">
@@ -38,5 +55,7 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script src="loadNewUser.js"></script>
 </body>
+
 </html>
