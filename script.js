@@ -62,15 +62,21 @@ document.addEventListener("DOMContentLoaded", () => {
             // Store updated data
             localStorage.setItem("userData", JSON.stringify(userData));
 
-            // Go to the next page (can be the same page if continuing the survey)
-            if (window.location.pathname.includes("newuser_prompt1.html")) {
-                window.location.href = "newuser_prompt2.html";
-            }else if (window.location.pathname.includes("newuser_prompt2.html")) {
-                window.location.href = "newuser_prompt3.html";
-            }else {
-                window.location.href = "newuser_checkbox.html";
+            // Go to the next page
+            switch(window.location.pathname.split("/").pop()) {
+                case "newuser_prompt1.html":
+                    // Redirect to the next page
+                    window.location.href = "newuser_prompt2.html";
+                    break;
+                case "newuser_prompt2.html":
+                    window.location.href = "newuser_prompt3.html";
+                    break;
+                case "newuser_prompt3.html":
+                    window.location.href = "newuser_checkbox.html";
+                    break;
+                default:
             }
-             // Redirect to the next page
+             
         } else {
             alert("Please select a prompt and enter an answer.");
         }
