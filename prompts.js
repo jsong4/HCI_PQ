@@ -1,59 +1,71 @@
+// List of all prompts
+const prompts = [
+    "The last chapter of my life story better include...",
+    "In a parallel universe, I'm definitely...",
+    "A letter to future me would definitely include...",
+    "One rule of society I'd totally rewrite...",
+    "Three dinner guests, unlimited wine, and chaos ensues...",
+    "The soundtrack of my life would definitely include...",
+    "If my personality were a cocktail, it would be called...",
+    "The title of my autobiography would be...",
+    "If I could have one superpower, it would be...",
+    "If my life were a meme right now, it would be..."
+];
 
-question_1 = []
-question_2 = []
-question_3 = []
+document.addEventListener("DOMContentLoaded", () => {
+    // localStorage.removeItem("usersList");
 
-/* store prompt & response 1 */
-function store_responses_1() {
-    selectedPrompt = document.getElementById("select-prompt-1");
-    selectedResponse = document.getElementById("response-1");
-    const prompt = selectedPrompt.value;
-    localStorage.setItem("prompt_1", prompt);
-    const response = selectedResponse.value;
-    localStorage.setItem("response-1", response);
-    question_1 = [localStorage.getItem("prompt_1"), localStorage.getItem("response-1")]
-}
+    const dropdown = document.getElementById("select-prompt");
+    const textEntry = document.getElementById("response");
+    const nextButton = document.getElementById('next-btn');
 
-/* store prompt & response 2 */
-function store_responses_2() {
-    selectedPrompt = document.getElementById("select-prompt-2");
-    selectedResponse = document.getElementById("response-2");
-    const prompt = selectedPrompt.value;
-    localStorage.setItem("prompt_2", prompt);
-    const response = selectedResponse.value;
-    localStorage.setItem("response-2", response);
-    question_2 = [localStorage.getItem("prompt_2"), localStorage.getItem("response-2")]
-}
+    // Placeholder option to prompt user selection
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Select a written prompt";
+    placeholder.disabled = true;
+    placeholder.selected = true;
+    dropdown.appendChild(placeholder);
 
-/* store prompt & response 3 */
-function store_responses_3() {
-    selectedPrompt = document.getElementById("select-prompt-3");
-    selectedResponse = document.getElementById("response-3");
-    const prompt = selectedPrompt.value;
-    localStorage.setItem("prompt_3", prompt);
-    const response = selectedResponse.value;
-    localStorage.setItem("response-3", response);
-    question_3 = [localStorage.getItem("prompt_3"), localStorage.getItem("response-3")]
-}
+    // Retrieve stored data or initialize it
+    let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
+    let selectedPrompts = usersList.user1.selectedPrompts || [];
+    console.log(selectedPrompts)
 
+    console.log(usersList)
 
-/* remove first prompt from pages */
-function removeFirst() {
-    const prompt_1 = localStorage.getItem(prompt_1)
-    document.getElementById("select-prompt-2").options.remove(prompt_1);
-    document.getElementById("select-prompt-3").options.remove(prompt_1);
-}
+    // Filter out already selected prompts
+    const filteredPrompts = prompts.filter(prompt => !selectedPrompts.includes(prompt));
 
-/* remove second prompt from last page */
-function removeSecond() {
-    const prompt_2 = localStorage.getItem(prompt_2)
-    document.getElementById("select-prompt-3").options.remove(prompt_2);
-}
+    // Populate the dropdown with filtered prompts
+    filteredPrompts.forEach(prompt => {
+        const option = document.createElement("option");
+        option.value = prompt;
+        option.textContent = prompt;
+        dropdown.appendChild(option);
+    });
 
-usersList = {
-    user_1 : {
-        prompt1: question_1,
-        prompt2: question_2,
-        prompt3: question_3
-    }
-}
+    // Event listener for the Next button
+    nextButton.addEventListener("click", () => {
+        const selectedOption = dropdown.value;
+        const textValue = textEntry.value;
+        console.log(selectedOption, textValue)
+
+        if (selectedOption && textValue) {
+            // Update the selected prompts array
+            if (!selectedPrompts.includes(selectedOption)) {
+                selectedPrompts.push(selectedOption);
+                usersList.user1.selectedPrompts = selectedPrompts;
+            }
+
+            // Update the user data structure
+            const promptNumber = `prompt${selectedPrompts.length}`;
+            usersList.user1[promptNumber] = [selectedOption, textValue];
+
+            // Store updated data
+            localStorage.setItem("usersList", JSON.stringify(usersList));
+        } else {
+            alert("Please select a prompt and enter an answer.");
+        }
+    });
+});

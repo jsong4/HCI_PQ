@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="prompts.css">
     <title>Polar Pals</title>
 </head>
+
 <body>
     <nav>
         <a id="logo-container" href="index.html">
             <div class="nav-logo">
-                <img src="images/logo.png"/>
+                <img src="images/logo.png" />
                 <h1>POLAR PALS</h1>
             </div>
         </a>
@@ -19,43 +21,29 @@
             <a href="about.html">About</a>
             <a href="help.html">How it Works</a>
         </div>
-        <div class="nav-icons hidden" >
+        <div class="nav-icons hidden">
             <a href="match.html">
-                <img src="images/match.png"/>
+                <img src="images/match.png" />
             </a>
             <a href="inbox.html">
-                <img src="images/inbox.png"/>
+                <img src="images/inbox.png" />
             </a>
             <a href="profile.html">
-                <img src="images/profile.png"/>
+                <img src="images/profile.png" />
             </a>
         </div>
     </nav>
-    <main class = "user-prompts">
+    <main class="user-prompts">
         <h1>Okay, <span class="text-highlight">last response!</span></h1>
         <form>
-            <label for="select-prompt-3">Please Select a Prompt:</label>
-            <select class="select-prompt" id="select-prompt-3">
-                <button>
-                    <selectedcontent></selectedcontent>
-                </button>
-                <option class="prompt" value="prompt-1">Prompt 1</option>
-                <option class="prompt" value="prompt-2">Prompt 2</option>
-                <option class="prompt" value="prompt-3">Prompt 3</option>
-                <option class="prompt" value="prompt-4">Prompt 4</option>
-                <option class="prompt" value="prompt-5">Prompt 5</option>
-                <option class="prompt" value="prompt-6">Prompt 6</option>
-                <option class="prompt" value="prompt-7">Prompt 7</option>
-                <option class="prompt" value="prompt-8">Prompt 8</option>
-                <option class="prompt" value="prompt-9">Prompt 9</option>
-                <option class="prompt" value="prompt-10">Prompt 10</option>
+            <label for="select-prompt">Please Select a Prompt:</label>
+            <select class="select-prompt" id="select-prompt">
             </select>
-            <label for="response-3">Answer prompt:</label>
-            <input type="text" id="response-3" name="response-3" class="prompt-response"
-                   minlength="10" maxlength="150">
+            <label for="response">Answer prompt:</label>
+            <textarea id="response" name="response" class="prompt-response" maxlength="150" minlength="10"></textarea>
         </form>
-        <button class = "next-page-button" onclick = store_responses_3()>
-            <a class = "next-page" href = "newuser_checkbox.html">Next Question</a>
+        <button class="next-page-button" id="next-btn">
+            <a class="next-page" href="newuser_checkbox.html">Next →</a>
         </button>
     </main>
     <footer>
@@ -64,7 +52,7 @@
             <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
         </div>
     </footer>
-    <script src="script.js"></script>
     <script src="prompts.js"></script>
 </body>
+
 </html>

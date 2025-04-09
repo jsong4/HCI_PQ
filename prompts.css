@@ -76,5 +76,15 @@ input[type=text] {
     cursor: url('images/Cursor-white.svg'), pointer;
 }
 
-
+textarea {
+    border: 2px solid #409AFD;
+    background: white;
+    padding: 10px;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    width: 500px;
+    margin: 0 auto;
+    cursor: url('images/Cursor.svg'), pointer;
+}
 
