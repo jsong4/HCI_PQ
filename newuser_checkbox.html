@@ -33,48 +33,33 @@
 
     <h1>Now, Tell Us <span class="text-highlight">About Yourself</span> (Max 3)!</h1>
     <form>
-        <label><input type="checkbox" onclick="checkLimit()"> Chronically Online</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Loyal</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Outgoing</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Punctual</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Adventurous</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Listener</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Easygoing</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Memecentral</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Honest</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Foodie</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Prefers Voice Notes</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Empathetic</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Optimistic</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Easily Peer-Pressured</label><br>
-        <label><input type="checkbox" onclick="checkLimit()"> Sporty</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Chronically Online</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Loyal</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Outgoing</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Punctual</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Adventurous</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Listener</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Easygoing</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Memecentral</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Honest</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Foodie</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Prefers Voice Notes</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Empathetic</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Optimistic</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Easily Peer-Pressured</label><br>
+        <label><input type="checkbox" class="checkbox-option" onclick="checkLimit()"> Sporty</label><br>
+
     </form>
-    <script>
-        // Function to check the number of selected checkboxes
-        function checkLimit() {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            var checkedCount = 0;
-
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    checkedCount++;
-                }
-            });
-
-            // Uncheck the last one clicked if more than 3 selected
-            if (checkedCount > 3) {
-                alert('You can only select up to 3 options.');
-                event.preventDefault(); // Prevents extra selection
-                return false;
-            }
-        }
-    </script>
+    <button class = "next-page-button" id="next-btn">
+        <a class = "next-page" href = "newuser_load.html">Next →</a>
+    </button>
+    
     <footer>
         <div class="footer-text">
             <p>&copy; Polar Pals 2025</p>
             <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="checkbox.js"></script>
 </body>
 </html>
