@@ -1,0 +1,39 @@
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-family: var(--text-carlito);
+    font-size: 28px;
+    color: #007AFF;
+}
+
+h1 {
+    font-family: var(--text-josefin);
+    font-size: 65px;
+    color: var(--text-black);
+}
+
+.text-highlight {
+    color: var(--accent-dark-blue);
+}
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+    height: 300px;
+ }
+
+ .next-page-button{
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 50px;
+    width: 150px;
+    cursor: url('images/Cursor-white.svg'), pointer;
+}
+ 

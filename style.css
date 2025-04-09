@@ -106,6 +106,7 @@ h1 {
     font-family: var(--text-josefin);
     font-size: 65px;
     color: var(--text-black);
+    text-align: center;
 }
 
 p {
