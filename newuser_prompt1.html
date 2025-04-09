@@ -34,28 +34,14 @@
     <main class = "user-prompts">
         <h1>Lets get started on your <span class="text-highlight">Polar Persona!</span></h1>
         <form>
-            <label for="select-prompt-1">Please Select a Prompt:</label>
-            <select class="select-prompt" id="select-prompt-1">
-                <button>
-                    <selectedcontent></selectedcontent>
-                </button>
-                <option class="prompt" value="prompt-1">Prompt 1</option>
-                <option class="prompt" value="prompt-2">Prompt 2</option>
-                <option class="prompt" value="prompt-3">Prompt 3</option>
-                <option class="prompt" value="prompt-4">Prompt 4</option>
-                <option class="prompt" value="prompt-5">Prompt 5</option>
-                <option class="prompt" value="prompt-6">Prompt 6</option>
-                <option class="prompt" value="prompt-7">Prompt 7</option>
-                <option class="prompt" value="prompt-8">Prompt 8</option>
-                <option class="prompt" value="prompt-9">Prompt 9</option>
-                <option class="prompt" value="prompt-10">Prompt 10</option>
+            <label for="select-prompt">Please Select a Prompt:</label>
+            <select class="select-prompt" id="select-prompt">
             </select>
-            <label for="response-1">Answer prompt:</label>
-            <input type="text" id="response-1" name="response-1" class="prompt-response"
-                   minlength="10" maxlength="150">
+            <label for="response">Answer prompt:</label>
+            <textarea id="response" name="response" class="prompt-response" maxlength="150" minlength="10"></textarea>
         </form>
-        <button class = "next-page-button" onclick = store_responses_1(); removeFirst;>
-            <a class = "next-page" href = "newuser_prompt2.html">Next Question</a>
+        <button class = "next-page-button" id="next-btn">
+            <a class = "next-page" href = "newuser_prompt2.html">Next →</a>
         </button>
     </main>
     <footer>
@@ -64,7 +50,6 @@
             <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
         </div>
     </footer>
-    <script src="script.js"></script>
     <script src="prompts.js"></script>
 </body>
 </html>

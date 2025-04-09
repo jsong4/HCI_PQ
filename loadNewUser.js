@@ -15,10 +15,6 @@ function loadProgressBar() {
     }
 }
 
-function loadWelcomePage() {
-    window.location.replace("newuser_welcome.html")
-}
-
 // test = {
 //     "user1": {
 //         "prompt1": ["In a parallel universe, I am definitely...", "A polar bear who noms on fish all day"],
@@ -39,7 +35,8 @@ function redirectToStart() {
 }
 
 // Access items from localStorage
-usersList = JSON.parse(localStorage.getItem("usersList"));
+let usersList = JSON.parse(localStorage.getItem("usersList"))
+console.log(usersList)
 
 // Executes specific functions based on current page
 function loadSpecificPage() {
@@ -53,6 +50,7 @@ function loadSpecificPage() {
     // If welcome page, display generated name
     else if (window.location.href.includes("newuser_welcome.html")) {
         if (usersList != null) { // Valid User
+            console.log(current_user)
             userInfo = usersList[current_user];
             if (userInfo != null) {
                 userName = current_user; // TODO - future implemntation to use openAi to generate names?
