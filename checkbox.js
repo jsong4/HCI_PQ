@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Retrieve stored data or initialize it
     let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
-    let selectedPrompts = usersList.user1.selectedPrompts || [];
+    // let selectedPrompts = usersList.user1.selectedPrompts || [];
 
     // Limit the number of checkboxes that can be selected to 3
     checkboxes.forEach(checkbox => {
@@ -22,10 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedOptions = Array.from(checkboxes)
             .filter(checkbox => checkbox.checked)
             .map(checkbox => checkbox.nextSibling.textContent.trim()); // Collect the label text
+        console.log(selectedOptions)
 
-        if (selectedOptions.length > 0) {
+        if (selectedOptions.length > 0) { // might not be necessary
             // Store the selected options in localStorage
-            usersList.user1.selectedPrompts = selectedOptions;
+            usersList.user1.checkbox = selectedOptions;
 
             // Save the updated data to localStorage
             localStorage.setItem("usersList", JSON.stringify(usersList));
