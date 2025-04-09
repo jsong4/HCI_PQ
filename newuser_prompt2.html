@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prompts.css">
     <title>Polar Pals</title>
 </head>
 <body>
@@ -30,25 +31,33 @@
             </a>
         </div>
     </nav>
-
-    <div class="h-container">
-        <h1>Tell us <span class="text-highlight">more!</span></h1>
-    </div>
-
-    <div class="container">
-        <select id="choices" class="dropdown">
-            <!-- Options will be populated by JavaScript -->
-        </select>
-    </div>
-
-    <div class="container">
-        <input type="text" id="answer" class="text-entry" placeholder="Value">
-    </div>
-
-    <div class="container">
-        <button class="next-button">Next →</button>
-    </div>
-
+    <main class = "user-prompts">
+        <h1>Please choose another <span class="text-highlight">prompt!</span></h1>
+        <form>
+            <label for="select-prompt-2">Please Select a Prompt:</label>
+            <select class="select-prompt" id="select-prompt-2">
+                <button>
+                    <selectedcontent></selectedcontent>
+                </button>
+                <option class="prompt" value="prompt-1">Prompt 1</option>
+                <option class="prompt" value="prompt-2">Prompt 2</option>
+                <option class="prompt" value="prompt-3">Prompt 3</option>
+                <option class="prompt" value="prompt-4">Prompt 4</option>
+                <option class="prompt" value="prompt-5">Prompt 5</option>
+                <option class="prompt" value="prompt-6">Prompt 6</option>
+                <option class="prompt" value="prompt-7">Prompt 7</option>
+                <option class="prompt" value="prompt-8">Prompt 8</option>
+                <option class="prompt" value="prompt-9">Prompt 9</option>
+                <option class="prompt" value="prompt-10">Prompt 10</option>
+            </select>
+            <label for="response-2">Answer prompt:</label>
+            <input type="text" id="response-2" name="response-2" class="prompt-response"
+                   minlength="10" maxlength="150">
+        </form>
+        <button class = "next-page-button" onclick = store_responses_2(); removeSecond;>
+            <a class = "next-page" href = "newuser_prompt3.html">Next Question</a>
+        </button>
+    </main>
     <footer>
         <div class="footer-text">
             <p>&copy; Polar Pals 2025</p>
@@ -56,5 +65,6 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script src="prompts.js"></script>
 </body>
 </html>
