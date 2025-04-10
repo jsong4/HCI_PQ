@@ -17,6 +17,11 @@ main {
     background-color: white;
     outline: 2px solid #007AFF;
     cursor: pointer;
+    cursor: url('images/Cursor-black.svg'), pointer;
+}
+
+.form {
+    cursor: url('images/Cursor-black.svg'), pointer;
 }
 
 h1 {
@@ -34,6 +39,7 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     gap: 45px;
     text-align: center;
+    cursor: url('images/Cursor-white.svg'), pointer;
 }
 
  .next-page-button{

@@ -33,7 +33,7 @@ select {
     border-radius: 15px;
     width: 500px;
     margin: 0 auto;
-    cursor: url('images/Cursor.svg'), pointer;
+    cursor: url('images/Cursor-blue.svg'), pointer;
 }
 
 select::picker-icon {
@@ -64,7 +64,7 @@ input[type=text] {
     margin-top: 10px;
     height: 50px;
     width: 150px;
-    cursor: url('images/Cursor-white.svg'), pointer;
+    cursor: url('images/Cursor-black.svg'), pointer;
 }
 
 .next-page {
@@ -73,7 +73,7 @@ input[type=text] {
     font-size: 15px;
     font-family: var(--text-carlito);
     color: #ffffff;
-    cursor: url('images/Cursor-white.svg'), pointer;
+    cursor: url('images/Cursor-black.svg'), pointer;
 }
 
 textarea {
@@ -85,6 +85,6 @@ textarea {
     border-radius: 15px;
     width: 500px;
     margin: 0 auto;
-    cursor: url('images/Cursor.svg'), pointer;
+    cursor: url('images/Cursor-blue.svg'), pointer;
 }
 
