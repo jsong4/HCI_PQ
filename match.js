@@ -10,17 +10,8 @@ Xs = [50, 100, 150, 400, 200, 300, 380, 400, 300, 500]
 Ys = [50, 10, 400, 50, 250, 75, 350, 200, 450, 10]
 function drawGraph() {
 
-    const c = document.getElementById("myCanvas");
+    const c = document.getElementById("matchesGraph");
     const ctx = c.getContext("2d");
-
-    ctx.beginPath(); // Start a new path
-    ctx.arc(250, 250, 5, 0, 2 * Math.PI); // Create the circle arc
-    ctx.strokeStyle = '#007AFF'; // Set the stroke color
-    ctx.lineWidth = 3; // Set the line width
-    ctx.fillStyle = '#007AFF'
-    ctx.fill()
-    ctx.stroke(); // Draw the circle
-    ctx.closePath(); // Close the path
 
     for (i = 0; i < 10; i++) {
         //calculate circle centerpoints
@@ -29,6 +20,15 @@ function drawGraph() {
         endX = endX + centerX
         endY = distances[i] * Math.sin(radians) * 5
         endY = endY + centerY
+
+        //draw a line connecting to the circle
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY)
+        ctx.lineTo(endX, endY);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+        ctx.closePath();
 
         //draw a circle
         ctx.beginPath(); // Start a new path
@@ -39,16 +39,14 @@ function drawGraph() {
         ctx.fill()
         ctx.stroke(); // Draw the circle
         ctx.closePath();
-
-        //draw a line connecting to the circle
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY)
-        ctx.lineTo(endX, endY);
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.closePath();
     }
+
+    ctx.beginPath(); // Start a new path
+    ctx.arc(250, 250, 10, 0, 2 * Math.PI); // Create the circle arc
+    ctx.fillStyle = '#FFFFFF'
+    ctx.fill()
+    ctx.stroke(); // Draw the circle
+    ctx.closePath(); // Close the path
 }
 
 drawGraph()

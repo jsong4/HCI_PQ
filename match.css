@@ -1,0 +1,78 @@
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+#filter {
+    border: none;
+    display: inline-block;
+    padding: 5px;
+    padding-inline: 20px;
+    border-radius: 15px;
+    margin: 10px;
+    text-decoration: none;
+    text-align: center;
+    font-family: var(--text-carlito);
+    color: white;
+    background: #007AFF;
+    cursor: url('images/Cursor-black.svg'), pointer;
+}
+
+select {
+    appearance: base-select;
+    border: 2px solid #409AFD;
+    background: white;
+    padding: 10px;
+    transition: 0.4s;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    width: 100px;
+    margin: 0 auto;
+    cursor: url('images/Cursor-blue.svg'), pointer;
+}
+
+h2 {
+    color: white;
+    background: #007AFF;
+    padding: 5px;
+    padding-inline: 20px;
+    border-radius: 15px;
+    margin: none;
+}
+
+strong {
+    font-family: var(--text-carlito);
+    font-size: 36px;
+    text-decoration: double;
+    color: white;
+    
+}
+
+#matchesGraph {
+    background: #FFFFFF;
+    scroll-padding: 500px;
+    cursor: url('images/Cursor-blue.svg'), pointer;
+}
+
+/* Footer CSS Rules */
+footer {
+    height: 70px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-bright-blue);
+    width: 100%;
+}
+
+.footer-text {
+    line-height: 10px;
+    padding-top: 5px;
+    color: var(--text-white);
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
