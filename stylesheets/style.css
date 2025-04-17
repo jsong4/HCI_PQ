@@ -39,7 +39,7 @@ nav {
     display: flex;
     gap: 10px;
     align-items: center;
-    cursor: url('../images/Cursor-black.svg'), pointer
+    cursor: url('../images/Cursor.svg'), pointer
 }
 
 .nav-logo img {
@@ -65,7 +65,7 @@ nav {
     text-decoration: none;
     font-size: 15px;
     font-family: var(--text-carlito);
-    cursor: url('../images/Cursor-blue.svg'), pointer
+    cursor: url('../images/Cursor.svg'), pointer
 }
 
 .nav-links a:hover {
@@ -92,7 +92,7 @@ nav {
 .nav-icons img {
     height: 30px;
     width: auto;
-    cursor: url('../images/Cursor-blue.svg'), pointer
+    cursor: url('../images/Cursor.svg'), pointer
 }
 
 .hidden {
