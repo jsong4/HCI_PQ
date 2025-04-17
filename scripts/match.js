@@ -8,6 +8,7 @@ centerY = 250
 
 Xs = [50, 100, 150, 400, 200, 300, 380, 400, 300, 500]
 Ys = [50, 10, 400, 50, 250, 75, 350, 200, 450, 10]
+
 function drawGraph() {
 
     const c = document.getElementById("matchesGraph");
@@ -50,3 +51,7 @@ function drawGraph() {
 }
 
 drawGraph()
+
+// function getDistances(){
+    
+// }

@@ -10,7 +10,7 @@
     --text-white: #FFFFFF;
     --text-josefin: "Josefin Sans", sans-serif;
     --text-carlito: "Carlito", sans-serif;
-    cursor: url('images/Cursor-white.svg'), pointer
+    cursor: url('../images/Cursor-white.svg'), pointer
 }
 
 html, body {
@@ -26,7 +26,7 @@ nav {
     padding: 20px 20px;
     height: 30px;
     filter: drop-shadow(0 0 0.5rem var(--text-black));
-    cursor: url('images/Cursor-blue.svg'), pointer
+    cursor: url('../images/Cursor-white-outlined.svg'), pointer
 }
 
 #logo-container {
@@ -39,13 +39,13 @@ nav {
     display: flex;
     gap: 10px;
     align-items: center;
-    cursor: url('images/Cursor-black.svg'), pointer
+    cursor: url('../images/Cursor-black.svg'), pointer
 }
 
 .nav-logo img {
     height: 30px;
     width: auto;
-    cursor: url('images/Cursor-black.svg'), pointer
+    cursor: url('../images/Cursor-black.svg'), pointer
 }
 
 .nav-logo > h1 {
@@ -65,7 +65,7 @@ nav {
     text-decoration: none;
     font-size: 15px;
     font-family: var(--text-carlito);
-    cursor: url('images/Cursor-black.svg'), pointer
+    cursor: url('../images/Cursor-blue.svg'), pointer
 }
 
 .nav-links a:hover {
@@ -92,7 +92,7 @@ nav {
 .nav-icons img {
     height: 30px;
     width: auto;
-    cursor: url('images/Cursor-blue.svg'), pointer
+    cursor: url('../images/Cursor-blue.svg'), pointer
 }
 
 .hidden {
@@ -220,7 +220,7 @@ footer {
     cursor: pointer;
     outline: none;
     box-shadow: 0 5px #999;
-    cursor: url('images/Cursor-black.svg'), pointer;
+    cursor: url('../images/Cursor-black.svg'), pointer;
 }
 
 .start-button:hover {background-color: #007AFF}
@@ -259,5 +259,9 @@ h3 {
     width: auto;
     margin-left: 100px;
     padding-right: 40px;
-    cursor: url('images/Cursor-white-outlined.svg'), pointer;
+    cursor: url('../images/Cursor-white-outlined.svg'), pointer;
+}
+
+button {
+    cursor: url('../images/Cursor-white-outlined.svg'), pointer;
 }

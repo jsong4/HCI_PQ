@@ -5,9 +5,15 @@ main {
     overflow: scroll;
 }
 
+form {
+    position: relative;
+    align-self: flex-start;  
+}
+
 #filter {
+    position: relative;
     border: none;
-    display: inline-block;
+    align-self: flex-start;
     padding: 5px;
     padding-inline: 20px;
     border-radius: 15px;
@@ -17,21 +23,22 @@ main {
     font-family: var(--text-carlito);
     color: white;
     background: #007AFF;
-    cursor: url('images/Cursor-black.svg'), pointer;
+    cursor: url('../images/Cursor-black.svg'), pointer;
 }
 
 select {
+    position: relative;
+    align-self: flex-start;
     appearance: base-select;
     border: 2px solid #409AFD;
     background: white;
     padding: 10px;
+    margin-left: 10px;
     transition: 0.4s;
     font-size: 15px;
     font-family: var(--text-carlito);
-    border-radius: 15px;
-    width: 100px;
-    margin: 0 auto;
-    cursor: url('images/Cursor-blue.svg'), pointer;
+    border-radius: 10px;
+    cursor: url('../images/Cursor-blue.svg'), pointer;
 }
 
 h2 {
@@ -54,7 +61,7 @@ strong {
 #matchesGraph {
     background: #FFFFFF;
     scroll-padding: 500px;
-    cursor: url('images/Cursor-blue.svg'), pointer;
+    cursor: url('../images/Cursor-blue.svg'), pointer;
 }
 
 /* Footer CSS Rules */
