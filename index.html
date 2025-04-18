@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>Polar Pals</title>
+</head>
+<body>
+    <nav>
+        <a id="logo-container" href="index.html">
+            <div class="nav-logo">
+                <img src="images/logo.png"/>
+                <h1>POLAR PALS</h1>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="help.html">How it Works</a>
+        </div>
+        <div class="nav-icons hidden" >
+            <a href="match.html">
+                <img src="images/match.png"/>
+            </a>
+            <a href="inbox.html">
+                <img src="images/inbox.png"/>
+            </a>
+            <a href="profile.html">
+                <img src="images/profile.png"/>
+            </a>
+        </div>
+    </nav>
+
+    <div class="h-container">
+        
+        <div class="pair">
+            <h1>Break Out of Your <span class="text-highlight">Bowdoin</span> Bubble!</h1>
+            <h2>Make Surprising New Connections, Algorithmically Designed to Find Your Perfect Pal.</h3>
+        </div>
+    </div>
+
+    <div class="main-content"> 
+
+        <img src="images/polar_pals_start.png" alt = "A Pair of Polar Pals!" class="side-image">
+        <div class="button-stack">
+            <div class="pair">
+                <h3>New User?</h3>
+                <a href= "newuser_prompt1.html"><button class="start-button" type="button">Take the Survey</button></a>
+            </div>
+            <div class="pair">
+                <h3>Returning User?</h3>
+                <a href= "match.html"> <button class="start-button" type="button">Login</button></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-text">
+            <p>&copy; Polar Pals 2025</p>
+            <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
+        </div>
+    </footer>
+    <script>
+        localStorage.removeItem("usersList")
+    </script>
+</body>
+</html>

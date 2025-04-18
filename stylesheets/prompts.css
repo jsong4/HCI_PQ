@@ -1,0 +1,90 @@
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: var(--text-josefin);
+    font-size: 65px;
+    color: var(--text-black);
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 24px;
+    font-family: var(--text-carlito);
+    padding-bottom: 10px;
+}
+
+select {
+    appearance: base-select;
+    border: 2px solid #409AFD;
+    background: white;
+    padding: 10px;
+    transition: 0.4s;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    width: 500px;
+    margin: 0 auto;
+    cursor: url('images/Cursor.svg'), pointer;
+}
+
+select::picker-icon {
+    color: #007AFF;
+}
+
+option {
+    font-size: 15px;
+    font-family: var(--text-carlito);
+}
+
+input[type=text] {
+    height: 200px;
+    vertical-align: top;
+}
+
+/* for some reason caret is in the middle: bug to fix later */
+.prompt-response{
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.next-page-button{
+    background-color: #007AFF;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 50px;
+    width: 150px;
+    cursor: url('images/Cursor-white.svg'), pointer;
+}
+
+.next-page {
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    color: #ffffff;
+    cursor: url('images/Cursor-white.svg'), pointer;
+}
+
+textarea {
+    border: 2px solid #409AFD;
+    background: white;
+    padding: 10px;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    width: 500px;
+    margin: 0 auto;
+    cursor: url('images/Cursor.svg'), pointer;
+}
+
