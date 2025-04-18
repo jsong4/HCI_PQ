@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+
     <title>Polar Pals</title>
 </head>
 <body>
@@ -30,7 +32,38 @@
             </a>
         </div>
     </nav>
+    <main>
+        <div class="prof-container" id="profile-preview">
+            <h1>Welcome <span class="text-highlight" id="userName"></span></h1>
+            <div id="profile-container">
+                <div id="profile-top">
+                    <button id="left-button">←</button>
+                    <div id="profile-img-container">
+                        <img id="profile-img-base" src="images/prof_customization/base.svg">
+                        <img id="profile-img-accessory" src="images/prof_customization/empty.svg">
+                    </div>
+                    <button id="right-button">→</button>
+                </div>
+                <div id="profile-bottom">
+                    <form id="color-input">
+                        <label for="profile-img-color">Color: </label>
+                        <input type="color" id="profile-img-color">
+                        <button type="submit" id="profile-img-color-submit">Update Color</button>
+                    </form>
+                </div>
+            </div>
+            <div id="prompt1" class="written-response">
+            </div>
+            <div id="prompt2" class="written-response"></div>
+            <div id="prompt3" class="written-response"></div>
+            <ul class="checkbox-list" id="checkbox">
+            </ul>
+            <div id="update-prof-button">
+                <button>Update Profile</button>
+            </div>
+        </div>
+    </main>
 
-    <script src="script.js"></script>
+    <script src="prof_customization.js"></script>
 </body>
 </html>
