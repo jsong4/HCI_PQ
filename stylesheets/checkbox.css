@@ -1,12 +1,12 @@
 main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-weight: bold;
-    font-family: var(--text-carlito);
-    font-size: 28px;
-    color: #007AFF;
-    height: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  font-family: var(--text-carlito);
+  font-size: 28px;
+  color: #007aff;
+  height: 50px;
 }
 
 .checkbox-option {
@@ -25,13 +25,13 @@ main {
 }
 
 h1 {
-    font-family: var(--text-josefin);
-    font-size: 65px;
-    color: var(--text-black);
+  font-family: var(--text-josefin);
+  font-size: 65px;
+  color: var(--text-black);
 }
 
 .text-highlight {
-    color: var(--accent-dark-blue);
+  color: var(--accent-dark-blue);
 }
 
 .checkbox-container {
@@ -42,15 +42,15 @@ h1 {
     cursor: url('images/Cursor-white.svg'), pointer;
 }
 
- .next-page-button{
-    background-color: #007AFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 45px;
-    margin-bottom: 45px;
-    height: 50px;
-    width: 150px;
-    cursor: url('../images/Cursor-white.svg'), pointer;
+.next-page-button {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  height: 50px;
+  width: 150px;
+  cursor: url("../images/Cursor-white.svg"), pointer;
 }
- 
+

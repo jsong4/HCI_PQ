@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
     --primary-light-blue: #BBD6FE;
@@ -13,8 +13,9 @@
     cursor: url('../images/Cursor-white.svg'), pointer
 }
 
-html, body {
-    overscroll-behavior: none; /* Prevents overscroll and bounce effect */
+html,
+body {
+  overscroll-behavior: none; /* Prevents overscroll and bounce effect */
 }
 
 /* Navigation Bar */
@@ -30,16 +31,16 @@ nav {
 }
 
 #logo-container {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .nav-logo {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    cursor: url('../images/Cursor.svg'), pointer
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: url("../images/Cursor.svg"), pointer;
 }
 
 .nav-logo img {
@@ -49,147 +50,147 @@ nav {
 }
 
 .nav-logo > h1 {
-    font-size: 25px;
-    color: var(--secondary-bright-blue);
+  font-size: 25px;
+  color: var(--secondary-bright-blue);
 }
 
 .nav-links {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
 .nav-links a {
-    color: var(--text-black);
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px;
-    font-family: var(--text-carlito);
-    cursor: url('../images/Cursor.svg'), pointer
+  color: var(--text-black);
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: var(--text-carlito);
+  cursor: url("../images/Cursor.svg"), pointer;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .nav-links a:active {
-    color: var(--accent-dark-blue);
-    text-decoration: underline;
+  color: var(--accent-dark-blue);
+  text-decoration: underline;
 }
 
 /* Changes active class based current page */
 .nav-links a.active {
-    color: var(--accent-dark-blue);
-    text-decoration: underline;
+  color: var(--accent-dark-blue);
+  text-decoration: underline;
 }
 
 .nav-icons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .nav-icons img {
-    height: 30px;
-    width: auto;
-    cursor: url('../images/Cursor.svg'), pointer
+  height: 30px;
+  width: auto;
+  cursor: url("../images/Cursor.svg"), pointer;
 }
 
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /* General Rules after Nav  */
 body {
-    background-color: var(--primary-light-blue);
-    margin: 0;
+  background-color: var(--primary-light-blue);
+  margin: 0;
 }
 
 h1 {
-    font-family: var(--text-josefin);
-    font-size: 65px;
-    color: var(--text-black);
-    text-align: center;
+  font-family: var(--text-josefin);
+  font-size: 65px;
+  color: var(--text-black);
+  text-align: center;
 }
 
 p {
-    font-family: var(--text-carlito);
+  font-family: var(--text-carlito);
 }
 
 .text-highlight {
-    color: var(--accent-dark-blue);
+  color: var(--accent-dark-blue);
 }
 
-.dropdown-container, .input-container {
-    margin: 15px 0;
+.dropdown-container,
+.input-container {
+  margin: 15px 0;
 }
 
 .next-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #007AFF;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.dropdown, .text-entry {
-    width: 300px;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid;
-    font-size: 1rem;
-    outline: none;
-    margin: 5px 0;
+.dropdown,
+.text-entry {
+  width: 300px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 1rem;
+  outline: none;
+  margin: 5px 0;
 }
 
 /* Footer CSS Rules */
 footer {
-    height: 70px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: var(--secondary-bright-blue);
-    width: 100%;
+  height: 70px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--secondary-bright-blue);
+  width: 100%;
 }
 
 .footer-text {
-    line-height: 10px;
-    color: var(--text-white);
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
+  line-height: 10px;
+  color: var(--text-white);
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
 }
 
-.h-container{
-    display : flex;
-    flex-direction: column;
-    text-align: center;   
+.h-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
-.main-content{
-    display : flex;
-    margin-top: -20px;
-    align-items: center;   
-    justify-content: flex-start;
-    gap: 40px
-
+.main-content {
+  display: flex;
+  margin-top: -20px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
 }
 
 .pair {
-    margin-bottom: 0px;
-    width: auto;  /* Space BETWEEN pairs */
+  margin-bottom: 0px;
+  width: auto; /* Space BETWEEN pairs */
 }
 
 .pair h2 {
-    line-height: 0px;
-    
+  line-height: 0px;
 }
 .pair h3 {
-    margin-bottom: 8px;  
+  margin-bottom: 8px;
 }
 /* 
 .new-user-button{
@@ -223,35 +224,35 @@ footer {
     cursor: url('../images/Cursor-black.svg'), pointer;
 }
 
-.start-button:hover {background-color: #007AFF}
+.start-button:hover {
+  background-color: #007aff;
+}
 
 .start-button:active {
-  background-color: #007AFF;
+  background-color: #007aff;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
 h2 {
-    font-family: var(--text-carlito);
-    font-size: 30px;
-    color: var(--text-black);
-    
+  font-family: var(--text-carlito);
+  font-size: 30px;
+  color: var(--text-black);
 }
 
 h3 {
-    font-family: var(--text-carlito);
-    font-size: 25px;
-    color: var(--text-black);
-
+  font-family: var(--text-carlito);
+  font-size: 25px;
+  color: var(--text-black);
 }
 
-.button-stack{
-    display: flex;
-    margin-top: -40px;
-    flex-direction: column;
-    text-align: center;
-    gap: 60px;
-    margin-bottom: 20px;
+.button-stack {
+  display: flex;
+  margin-top: -40px;
+  flex-direction: column;
+  text-align: center;
+  gap: 60px;
+  margin-bottom: 20px;
 }
 
 .side-image {
@@ -265,3 +266,4 @@ h3 {
 button {
     cursor: url('../images/Cursor-white-outlined.svg'), pointer;
 }
+
