@@ -64,11 +64,7 @@ input[type=text] {
     margin-top: 10px;
     height: 50px;
     width: 150px;
-<<<<<<< HEAD
-    cursor: url('images/Cursor-white.svg'), pointer;
-=======
     cursor: url('../images/Cursor-white.svg'), pointer;
->>>>>>> 282edfd49e1bc314e9938ba9a7d1bdfb06daec38
 }
 
 .next-page {
@@ -77,11 +73,7 @@ input[type=text] {
     font-size: 15px;
     font-family: var(--text-carlito);
     color: #ffffff;
-<<<<<<< HEAD
-    cursor: url('images/Cursor-white.svg'), pointer;
-=======
     cursor: url('../images/Cursor-white.svg'), pointer;
->>>>>>> 282edfd49e1bc314e9938ba9a7d1bdfb06daec38
 }
 
 textarea {
@@ -93,10 +85,6 @@ textarea {
     border-radius: 15px;
     width: 500px;
     margin: 0 auto;
-<<<<<<< HEAD
-    cursor: url('images/Cursor.svg'), pointer;
-=======
     cursor: url('../images/Cursor.svg'), pointer;
->>>>>>> 282edfd49e1bc314e9938ba9a7d1bdfb06daec38
 }
 

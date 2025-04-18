@@ -1,42 +1,82 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/match.css">
     <title>Polar Pals</title>
   </head>
   <body>
     <nav>
-      <div class="nav-logo">
-        <img src="images/logo.png" />
-        <h1>POLAR PALS</h1>
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="help.html">How it Works</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-      <div class="nav-icons">
-        <a href="match.html">
-          <img src="images/match.png" />
-        </a>
-        <a href="inbox.html">
-          <img src="images/inbox.png" />
-        </a>
-        <a href="profile.html">
-          <img src="images/profile.png" />
-        </a>
-      </div>
-    </nav>
-
+        <div class="nav-logo">
+            <img src="images/logo.png"/>
+            <h1>POLAR PALS</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="help.html">How it Works</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="nav-icons">
+            <a href="match.html">
+                <img src="images/match.png"/>
+            </a>
+            <a href="inbox.html">
+                <img src="images/inbox.png"/>
+            </a>
+            <a href="profile.html">
+                <img src="images/profile.png"/>
+            </a>
+        </div>
+    </nav>  
+    <main class = "matches">
+        <h1>Lets make new <span class="text-highlight">Pals!</span></h1>
+        <button id = 'filter'>Filter by preferences and Deal Breakers</button>
+        <form>
+            <select name="activity" id="activity-select">
+                <option value="">--activity--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+            </select>
+            <select name="values" id="values-select">
+                <option value="">--values--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+            </select>
+            <select name="politics" id="politics-select">
+                <option value="">--politics--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+            </select>
+            <select name="religion" id="religion-select">
+                <option value="">--religion--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+            </select>
+            <select name="substances" id="substances-select">
+                <option value="">--substances--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+            </select>
+        </form>
+        <h2>
+            Click any profile to learn more about that <strong>Polar Pal!</strong>
+        </h2>
+        <canvas id="matchesGraph" width=500 height="500"></canvas>
+    </main>
     <footer>
       <div class="footer-text">
         <p>&copy; Polar Pals 2025</p>
         <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
       </div>
     </footer>
-    <script src="scripts/algorithm.js"></script>
+    <script src="scripts/matchs/algorithm.js"></script>
   </body>
 </html>

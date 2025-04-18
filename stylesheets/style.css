@@ -1,15 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
-  --primary-light-blue: #bbd6fe;
-  --secondary-bright-blue: #409afd;
-  --accent-dark-blue: #007aff;
-  --alert-red: #ed0800;
-  --alert-green: #5dbea3;
-  --text-black: #000000;
-  --text-white: #ffffff;
-  --text-josefin: "Josefin Sans", sans-serif;
-  --text-carlito: "Carlito", sans-serif;
+    --primary-light-blue: #BBD6FE;
+    --secondary-bright-blue: #409AFD;
+    --accent-dark-blue: #007AFF;
+    --alert-red: #ED0800;
+    --alert-green: #5DBEA3;
+    --text-black: #000000;
+    --text-white: #FFFFFF;
+    --text-josefin: "Josefin Sans", sans-serif;
+    --text-carlito: "Carlito", sans-serif;
+    cursor: url('../images/Cursor-white.svg'), pointer
 }
 
 html,
@@ -19,13 +20,14 @@ body {
 
 /* Navigation Bar */
 nav {
-  background-color: #ffffff;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 20px;
-  height: 30px;
-  filter: drop-shadow(0 0 0.5rem var(--text-black));
+    background-color: #FFFFFF;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    height: 30px;
+    filter: drop-shadow(0 0 0.5rem var(--text-black));
+    cursor: url('../images/Cursor-white-outlined.svg'), pointer
 }
 
 #logo-container {
@@ -42,8 +44,9 @@ nav {
 }
 
 .nav-logo img {
-  height: 30px;
-  width: auto;
+    height: 30px;
+    width: auto;
+    cursor: url('../images/Cursor-black.svg'), pointer
 }
 
 .nav-logo > h1 {
@@ -204,19 +207,21 @@ footer {
     
 
 } */
-.start-button {
-  background-color: #409afd;
-  border: none;
-  border-radius: 19px;
-  height: 40px;
-  width: fit-content;
-  padding: 0px 20px;
-  font-size: 1.5em;
-  font-family: var(--text-carlito);
-  color: var(--text-white);
-  cursor: pointer;
-  outline: none;
-  box-shadow: 0 5px #999;
+
+.start-button{
+    background-color: #409AFD;
+    border: none;
+    border-radius: 19px;
+    height:40px;
+    width:fit-content;
+    padding: 0px 20px;
+    font-size: 1.5em;
+    font-family: var(--text-carlito);
+    color: var(--text-white);
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 5px #999;
+    cursor: url('../images/Cursor-black.svg'), pointer;
 }
 
 .start-button:hover {
@@ -251,10 +256,14 @@ h3 {
 }
 
 .side-image {
-  height: 450px;
-  width: auto;
+    height: 450px;
+    width: auto;
+    margin-left: 100px;
+    padding-right: 40px;
+    cursor: url('../images/Cursor-white-outlined.svg'), pointer;
+}
 
-  margin-left: 100px;
-  padding-right: 40px;
+button {
+    cursor: url('../images/Cursor-white-outlined.svg'), pointer;
 }
 
