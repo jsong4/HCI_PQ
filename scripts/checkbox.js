@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener("change", () => {
             const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
-            if (checkedCount > 3) {
-                alert("You can only select up to 3 options.");
+            if (checkedCount > 5) {
+                alert("You can only select up to 5 options.");
                 checkbox.checked = false;  // Uncheck the last one if more than 3 are selected
             }
         });
