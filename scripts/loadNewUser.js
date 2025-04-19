@@ -15,15 +15,29 @@ function loadProgressBar() {
     }
 }
 
-// test = {
-//     "user1": {
-//         "prompt1": ["In a parallel universe, I am definitely...", "A polar bear who noms on fish all day"],
-//         "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
-//         "prompt3": ["A letter to my future me would start with...", "what up"],
-//         "checkbox": ["Chronically online", "Listener", "Easygoing"]
-//     }
-// }
+// Example
+test = {
+    "user1": {
+        "selectedPrompts": ["In a parallel universe, I am definitely...", "One rule of society I'd totally rewrite...", "A letter to my future me would start with..."],
+        "prompt1": ["In a parallel universe, I am definitely...", "A polar bear who noms on fish all day"],
+        "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
+        "prompt3": ["A letter to my future me would start with...", "what up"],
+        "checkbox": ["Chronically online", "Listener", "Easygoing"] // More than 3 now, but only top 3 on create prof preview
+    },
+    "user2": {
+        "selectedPrompts": ["In a parallel universe, I am definitely...", "One rule of society I'd totally rewrite...", "A letter to my future me would start with..."],
+        "prompt1": ["In a parallel universe, I am definitely...", "A polar bear who noms on fish all day"],
+        "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
+        "prompt3": ["A letter to my future me would start with...", "what up"],
+        "checkbox": ["Chronically online", "Listener", "Easygoing"] // More than 3 now, but only top 3 on create prof preview
+    }
+
+}
 current_user = "user1"
+ //let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
+
+// Get item userList, JSON.parse the userList from , add new item to dictionary
+
 // // Add test to localStorage
 // localStorage.setItem("usersList", JSON.stringify(test));
 

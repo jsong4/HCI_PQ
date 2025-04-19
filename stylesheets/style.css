@@ -181,6 +181,18 @@ footer {
   gap: 40px;
 }
 
+.text-container {
+  max-width: 600px;   
+  max-height: 400px;
+  margin: 0 auto;       
+  text-align: center;  
+  padding: 1rem;
+  
+  padding-bottom: 180px; /* slightly more than footer height to be safe */
+}
+
+
+
 .pair {
   margin-bottom: 0px;
   width: auto; /* Space BETWEEN pairs */
@@ -243,6 +255,12 @@ h2 {
 h3 {
   font-family: var(--text-carlito);
   font-size: 25px;
+  color: var(--text-black);
+}
+
+h4 {
+  font-family: var(--text-carlito);
+  font-size: 20px;
   color: var(--text-black);
 }
 
