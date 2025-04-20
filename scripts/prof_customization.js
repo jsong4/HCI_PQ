@@ -28,9 +28,9 @@ userData = {
     }
 }
 
-localStorage.removeItem("usersList")
+// localStorage.removeItem("usersList")
 var current_user = "user1"
-localStorage.setItem("usersList", JSON.stringify(test));
+// localStorage.setItem("usersList", JSON.stringify(test));
 
 function loadUserData() {
     let usersList = JSON.parse(localStorage.getItem("usersList"))
