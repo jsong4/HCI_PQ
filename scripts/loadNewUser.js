@@ -75,43 +75,9 @@ function loadSpecificPage() {
     }
     else if (window.location.href.includes("newuser_createprof.html")) {
         console.log("create prof page!")
-        if (usersList != null) { // Valid User
-            userInfo = usersList[current_user];
-            if (userInfo != null) {
-                prompt1 = userInfo["prompt1"];
-                prompt2 = userInfo["prompt2"];
-                prompt3 = userInfo["prompt3"];
-                checkbox = userInfo["checkbox"];
-                userName = current_user; // TODO - future implemntation to use openAi to generate names?
-                prompts = [prompt1, prompt2, prompt3]
-
-                document.getElementById("userName").textContent = userName;
-
-                for (var i = 0; i < 3; i++) {
-                    promptParent = document.getElementById(`prompt${i + 1}`);
-                    chosenPrompt = document.createElement("div");
-                    chosenPrompt.className = "prompt";
-                    chosenPrompt.textContent = prompts[i][0];
-                    console.log(chosenPrompt)
-                    console.log(prompts[i][0])
-                    promptParent.appendChild(chosenPrompt);
-
-                    writtenResp = document.createElement("div");
-                    writtenResp.className = "response";
-                    writtenResp.textContent = prompts[i][1];
-                    promptParent.appendChild(writtenResp);
-                }
-
-                for (var i = 0; i < checkbox.length; i++) {
-                    listParent = document.getElementById("checkbox");
-                    listChild = document.createElement("li");
-                    listChild.textContent = checkbox[i];
-                    listParent.appendChild(listChild);
-                }
-            }
-            else { // Invalid user
+        if (usersList == null) { // Invalid User
                 redirectToStart()
-            }
+        
         }
     }
 }
