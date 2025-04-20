@@ -6,6 +6,10 @@
   text-align: center;
   margin: auto;
   padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .progress-bar {
@@ -121,6 +125,7 @@
     "prof-img prompt1 prompt2 prompt3"
     "checkbox prompt1 prompt2 prompt3"
     "create-btn create-btn create-btn create-btn";
+  margin-bottom: 100px;
 }
 
 .written-response {

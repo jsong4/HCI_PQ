@@ -53,8 +53,16 @@ function loadSpecificPage() {
             console.log(current_user)
             userInfo = usersList[current_user];
             if (userInfo != null) {
-                userName = current_user; // TODO - future implemntation to use openAi to generate names?
-
+                let userName = current_user; // TODO - future implemntation to use openAi to generate names?
+                userInfo["profile"] = {
+                    "color": "#fff1cc",
+                    "accessory": "images/prof_customization/empty.svg"
+                }
+                localStorage.setItem("usersList", JSON.stringify(usersList))
+                var starterColor = userInfo.profile.color;
+                console.log(starterColor)
+                console.log(document.getElementById("welcome-img"))
+                document.getElementById("welcome-img").style.backgroundColor = starterColor;
                 document.getElementById("userName").textContent = userName + "!";
             }
             else { // Invalid user
