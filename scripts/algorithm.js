@@ -152,12 +152,49 @@ function computeSortedMatches() {
 
     binaryInsert(sortedMatches, {
       username: other.username,
-      vector: other.vector,
-      distance,
+      distance: distance,
     });
   }
 
   return sortedMatches;
+}
+
+/* =============================
+ * Normalizes the distances of the top matches to a 0–1 scale.
+ *
+ * This function retrieves the top sorted matches using `computeSortedMatches`,
+ * calculates the minimum and maximum distances, and scales each match's distance
+ * such that:
+ *   - 0 represents the closest (most similar) match
+ *   - 1 represents the furthest (least similar) match in the top list
+ *
+ * If all distances are equal, normalization falls back to dividing by 1 to avoid
+ * divide-by-zero errors.
+ *
+ * Returns: {Array<Object>} An array of objects, each containing:
+ *   - `username` {string}: The username of the match
+ *   - `distance` {number}: The normalized distance (0–1)
+ */
+function normalizeTopMatches() {
+  const matches = computeSortedMatches;
+
+  if (!matches || matches.length === 0) return [];
+
+  // Gets an array of all the distances
+  const distances = matches.map((match) => match.distance);
+
+  // Gets the min and max distances from the array of al the distances
+  const min = Math.min(...distances);
+  const max = Math.max(...distances);
+
+  // Prevent divide-by-zero in case all distances are the same
+  const range = max - min || 1;
+
+  // Return normalized matches
+  return matches.map((match) => ({
+    username: match.username,
+    distance: (match.distance - min) / range,
+  }));
 }
 
 /* =============================
@@ -171,7 +208,7 @@ function computeSortedMatches() {
  * }
  */
 function getTopMatchesDict() {
-  const sortedMatches = computeSortedMatches();
+  const sortedMatches = normalizeTopMatches();
   const topTen = sortedMatches.slice(0, 10);
 
   const userData = {};
