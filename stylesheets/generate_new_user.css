@@ -95,6 +95,7 @@
 }
 
 #create-prof-button {
+  text-align: center;
   grid-area: create-btn;
 }
 

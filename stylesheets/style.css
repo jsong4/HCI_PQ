@@ -152,7 +152,7 @@ p {
 /* Footer CSS Rules */
 footer {
   height: 70px;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
   background-color: var(--secondary-bright-blue);

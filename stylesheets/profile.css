@@ -1,0 +1,311 @@
+main {
+    padding: 20px;
+}
+
+.prof-container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+        "title title title title"
+        "prof-img prompt1 prompt2 prompt3"
+        "checkbox prompt1 prompt2 prompt3"
+    ;
+    padding: 20px;
+}
+
+#profile-top,
+#profile-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#profile-bottom {
+    height: 75px;
+}
+
+#color-input {
+    font-family: var(--text-carlito);
+    font-size: 20px;
+    background-color: var(--text-white);
+    width: 300px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px var(--secondary-bright-blue);
+    margin-top: 0;
+}
+
+#profile-img-color {
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    border: none;
+}
+
+#profile-img-color-submit {
+    margin: 10px;
+    font-size: 15px;
+}
+
+
+#profile-img-container {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    overflow: hidden;
+    background-color: bisque;
+    border: 4px solid var(--accent-dark-blue);
+    border-radius: 15px;
+    position: relative;
+    margin: 10px;
+    grid-area: prof-img;
+    margin-bottom: 0;
+}
+
+#profile-img-container img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#profile-img-accessory {
+    z-index: 1;
+}
+
+button {
+    background-color: var(--accent-dark-blue);
+    border: none;
+    border-radius: 15px;
+    height: 40px;
+    padding: 0px 10px;
+    width: fit-content;
+    font-size: 20px;
+    font-family: var(--text-carlito);
+    color: var(--text-white);
+    cursor: pointer;
+    box-shadow: 0px 5px #454545;
+}
+
+button:hover {
+    background-color: var(--secondary-bright-blue);
+}
+
+button:active {
+    background-color: var(--secondary-bright-blue);
+    box-shadow: 0px 2px var(--text-black);
+    transform: translateY(3px);
+}
+
+.prof-container h1 {
+    grid-area: title;
+    margin: 0;
+}
+
+.prof-container #checkbox-container {
+    grid-area: checkbox;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px var(--secondary-bright-blue);
+    background-color: var(--text-white);
+    font-family: var(--text-carlito);
+    padding: 10px;
+}
+
+#checkbox-container #edit-response {
+    width: 30px;
+    height: auto;
+    float: right;
+}
+
+#checkbox-container #edit-icon:hover path {
+    fill: var(--text-black);
+    stroke: var(--text-black)
+}
+
+#checkbox-container #edit-icon:active path {
+    fill: var(--secondary-bright-blue);
+    stroke: var(--secondary-bright-blue);
+}
+
+.prof-container #prompt1 {
+    grid-area: prompt1;
+}
+
+.prof-container #prompt2 {
+    grid-area: prompt2;
+}
+
+.prof-container #prompt3 {
+    grid-area: prompt3;
+}
+
+.written-response {
+    background-color: var(--text-white);
+    border-radius: 15px;
+    filter: drop-shadow(10px 5px 4px var(--secondary-bright-blue));
+    text-align: left;
+    padding: 10px;
+    font-family: var(--text-carlito);
+    height: auto;
+}
+
+.written-response .prompt {
+    color: var(--secondary-bright-blue);
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.written-response .response {
+    color: var(--text-black);
+    font-weight: bold;
+    font-size: 25px;
+    word-break: break-word;
+}
+
+.checkbox-list {
+    list-style-type: none;
+    font-size: 25px;
+    padding: 5px;
+    margin: 0px;
+}
+
+.checkbox-list li {
+    background: url("../images/checkbox.png") no-repeat left center;
+    padding-left: 40px;
+    margin: 3px 0;
+}
+
+.written-response #edit-response {
+    width: 30px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.written-response #edit-icon:hover path {
+    fill: var(--text-black);
+    stroke: var(--text-black)
+}
+
+.written-response #edit-icon:active path {
+    fill: var(--secondary-bright-blue);
+    stroke: var(--secondary-bright-blue);
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    padding: 25px;
+    width: 380px;
+    height: 400px;
+    background: var(--primary-light-blue);
+    z-index: 20;
+    box-shadow: 0px 0px 0px 9999px rgba(14, 73, 150, 0.5);
+    left: 50%;
+    margin-left: -190px;
+    top: 50%;
+    margin-top: -200px;
+    border-radius: 15px;
+    border: 4px solid var(--accent-dark-blue);
+    text-align: center;
+}
+
+#edit-response-form form {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+}
+
+#edit-response-form label {
+    font-size: 24px;
+    font-family: var(--text-carlito);
+    padding-bottom: 10px;
+}
+
+#edit-response-form select {
+    appearance: base-select;
+    border: 2px solid #409AFD;
+    background: white;
+    padding: 10px;
+    transition: 0.4s;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    width: 100%;
+    margin: 0 auto;
+    cursor: url('../images/Cursor.svg'), pointer;
+    margin-bottom: 10px;
+}
+
+#edit-response-form select::picker-icon {
+    color: #007AFF;
+}
+
+#edit-response-form option {
+    font-size: 15px;
+    font-family: var(--text-carlito);
+}
+
+#edit-response-form input[type=text] {
+    height: 200px;
+    vertical-align: top;
+}
+
+#edit-response-form .prompt-response {
+    height: 200px;
+    border-radius: 5px;
+}
+
+#edit-response-form textarea {
+    border: 2px solid #409AFD;
+    background: white;
+    width: 100%;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    margin: 0;
+    cursor: url('../images/Cursor.svg'), pointer;
+    margin-bottom: 10px;
+}
+
+#resp-close-icon,
+#check-close-icon {
+    float: right;
+    font-size: 20px;
+}
+
+#update-checkbox-button, #update-resp-button {
+    display: inline-block;
+    margin: 20px;
+}
+
+.checkbox-option {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #007AFF;
+    border-radius: 5px;
+    background-color: white;
+    outline: 2px solid #007AFF;
+    cursor: pointer;
+    cursor: url('images/Cursor-black.svg'), pointer;
+}
+
+.text-highlight {
+    color: var(--accent-dark-blue);
+}
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+    cursor: url('images/Cursor-white.svg'), pointer;
+    font-family: var(--text-carlito);
+    color: var(--accent-dark-blue);
+    font-weight: bold;
+    font-size: 18px;
+}
