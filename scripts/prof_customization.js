@@ -74,7 +74,7 @@ function loadUserData() {
                 }
             }
         }
-
+        
         var listParent = document.getElementById("checkbox");
         listParent.innerHTML = ''; // to update
         for (var i = 0; i < checkbox.length; i++) {

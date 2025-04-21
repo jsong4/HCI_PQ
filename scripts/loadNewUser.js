@@ -85,7 +85,6 @@ function loadSpecificPage() {
         console.log("create prof page!")
         if (usersList == null) { // Invalid User
                 redirectToStart()
-        
         }
     }
 }
