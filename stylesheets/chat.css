@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+    --primary-light-blue: #BBD6FE;
+    --secondary-bright-blue: #409AFD;
+    --accent-dark-blue: #007AFF;
+    --alert-red: #ED0800;
+    --alert-green: #5DBEA3;
+    --text-black: #000000;
+    --text-white: #FFFFFF;
+    --text-josefin: "Josefin Sans", sans-serif;
+    --text-carlito: "Carlito", sans-serif;
+    cursor: url('../images/Cursor-white.svg'), pointer
+}
+
+html,
+body {
+  overscroll-behavior: none; /* Prevents overscroll and bounce effect */
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    height: 30px;
+    filter: drop-shadow(0 0 0.5rem var(--text-black));
+    cursor: url('../images/Cursor-white-outlined.svg'), pointer
+}
+
+h2 {
+  font-family: var(--text-carlito);
+  font-size: 30px;
+  color: var(--text-black);
+}
+
+h3 {
+  font-family: var(--text-carlito);
+  font-size: 25px;
+  color: var(--text-black);
+}
+
+h4 {
+  font-family: var(--text-carlito);
+  font-size: 20px;
+  color: var(--text-black);
+}
+
+
+#logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: url("../images/Cursor.svg"), pointer;
+}
+
+.nav-logo img {
+    height: 30px;
+    width: auto;
+    cursor: url('../images/Cursor-black.svg'), pointer
+}
+
+.nav-logo > h1 {
+  font-size: 25px;
+  color: var(--secondary-bright-blue);
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-black);
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: var(--text-carlito);
+  cursor: url("../images/Cursor.svg"), pointer;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-links a:active {
+  color: var(--accent-dark-blue);
+  text-decoration: underline;
+}
+
+/* Changes active class based current page */
+.nav-links a.active {
+  color: var(--accent-dark-blue);
+  text-decoration: underline;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-icons img {
+  height: 30px;
+  width: auto;
+  cursor: url("../images/Cursor.svg"), pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.text-highlight {
+	color: var(--accent-dark-blue);
+  }
+
+  
+  
