@@ -108,7 +108,7 @@ function euclideanDistance(v1, v2) {
 }
 
 /* =============================
- *Inserts a new user into a sorted array of users based on distance,
+ * Inserts a new user into a sorted array of users based on distance,
  * using binary search for efficiency.
  *
  * Input: arr - sorted array of { username, vector, distance }
@@ -200,6 +200,7 @@ function normalizeTopMatches() {
 /* =============================
  * Returns a dictionary of the 10 closest users to the main user.
  * Each entry includes the distance and a matchBool flag.
+ *
  * Output:
  * {
  *    user2: { distance: 1.12, matchBool: false},
@@ -209,11 +210,11 @@ function normalizeTopMatches() {
  */
 function getTopMatchesDict() {
   const sortedMatches = normalizeTopMatches();
-  const topTen = sortedMatches.slice(0, 10);
+  const topTenMatches = sortedMatches.slice(0, 10);
 
   const userData = {};
 
-  topTen.forEach((match) => {
+  topTenMatches.forEach((match) => {
     userData[match.username] = {
       distance: match.distance,
       matchBool: false,
@@ -221,6 +222,27 @@ function getTopMatchesDict() {
   });
 
   return userData;
+}
+
+/* =============================
+ * Returns a nested array of the 10 users closest/most similar
+ * to the current user.
+ *
+ * Output:
+ * [[username2, .23],
+ *  [username3, .26],
+ *  [username4, .44],
+ *  etc.
+ * ]
+ */
+function getNestedArray(userData) {
+  const distancesArray = [];
+  for (const user in userData) {
+    const username = user;
+    const distance = user.distance;
+    distancesArray.push([username, distance]);
+  }
+  return distancesArray;
 }
 
 // Way to enable and disable the debugging tests as needed
@@ -284,5 +306,9 @@ if (DEBUG) {
 } else {
   // The intended execution for the file. This gets accessed when debugging is off
   const userMatches = getTopMatchesDict();
+  const userDistances = getNestedArray(userMatches);
+
+  // Adding the userMathes and userDistances to the local storage
   localStorage.setItem("userData", JSON.stringify(userMatches));
+  localStorage.setItem("userDistances", JSON.stringify(userDistances));
 }
