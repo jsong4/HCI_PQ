@@ -87,6 +87,7 @@ footer {
 .container {
     position: relative;
     display: inline-block; /* To make the container fit the content */
+    cursor: url('../images/Cursor-blue.svg'), pointer;
 }
 
 #matchesGraph{
@@ -96,20 +97,15 @@ footer {
     height: 500;
 }
 
-#myCanvas {
-    position: absolute;
-    z-index: 2;
-    display:block;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 5px;
-}
-
 .match {
     position: absolute;
     z-index: 2;
     display: block;
     width: 500px;
     height: 500px;
+}
+
+.degugging-links {
+    opacity: 0;
+    cursor: url('../images/Cursor-black.svg'), pointer;
 }

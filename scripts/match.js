@@ -119,8 +119,11 @@ const match8 = document.getElementById('match8');
 const match9 = document.getElementById('match9');
 const match10 = document.getElementById('match10');
 
-// match1.style.left = toString(positions[0][0]) + 'px';
-// match1.style.top = toString(positions[0][1]) + 'px';
+links = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
 
-match1.style.left = positions[0][0];
-match1.style.top = positions[0][1];
+for (i = 0; i < 10; i++) {
+    link = links[i]
+    link.style.position = 'absolute'
+    link.style.left = positions[i][0] - 16 + 'px';
+    link.style.top = positions[i][1] - 8 + 'px';
+}
