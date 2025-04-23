@@ -1,17 +1,9 @@
-import { userDistances } from './algorithm.js';
-
-distances = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 angles = [0, 36, 72, 108, 144, 180, 216, 252, 288, 324, 360]
 
 matches = [[0, 0.1], [0, 0.2], [0, 0.3], [0, 0.4], [0, 0.5], [0, 0.6], [0, 0.7], [0, 0.8], [0, 0.9], [0, 1]]
 
-var numMatches = 10;
-
 centerX = 250
 centerY = 250
-
-Xs = [50, 100, 150, 400, 200, 300, 380, 400, 300, 500]
-Ys = [50, 10, 400, 50, 250, 75, 350, 200, 450, 10]
 
 const base = new Image();
 base.src = "images/prof_customization/base.svg";
@@ -23,7 +15,7 @@ function drawGraph() {
 
     for (i = 0; i < 10; i++) {
         id = matches[i][0]
-        var pfColor = '#007AFF' //NOTE: get color from id
+        var pfColor = '#409AFD' //NOTE: get color from id
         distance = matches[i][1]
 
 
@@ -60,6 +52,28 @@ function drawGraph() {
         const accesory = new Image();
         accesory.src = "images/prof_customization/beanie.svg"; //NOTE: grab accesories from id
         ctx.drawImage(accesory, endX - 18, endY - 18, 36, 36);
+
+        base.title = 'https://developer.mozilla.org/en-US/docs/Web/API/Document/title';
+
+        //tooltip
+        var tooltip = document.createElement('canvas');
+
+        tooltip.class = "profile";
+        tooltip.width = 50;
+        tooltip.height = 50;
+        tooltip.style.zIndex = 8;
+        tooltip.style.position = "absolute";
+        tooltip.style.insetInlineStart = toString(endX) + 'px';
+        tooltip.style.border = "1px solid";
+        tooltip.display = 'none';
+
+        c.appendChild(tooltip);
+
+        profile = document.getElementById("profile");
+        console.log(profile);
+
+        ctx.fillStyle = 'black';
+        ctx.fillText("Hello world", endX, endY);
     }
 
     ctx.beginPath(); // Start a new path
@@ -71,7 +85,3 @@ function drawGraph() {
 }
 
 drawGraph()
-
-// function getDistances(){
-    
-// }
