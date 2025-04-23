@@ -5,6 +5,8 @@ matches = [[0, 0.1], [0, 0.2], [0, 0.3], [0, 0.4], [0, 0.5], [0, 0.6], [0, 0.7],
 centerX = 250
 centerY = 250
 
+positions = []
+
 const base = new Image();
 base.src = "images/prof_customization/base.svg";
 
@@ -17,7 +19,6 @@ function drawGraph() {
         id = matches[i][0]
         var pfColor = '#409AFD' //NOTE: get color from id
         distance = matches[i][1]
-
 
         //calculate circle centerpoints
         radians = angles[i] * Math.PI/180
@@ -53,27 +54,19 @@ function drawGraph() {
         accesory.src = "images/prof_customization/beanie.svg"; //NOTE: grab accesories from id
         ctx.drawImage(accesory, endX - 18, endY - 18, 36, 36);
 
-        base.title = 'https://developer.mozilla.org/en-US/docs/Web/API/Document/title';
+        // //tooltip
+        // //draw the link
+        // ctx.font = '10px sans-serif';
+        // ctx.fillStyle = "#0000ff";
+        // ctx.fillText('linkText', endX, endY);
+        // linkWidth = ctx.measureText(linkText).width;
 
-        //tooltip
-        var tooltip = document.createElement('canvas');
+        // //add mouse listeners
+        // c.addEventListener("mousemove", on_mousemove, false);
+        // c.addEventListener("click", on_click, false)
 
-        tooltip.class = "profile";
-        tooltip.width = 50;
-        tooltip.height = 50;
-        tooltip.style.zIndex = 8;
-        tooltip.style.position = "absolute";
-        tooltip.style.insetInlineStart = toString(endX) + 'px';
-        tooltip.style.border = "1px solid";
-        tooltip.display = 'none';
-
-        c.appendChild(tooltip);
-
-        profile = document.getElementById("profile");
-        console.log(profile);
-
-        ctx.fillStyle = 'black';
-        ctx.fillText("Hello world", endX, endY);
+        //store positions for tooltips
+        positions.push([endX, endY])
     }
 
     ctx.beginPath(); // Start a new path
@@ -82,6 +75,52 @@ function drawGraph() {
     ctx.fill()
     ctx.stroke(); // Draw the circle
     ctx.closePath(); // Close the path
+    console.log(positions)
 }
 
 drawGraph()
+
+// function on_mousemove(ev) {
+//     var x, y;
+  
+//     // Get the mouse position relative to the canvas element.
+//     if (ev.layerX || ev.layerX == 0) { //for firefox
+//       x = ev.layerX;
+//       y = ev.layerY;
+//     }
+//     x -= canvas.offsetLeft;
+//     y -= canvas.offsetTop;
+  
+//     //is the mouse over the link?
+//     if (x >= linkX && x <= (linkX + linkWidth) && y <= linkY && y >= (linkY - linkHeight)) {
+//       document.body.style.cursor = "pointer";
+//       inLink = true;
+//     } else {
+//       document.body.style.cursor = "";
+//       inLink = false;
+//     }
+//   }
+  
+//   //if the link has been clicked, go to link
+//   function on_click(e) {
+//     if (inLink) {
+//       window.location = linkText;
+//     }
+//   }
+
+const match1 = document.getElementById('match1');
+const match2 = document.getElementById('match2');
+const match3 = document.getElementById('match3');
+const match4 = document.getElementById('match4');
+const match5 = document.getElementById('match5');
+const match6 = document.getElementById('match6');
+const match7 = document.getElementById('match7');
+const match8 = document.getElementById('match8');
+const match9 = document.getElementById('match9');
+const match10 = document.getElementById('match10');
+
+// match1.style.left = toString(positions[0][0]) + 'px';
+// match1.style.top = toString(positions[0][1]) + 'px';
+
+match1.style.left = positions[0][0];
+match1.style.top = positions[0][1];

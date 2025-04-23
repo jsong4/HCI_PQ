@@ -83,3 +83,33 @@ footer {
     text-align: center;
     width: 100%;
 }
+
+.container {
+    position: relative;
+    display: inline-block; /* To make the container fit the content */
+}
+
+#matchesGraph{
+    position: absolute;
+    z-index: 1; /* Canvas is below */
+    width: 500;
+    height: 500;
+}
+
+#myCanvas {
+    position: absolute;
+    z-index: 2;
+    display:block;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+}
+
+.match {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 500px;
+    height: 500px;
+}
