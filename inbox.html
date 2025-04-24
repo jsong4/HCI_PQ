@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Polar Pals</title>
 </head>
 <body>
@@ -30,6 +31,80 @@
             </a>
         </div>
     </nav>
+    <!-- Main Container -->
+        <div class="container">
+            <!-- Message header section starts here -->
+            <div class="msg-header">
+                <div class="container1">
+                    <!-- <img src="images/profile.png" class="msgimg"> -->
+                    <div class="active-user">
+                        <p>User name</p>
+                    </div>
+                </div>
+                <div class="msg-actions">
+                    <button class="msg-btn report-btn">Report</button>
+                    <button class="msg-btn unmatch-btn">Unmatch</button>
+                  </div>
+            </div>
+            <!-- Message header section ends here -->
+             <div class="chat-page">
+                <div class="msg-inbox">
+
+                    <div class="chats">
+
+                        <div class="msg-page">
+                             <!-- This contains the incoming and outgoing messages-->   
+
+                            <!-- <div class="received-chats">
+                                <div class="received-chats-img">
+                                    <img src="images/profile.png">
+                                </div>
+                                    <div class="received-msg">
+                                        <div class="received-msg-inbox">
+                                            <p>Hi !! This is message from Riya . Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non quas nemo eum, earum sunt, nobis similique quisquam eveniet pariatur commodi modi voluptatibus iusto omnis harum illum
+                                                iste distinctio expedita illo!</p>
+                                            <span class="time">18:06 PM | July 24 </span>
+                                        </div>
+                                </div>
+                                
+                            </div> -->
+                           
+    
+                            <!-- <div class="outgoing-chats">
+                                
+                                <div class="outgoing-msg">
+                                    <div class="outgoing-chats-msg">
+                                        <p class="multi-msg">Hi riya , Lorem ipsum dolor sit amet consectetur 
+                                            adipisicing elit. Illo nobis deleniti earum magni recusandae assumenda.
+                                        </p>
+                                        <p class="multi-msg">Lorem ipsum dolor sit amet consectetur.</p>
+                                        <span class="time">18:30 PM | July 24 </span>
+                                    </div>
+                                </div>
+                            </div>
+                            -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="msg-bottom">
+
+                    <div class="input-group">
+                        <input type="text" id="userInput" class="form-control" placeholder="Write message...">
+                        <div class="input-group-append ">
+                            <span class="input-group-text send-icon "><i class="bi bi-send"></i>
+                            </span>
+                        </div> 
+                    </div>
+                </div>
+                <!-- Message bottom section ends.-->
+                
+             </div>
+        </div>
+
+
+
 
     <footer>
         <div class="footer-text">
@@ -37,6 +112,7 @@
             <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="scripts/chats.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
