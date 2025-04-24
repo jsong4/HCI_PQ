@@ -277,7 +277,6 @@ button:active {
 #check-close-icon {
     float: right;
     font-size: 20px;
-    z-index: 1;
 }
 
 #update-checkbox-button, #update-resp-button {
