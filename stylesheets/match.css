@@ -62,8 +62,8 @@ strong {
     position: relative;
     display: flex;
     cursor: url('../images/Cursor-blue.svg'), pointer;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    right: 10%;
+    padding-left: 20px;
 }
 
 #matchesGraph{
