@@ -65,7 +65,7 @@ function drawGraph() {
     console.log(positions)
 }
 
-function positionTooltips(){
+function positionLinks(){
     const match1 = document.getElementById('match1');
     const match2 = document.getElementById('match2');
     const match3 = document.getElementById('match3');
@@ -82,13 +82,13 @@ function positionTooltips(){
     for (i = 0; i < 10; i++) {
         link = links[i]
         link.style.position = 'absolute'
-        link.style.left = positions[i][0] - 16 + 'px';
-        link.style.top = positions[i][1] - 8 + 'px';
+        link.style.left = positions[i][0] - 20 + 'px';
+        link.style.top = positions[i][1] - 20 + 'px';
     }
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
     drawGraph() 
-    positionTooltips()
+    positionLinks()
 });
