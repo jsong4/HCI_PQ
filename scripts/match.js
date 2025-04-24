@@ -53,24 +53,11 @@ function drawGraph() {
         const accesory = new Image();
         accesory.src = "images/prof_customization/beanie.svg"; //NOTE: grab accesories from id
         ctx.drawImage(accesory, endX - 18, endY - 18, 36, 36);
-
-        // //tooltip
-        // //draw the link
-        // ctx.font = '10px sans-serif';
-        // ctx.fillStyle = "#0000ff";
-        // ctx.fillText('linkText', endX, endY);
-        // linkWidth = ctx.measureText(linkText).width;
-
-        // //add mouse listeners
-        // c.addEventListener("mousemove", on_mousemove, false);
-        // c.addEventListener("click", on_click, false)
-
-        //store positions for tooltips
         positions.push([endX, endY])
     }
 
-    ctx.beginPath(); // Start a new path
-    ctx.arc(250, 250, 10, 0, 2 * Math.PI); // Create the circle arc
+    ctx.beginPath();
+    ctx.arc(250, 250, 10, 0, 2 * Math.PI);
     ctx.fillStyle = '#FFFFFF'
     ctx.fill()
     ctx.stroke(); // Draw the circle
@@ -78,52 +65,30 @@ function drawGraph() {
     console.log(positions)
 }
 
-drawGraph()
+function positionTooltips(){
+    const match1 = document.getElementById('match1');
+    const match2 = document.getElementById('match2');
+    const match3 = document.getElementById('match3');
+    const match4 = document.getElementById('match4');
+    const match5 = document.getElementById('match5');
+    const match6 = document.getElementById('match6');
+    const match7 = document.getElementById('match7');
+    const match8 = document.getElementById('match8');
+    const match9 = document.getElementById('match9');
+    const match10 = document.getElementById('match10');
 
-// function on_mousemove(ev) {
-//     var x, y;
-  
-//     // Get the mouse position relative to the canvas element.
-//     if (ev.layerX || ev.layerX == 0) { //for firefox
-//       x = ev.layerX;
-//       y = ev.layerY;
-//     }
-//     x -= canvas.offsetLeft;
-//     y -= canvas.offsetTop;
-  
-//     //is the mouse over the link?
-//     if (x >= linkX && x <= (linkX + linkWidth) && y <= linkY && y >= (linkY - linkHeight)) {
-//       document.body.style.cursor = "pointer";
-//       inLink = true;
-//     } else {
-//       document.body.style.cursor = "";
-//       inLink = false;
-//     }
-//   }
-  
-//   //if the link has been clicked, go to link
-//   function on_click(e) {
-//     if (inLink) {
-//       window.location = linkText;
-//     }
-//   }
+    links = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
 
-const match1 = document.getElementById('match1');
-const match2 = document.getElementById('match2');
-const match3 = document.getElementById('match3');
-const match4 = document.getElementById('match4');
-const match5 = document.getElementById('match5');
-const match6 = document.getElementById('match6');
-const match7 = document.getElementById('match7');
-const match8 = document.getElementById('match8');
-const match9 = document.getElementById('match9');
-const match10 = document.getElementById('match10');
-
-links = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
-
-for (i = 0; i < 10; i++) {
-    link = links[i]
-    link.style.position = 'absolute'
-    link.style.left = positions[i][0] - 16 + 'px';
-    link.style.top = positions[i][1] - 8 + 'px';
+    for (i = 0; i < 10; i++) {
+        link = links[i]
+        link.style.position = 'absolute'
+        link.style.left = positions[i][0] - 16 + 'px';
+        link.style.top = positions[i][1] - 8 + 'px';
+    }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    drawGraph() 
+    positionTooltips()
+});
