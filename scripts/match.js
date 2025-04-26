@@ -8,7 +8,7 @@ centerY = 250
 positions = []
 
 const base = new Image();
-base.src = "images/prof_customization/base.svg";
+base.src = "images/prof_customization/base_circle.svg";
 
 function drawGraph() {
 
@@ -44,15 +44,15 @@ function drawGraph() {
         ctx.fillStyle = pfColor;
         ctx.fill();
         ctx.stroke()
-        ctx.closePath();
 
         //place profile
-        ctx.drawImage(base, endX - 18, endY - 18, 36, 36);
+        ctx.drawImage(base, endX - 19, endY - 19, 38, 38);
 
         //accesories
         const accesory = new Image();
         accesory.src = "images/prof_customization/beanie.svg"; //NOTE: grab accesories from id
-        ctx.drawImage(accesory, endX - 18, endY - 18, 36, 36);
+        ctx.drawImage(accesory, endX - 19, endY - 19, 38, 38);
+        ctx.closePath();
         positions.push([endX, endY])
     }
 
