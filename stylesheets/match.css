@@ -58,10 +58,70 @@ strong {
     
 }
 
-#matchesGraph {
-    background: #FFFFFF;
-    scroll-padding: 500px;
+.container {
+    position: relative;
+    display: flex;
     cursor: url('../images/Cursor-blue.svg'), pointer;
+    right: 10%;
+    padding-left: 20px;
+}
+
+#matchesGraph{
+    position: relative;
+    z-index: 1; /* Canvas is below */
+    background: #FFFFFF;
+    width: 500;
+    height: 500;
+    cursor: url('../images/Cursor-blue.svg'), pointer;
+}
+
+.info {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 500px;
+    height: 500px;
+}
+
+.link {
+    opacity: 100;
+    width: 25px;
+    height: 25px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    cursor: url('../images/Cursor-black.svg'), pointer;
+}
+
+.help {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: absolute;
+    display: inline-block;
+    right: 10px;
+    bottom: 10px;
+}
+  
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #007AFF;
+    color: #fff;
+    text-align: center;
+    border-radius: 15px;
+    position: relative;
+    padding: 5px;
+    margin: 50px;
+    }
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 /* Footer CSS Rules */
@@ -72,14 +132,14 @@ footer {
     left: 0;
     background-color: var(--secondary-bright-blue);
     width: 100%;
-}
-
-.footer-text {
+  }
+  
+  .footer-text {
     line-height: 10px;
-    padding-top: 5px;
     color: var(--text-white);
     position: relative;
+    padding-top: 10px;
     bottom: 0;
     text-align: center;
     width: 100%;
-}
+  }
