@@ -1,13 +1,14 @@
-distances = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 angles = [0, 36, 72, 108, 144, 180, 216, 252, 288, 324, 360]
 
-var numMatches = 10;
+matches = [[0, 0.1], [0, 0.2], [0, 0.3], [0, 0.4], [0, 0.5], [0, 0.6], [0, 0.7], [0, 0.8], [0, 0.9], [0, 1]]
 
 centerX = 250
 centerY = 250
 
-Xs = [50, 100, 150, 400, 200, 300, 380, 400, 300, 500]
-Ys = [50, 10, 400, 50, 250, 75, 350, 200, 450, 10]
+positions = []
+
+const base = new Image();
+base.src = "images/prof_customization/base_circle.svg";
 
 function drawGraph() {
 
@@ -15,11 +16,15 @@ function drawGraph() {
     const ctx = c.getContext("2d");
 
     for (i = 0; i < 10; i++) {
+        id = matches[i][0]
+        var pfColor = '#409AFD' //NOTE: get color from id
+        distance = matches[i][1]
+
         //calculate circle centerpoints
         radians = angles[i] * Math.PI/180
-        endX = distances[i] * Math.cos(radians) * 5
+        endX = distance * Math.cos(radians) * 250
         endX = endX + centerX
-        endY = distances[i] * Math.sin(radians) * 5
+        endY = distance * Math.sin(radians) * 250
         endY = endY + centerY
 
         //draw a line connecting to the circle
@@ -33,25 +38,57 @@ function drawGraph() {
 
         //draw a circle
         ctx.beginPath(); // Start a new path
-        ctx.arc(endX, endY, 10, 0, 2 * Math.PI); // Create the circle arc
-        ctx.strokeStyle = '#007AFF'; // Set the stroke color
-        ctx.lineWidth = 3; // Set the line width
-        ctx.fillStyle = '#007AFF'
-        ctx.fill()
-        ctx.stroke(); // Draw the circle
+        ctx.arc(endX, endY, 20, 0, 2 * Math.PI); // Create the circle arc
+        ctx.strokeStyle = 'black' ; // Set the stroke color
+        ctx.lineWidth = 2; // Set the line width
+        ctx.fillStyle = pfColor;
+        ctx.fill();
+        ctx.stroke()
+
+        //place profile
+        ctx.drawImage(base, endX - 19, endY - 19, 38, 38);
+
+        //accesories
+        const accesory = new Image();
+        accesory.src = "images/prof_customization/beanie.svg"; //NOTE: grab accesories from id
+        ctx.drawImage(accesory, endX - 19, endY - 19, 38, 38);
         ctx.closePath();
+        positions.push([endX, endY])
     }
 
-    ctx.beginPath(); // Start a new path
-    ctx.arc(250, 250, 10, 0, 2 * Math.PI); // Create the circle arc
+    ctx.beginPath();
+    ctx.arc(250, 250, 10, 0, 2 * Math.PI);
     ctx.fillStyle = '#FFFFFF'
     ctx.fill()
     ctx.stroke(); // Draw the circle
     ctx.closePath(); // Close the path
+    console.log(positions)
 }
 
-drawGraph()
+function positionLinks(){
+    const match1 = document.getElementById('match1');
+    const match2 = document.getElementById('match2');
+    const match3 = document.getElementById('match3');
+    const match4 = document.getElementById('match4');
+    const match5 = document.getElementById('match5');
+    const match6 = document.getElementById('match6');
+    const match7 = document.getElementById('match7');
+    const match8 = document.getElementById('match8');
+    const match9 = document.getElementById('match9');
+    const match10 = document.getElementById('match10');
 
-// function getDistances(){
-    
-// }
+    links = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
+
+    for (i = 0; i < 10; i++) {
+        link = links[i]
+        link.style.position = 'absolute'
+        link.style.left = positions[i][0] - 20 + 'px';
+        link.style.top = positions[i][1] - 20 + 'px';
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    drawGraph() 
+    positionLinks()
+});

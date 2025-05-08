@@ -1,0 +1,129 @@
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+    text-align: left;
+}
+
+#user-login {
+    font-family: var(--text-carlito);
+    font-size: 20px;
+    background-color: var(--text-white);
+    width: 80%;
+    padding: 10px;
+    border-radius: 15px;
+    border: solid 3px var(--accent-dark-blue);
+}
+
+#login-instructions {
+    padding-bottom: 20px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+#password {
+    -webkit-text-security: disc;
+}
+
+#user-login input {
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid var(--text-black);
+}
+
+#user-login input:focus {
+    outline: none;
+}
+
+#user-login label {
+    color: var(--text-black);
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+}
+
+#user-login input:focus ~ label,
+#user-login input:valid ~ label {
+    top: -20px;
+    font-size: 16px;
+    color: var(--accent-dark-blue);
+}
+
+.form-bar {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.form-bar:before,
+.form-bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: var(--primary-light-blue);
+    transition: 0.2s ease all;
+}
+
+.form-bar:before {
+    left: 50%;
+}
+
+.form-bar:after {
+    right: 50%;
+}
+
+#user-login input:focus ~ .form-bar:before,
+#user-login input:focus ~ .form-bar:after {
+    width: 50%;
+}
+
+.form-highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#login-button {
+    background-color: var(--accent-dark-blue);
+    border: none;
+    border-radius: 15px;
+    height:40px;
+    padding: 0px 10px;
+    width: fit-content;
+    font-size: 20px;
+    font-family: var(--text-carlito);
+    color: var(--text-white);
+    cursor: pointer;
+    box-shadow: 0px 5px #454545;
+    cursor: url('images/Cursor-black.svg'), pointer;
+    margin-top: 5px;
+}
+
+#login-button:hover {
+    background-color: var(--secondary-bright-blue);
+}
+
+#login-button:active {
+    background-color: var(--secondary-bright-blue);
+    box-shadow: 0px 2px var(--text-black);
+    transform: translateY(3px);
+}
+
+#profile-img-base {
+    width: 100%;
+    height: auto;
+}

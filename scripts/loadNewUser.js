@@ -1,3 +1,5 @@
+const currentUser = localStorage.getItem("currentUser")
+
 function loadProgressBar() {
     console.log("Load")
     var progress = document.getElementById("progress")
@@ -33,7 +35,7 @@ test = {
     }
 
 }
-current_user = "user1"
+// current_user = "user1"
  //let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
 
 // Get item userList, JSON.parse the userList from , add new item to dictionary
@@ -64,10 +66,10 @@ function loadSpecificPage() {
     // If welcome page, display generated name
     else if (window.location.href.includes("newuser_welcome.html")) {
         if (usersList != null) { // Valid User
-            console.log(current_user)
-            userInfo = usersList[current_user];
+            console.log(currentUser)
+            userInfo = usersList[currentUser];
             if (userInfo != null) {
-                let userName = current_user; // TODO - future implemntation to use openAi to generate names?
+                let userName = currentUser;
                 userInfo["profile"] = {
                     "color": "#fff1cc",
                     "accessory": "images/prof_customization/empty.svg"

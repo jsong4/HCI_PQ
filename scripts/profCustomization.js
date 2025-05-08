@@ -1,35 +1,37 @@
-// Using localStorage
-var test = {
-    "user1": {
-        "prompt1": ["In a parallel universe, I'm definitely...", "A polar bear who noms on fish all day"],
-        "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
-        "prompt3": ["A letter to future me would definitely include...", "what up"],
-        "checkbox": ["Chronically Online", "Listener", "Easygoing", "Outgoing", "Foodie"],
-        "profile": {
-            "color": "#fffdbd",
-            "accessory": "images/prof_customization/empty.svg"
-        },
-        "selectedPrompts": [
-            "In a parallel universe, I'm definitely...",
-            "One rule of society I'd totally rewrite...",
-            "A letter to future me would definitely include..."
-        ]
-    }
-}
+const curUser = localStorage.getItem("currentUser")
 
-userData = {
-    "user2": {
-        "distance": 0.2,
-        "match_bool": 0 // 0 for false, 1 for true
-    },
-    "user3": {
-        "distance": 0.9,
-        "match_bool": 1 // 0 for false, 1 for true
-    }
-}
+// Using localStorage
+// var test = {
+//     "user1": {
+//         "prompt1": ["In a parallel universe, I'm definitely...", "A polar bear who noms on fish all day"],
+//         "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
+//         "prompt3": ["A letter to future me would definitely include...", "what up"],
+//         "checkbox": ["Chronically Online", "Listener", "Easygoing", "Outgoing", "Foodie"],
+//         "profile": {
+//             "color": "#fffdbd",
+//             "accessory": "images/prof_customization/empty.svg"
+//         },
+//         "selectedPrompts": [
+//             "In a parallel universe, I'm definitely...",
+//             "One rule of society I'd totally rewrite...",
+//             "A letter to future me would definitely include..."
+//         ]
+//     }
+// }
+
+// userData = {
+//     "user2": {
+//         "distance": 0.2,
+//         "match_bool": 0 // 0 for false, 1 for true
+//     },
+//     "user3": {
+//         "distance": 0.9,
+//         "match_bool": 1 // 0 for false, 1 for true
+//     }
+// }
 
 // localStorage.removeItem("usersList")
-var current_user = "user1"
+// var current_user = "user1"
 // localStorage.setItem("usersList", JSON.stringify(test));
 
 function loadUserData() {
@@ -37,13 +39,13 @@ function loadUserData() {
     console.log(usersList);
 
     if (usersList != null) { // Valid User
-        var userInfo = usersList[current_user];
+        var userInfo = usersList[curUser];
         if (userInfo != null) {
             var prompt1 = userInfo["prompt1"];
             var prompt2 = userInfo["prompt2"];
             var prompt3 = userInfo["prompt3"];
             var checkbox = userInfo["checkbox"];
-            var userName = current_user; // TODO - future implemntation to use openAi to generate names?
+            var userName = curUser; // TODO
             var prompts = [prompt1, prompt2, prompt3]
             var color = userInfo["profile"]["color"]
             var accessory = userInfo["profile"]["accessory"]
@@ -119,8 +121,8 @@ function editResponse(promptNum) {
     dropdown.appendChild(placeholder);
 
     // Retrieve stored data or initialize it
-    let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
-    let selectedPrompts = usersList.user1.selectedPrompts || [];
+    let usersList = JSON.parse(localStorage.getItem("usersList"))
+    let selectedPrompts = usersList[curUser].selectedPrompts || [];
 
     // Filter out already selected prompts
     const filteredPrompts = list_of_prompts.filter(prompt => !selectedPrompts.includes(prompt));
@@ -142,7 +144,7 @@ function editResponse(promptNum) {
     updateButton.addEventListener("click", () => {
         const selectedOption = dropdown.value;
         const textValue = textEntry.value;
-        const currentOption = usersList.user1[promptNum][0]
+        const currentOption = usersList[curUser][promptNum][0]
 
         if (selectedOption && textValue) {
             // Update the selected prompts array
@@ -150,11 +152,11 @@ function editResponse(promptNum) {
                 selectedPrompts.push(selectedOption);
                 selectedPrompts = selectedPrompts.filter(prompt => prompt !== currentOption);
 
-                usersList.user1.selectedPrompts = selectedPrompts;
+                usersList[curUser].selectedPrompts = selectedPrompts;
             }
 
             // Update the user data structure
-            usersList.user1[promptNum] = [selectedOption, textValue];
+            usersList[curUser][promptNum] = [selectedOption, textValue];
 
             // Store updated data
             localStorage.setItem("usersList", JSON.stringify(usersList));
@@ -193,8 +195,8 @@ function editCheckboxes() {
     const updateButton = document.getElementById('update-checkbox-button');
 
     // Retrieve stored data or initialize it
-    let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
-    let selectedCheckboxes = usersList.user1.checkbox || [];
+    let usersList = JSON.parse(localStorage.getItem("usersList"))
+    let selectedCheckboxes = usersList[curUser].checkbox || [];
     console.log(selectedCheckboxes)
 
     // Limit the number of checkboxes that can be selected to 5
@@ -228,7 +230,7 @@ function editCheckboxes() {
 
         if (selectedOptions.length > 0) { // might not be necessary
             // Store the selected options in localStorage
-            usersList.user1.checkbox = selectedOptions;
+            usersList[curUser].checkbox = selectedOptions;
 
             // Store updated data
             localStorage.setItem("usersList", JSON.stringify(usersList));
@@ -272,7 +274,7 @@ profile_left.addEventListener("click", function () {
         new_src = accessories[accessories.length - 1]
     }
     profile_accessory.src = new_src
-    usersList.user1.profile.accessory = new_src; // set new accessory
+    usersList[curUser].profile.accessory = new_src; // set new accessory
     localStorage.setItem("usersList", JSON.stringify(usersList))
 })
 
@@ -286,19 +288,42 @@ profile_right.addEventListener("click", function () {
         new_src = accessories[0];
     }
     profile_accessory.src = new_src;
-    usersList.user1.profile.accessory = new_src; // set new accessory
+    usersList[curUser].profile.accessory = new_src; // set new accessory
     localStorage.setItem("usersList", JSON.stringify(usersList))
 })
 
 color_form.addEventListener("submit", function (event) {
     event.preventDefault()
     let usersList = JSON.parse(localStorage.getItem("usersList"));
-    console.log("current color", usersList.user1.profile.color)
+    console.log("current color", usersList[curUser].profile.color)
     bear_color.style.backgroundColor = color_input.value
-    usersList.user1.profile.color = color_input.value;
-    console.log("new color", usersList.user1.profile.color)
+    usersList[curUser].profile.color = color_input.value;
+    console.log("new color", usersList[curUser].profile.color)
     localStorage.setItem("usersList", JSON.stringify(usersList))
     return false
 })
+
+if (window.location.href.includes("newuser_createprof.html")) {
+    createUserButton = document.getElementById("createprof-button")
+    createUserButton.addEventListener('click', function() {
+        profPassword = document.getElementById("password").value
+        if (profPassword == '' || profPassword == null) {
+            alert("Please enter a valid password to login with later!")
+        } else {
+            let usersList = JSON.parse(localStorage.getItem("usersList"))
+            usersList[curUser].password = profPassword
+            localStorage.setItem("usersList", JSON.stringify(usersList))
+            console.log(usersList)
+            window.location.href = "match.html"
+        }
+    })
+} else { // profile.html
+    var logoutButton = document.getElementById("logout")
+    logoutButton.addEventListener('click', function() {
+        if (confirm("Would you like to proceed and return to the home page?")) {
+            window.location.href="index.html"
+        }
+    })
+}
 
 loadUserData()

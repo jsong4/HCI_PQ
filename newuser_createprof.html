@@ -102,13 +102,23 @@
             <ul class="checkbox-list fade-in-up" id="checkbox">
             </ul>
         </div>
+        <div id="user-login" class="fade-in-up">
+            <div class="form-group">
+                <input type="text" id="password" required>
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+                <label>Please enter a PASSWORD for future login</label>
+            </div>
+        </div>
+        <!-- <form id="password-input" class="fade-in-up">
+            <label for="password-field" id="password-label">Password</label>
+            <input id="password-field" type="text" placeholder="Please enter a password to future login" required>
+        </form> -->
         <div id="create-prof-button" class="fade-in-up">
-            <button onclick="location.href='match.html'">Create Profile →</button>
+            <button id="createprof-button">Create Profile →</button>
         </div>
         <div id="prompt-popup" class="popup-container">
-                <a href="#" id="resp-close-icon">
-                    <i class="fa fa-close"></i>
-                </a>
+                <a href="#" id="resp-close-icon">&#10006;</a>
                 <form id="edit-response-form">
                     <label for="select-prompt">Please Select a Prompt:</label>
                     <select class="select-prompt" id="select-prompt">
@@ -120,9 +130,7 @@
                 <button id="update-resp-button">Update Response</button>
             </div>
         <div id="checkbox-popup" class="popup-container">
-            <a href="#" id="check-close-icon">
-                <i class="fa fa-close"></i>
-            </a>
+            <a href="#" id="check-close-icon">&#10006;</a>
             <h3>Update Your Traits</h3>
             <form class="checkbox-container">
                 <label><input type="checkbox" class="checkbox-option" /> Chronically Online</label>
@@ -152,7 +160,7 @@
         </div>
     </footer>
     <script src="scripts/loadNewUser.js"></script>
-    <script src="scripts/prof_customization.js"></script>
+    <script src="scripts/profCustomization.js"></script>
 </body>
 
 </html>

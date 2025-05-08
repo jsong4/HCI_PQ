@@ -1,9 +1,11 @@
+const currentUser = localStorage.getItem("currentUser")
+
 document.addEventListener("DOMContentLoaded", () => {
     const checkboxes = document.querySelectorAll(".checkbox-option");
     const nextButton = document.getElementById("next-btn");
 
     // Retrieve stored data or initialize it
-    let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
+    let usersList = JSON.parse(localStorage.getItem("usersList")) || { currentUser: {} };
     // let selectedPrompts = usersList.user1.selectedPrompts || [];
 
     // Limit the number of checkboxes that can be selected to 3
@@ -26,10 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (selectedOptions.length > 0) { // might not be necessary
             // Store the selected options in localStorage
-            usersList.user1.checkbox = selectedOptions;
+            usersList[currentUser].checkbox = selectedOptions;
 
             // Save the updated data to localStorage
             localStorage.setItem("usersList", JSON.stringify(usersList));
+
+        window.location.href = "newuser_load.html"
 
         } else {
             alert("Please select at least one option.");

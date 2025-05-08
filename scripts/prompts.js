@@ -12,6 +12,9 @@ const prompts = [
     "If my life were a meme right now, it would be..."
 ];
 
+const currentUser = localStorage.getItem("currentUser")
+console.log(currentUser)
+
 document.addEventListener("DOMContentLoaded", () => {
     // localStorage.removeItem("usersList");
 
@@ -28,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdown.appendChild(placeholder);
 
     // Retrieve stored data or initialize it
-    let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
-    let selectedPrompts = usersList.user1.selectedPrompts || [];
+    let usersList = JSON.parse(localStorage.getItem("usersList")) || { currentUser: {} };
+    let selectedPrompts = usersList[currentUser].selectedPrompts || [];
     console.log(selectedPrompts)
 
     console.log(usersList)
@@ -55,15 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update the selected prompts array
             if (!selectedPrompts.includes(selectedOption)) {
                 selectedPrompts.push(selectedOption);
-                usersList.user1.selectedPrompts = selectedPrompts;
+                usersList[currentUser].selectedPrompts = selectedPrompts;
             }
 
             // Update the user data structure
             const promptNumber = `prompt${selectedPrompts.length}`;
-            usersList.user1[promptNumber] = [selectedOption, textValue];
+            usersList[currentUser][promptNumber] = [selectedOption, textValue];
 
             // Store updated data
             localStorage.setItem("usersList", JSON.stringify(usersList));
+            if (selectedPrompts.length < 3){
+                window.location.href = `newuser_prompt${selectedPrompts.length+1}.html`
+            } else {
+                window.location.href = `newuser_checkbox.html`
+            }
         } else {
             alert("Please select a prompt and enter an answer.");
         }
