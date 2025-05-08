@@ -11,6 +11,7 @@ main {
         "title title title title"
         "prof-img prompt1 prompt2 prompt3"
         "checkbox prompt1 prompt2 prompt3"
+        "logout logout logout logout"
     ;
     padding: 20px;
 }
@@ -119,9 +120,13 @@ button:active {
     float: right;
 }
 
+#checkbox-container #edit-icon {
+    padding: 10px;
+}
+
 #checkbox-container #edit-icon:hover path {
-    fill: var(--text-black);
-    stroke: var(--text-black)
+    fill: var(--text-bslack);
+    stroke: var(--text-black);
 }
 
 #checkbox-container #edit-icon:active path {
@@ -170,6 +175,7 @@ button:active {
     font-size: 25px;
     padding: 5px;
     margin: 0px;
+    padding-top: 15px;
 }
 
 .checkbox-list li {
@@ -277,6 +283,7 @@ button:active {
 #check-close-icon {
     float: right;
     font-size: 20px;
+    text-decoration: none;
 }
 
 #update-checkbox-button, #update-resp-button {
@@ -308,4 +315,29 @@ button:active {
     color: var(--accent-dark-blue);
     font-weight: bold;
     font-size: 18px;
+}
+
+#logout-button button {
+    background-color: var(--alert-red);
+    border: none;
+    border-radius: 15px;
+    height:40px;
+    padding: 0px 10px;
+    width: fit-content;
+    font-size: 20px;
+    font-family: var(--text-carlito);
+    color: var(--text-white);
+    cursor: pointer;
+    box-shadow: 0px 5px #454545;
+    cursor: url('images/Cursor-black.svg'), pointer;
+}
+
+#logout-button button:hover {
+    background-color: #8B0000;
+}
+
+#logout-button button:active {
+    background-color: #8B0000;
+    box-shadow: 0px 2px var(--text-black);
+    transform: translateY(3px);
 }

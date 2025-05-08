@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/login.css">
     <title>Polar Pals</title>
 </head>
 <body>
@@ -30,37 +31,33 @@
             </a>
         </div>
     </nav>
-
-    <div class="h-container">
-        
-        <div class="pair">
-            <h1>Break Out of Your <span class="text-highlight">Bowdoin</span> Bubble!</h1>
-            <h2>Make Surprising New Connections, Algorithmically Designed to Find Your Perfect Pal.</h3>
+    <main>
+        <h1>Welcome Back!</h1>
+        <div id="user-login">
+            <p id="login-instructions">Please be sure to correctly input your username and password! Both are <span class="text-highlight">case sensitive!</span></p>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="text" id="username" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label>Username</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="password" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label>Password</label>
+                </div>
+                <input type="submit" id="login-button">
+            </form>
         </div>
-    </div>
-
-    <div class="main-content">
-
-        <img src="images/polar_pals_start.png" alt = "A Pair of Polar Pals!" class="side-image">
-        <div class="button-stack">
-            <div class="pair">
-                <h3>New User?</h3>
-                <button class="start-button" type="button" id="newuser-button">Take the Survey</button>
-            </div>
-            <div class="pair">
-                <h3>Returning User?</h3>
-                <a href= "login.html"> <button class="start-button" type="button">Login</button></a>
-            </div>
-        </div>
-    </div>
-
+    </main>
     <footer>
         <div class="footer-text">
             <p>&copy; Polar Pals 2025</p>
             <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
         </div>
     </footer>
-    <script src="scripts/initializeUsers.js">
-    </script>
+    <script src="scripts/loginUser.js"></script>
 </body>
 </html>

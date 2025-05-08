@@ -36,6 +36,10 @@ select {
     cursor: url('../images/Cursor.svg'), pointer;
 }
 
+.user-prompts {
+    margin-top: 3rem;
+}
+
 select::picker-icon {
     color: #007AFF;
 }
@@ -89,3 +93,45 @@ textarea {
     cursor: url('../images/Cursor.svg'), pointer;
 }
 
+#survey-progress-bar {
+    background-color: var(--text-white);
+    border-radius: 50px;
+    padding: 5px;
+    height: 10px;
+    position: relative;
+    width: 100%;
+    grid-area: bar;
+    border: solid 2px var(--secondary-bright-blue);
+}
+
+#progress-value {
+    grid-area: value;
+}
+
+#survey-progress {
+    width: 200px;
+    display: inline-grid;
+    grid-gap: 30px;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: auto;
+    grid-template-areas: "bar value";
+    margin-bottom: 20px;
+    font-family: var(--text-carlito);
+    color: var(--accent-dark-blue);
+    align-items: center;
+    position: absolute;
+    top: 90px;
+    right: 0px;
+}
+
+#progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-size: 100%;
+    border-radius: 50px;
+    background-image: linear-gradient(to right, var(--accent-dark-blue), var(--primary-light-blue));
+    font-family: var(--text-carlito);
+    color: var(--text-white);
+}

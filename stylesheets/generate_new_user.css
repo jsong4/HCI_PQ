@@ -115,6 +115,112 @@
   grid-area: prompt3;
 }
 
+/* #password-input {
+  grid-area: password;
+  width: 100%;
+  font-size: 20px;
+  background-color: var(--text-white);
+  border-radius: 15px;
+  filter: drop-shadow(10px 5px 4px var(--secondary-bright-blue));
+  text-align: left;
+  padding: 10px;
+  font-family: var(--text-carlito);
+}
+
+#password-field {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--text-carlito);
+} */
+
+#user-login {
+  grid-area: password;
+  width: 100%;
+  font-size: 20px;
+  background-color: var(--text-white);
+  border-radius: 15px;
+  filter: drop-shadow(10px 5px 4px var(--secondary-bright-blue));
+  text-align: left;
+  padding: 10px;
+  font-family: var(--text-carlito);
+  height: 50px;
+}
+
+.form-group {
+  position: relative;
+  margin-top: 15px;
+}
+
+#user-login input {
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--text-black);
+  box-sizing: border-box;
+  -webkit-text-security: disc;
+}
+
+#user-login input:focus {
+  outline: none;
+}
+
+#user-login label {
+  color: var(--text-black);
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+}
+
+#user-login input:focus ~ label,
+#user-login input:valid ~ label {
+  top: -20px;
+  font-size: 16px;
+  color: var(--accent-dark-blue);
+}
+
+.form-bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.form-bar:before,
+.form-bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: var(--primary-light-blue);
+  transition: 0.2s ease all;
+}
+
+.form-bar:before {
+  left: 50%;
+}
+
+.form-bar:after {
+  right: 50%;
+}
+
+#user-login input:focus ~ .form-bar:before,
+#user-login input:focus ~ .form-bar:after {
+  width: 50%;
+}
+
+.form-highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 #profile-preview {
   display: grid;
   grid-gap: 20px;
@@ -124,7 +230,7 @@
     "title title title title"
     "prof-img prompt1 prompt2 prompt3"
     "checkbox prompt1 prompt2 prompt3"
-    "create-btn create-btn create-btn create-btn";
+    "password password create-btn create-btn";
   margin-bottom: 100px;
 }
 
@@ -188,3 +294,7 @@
   transform: translateY(3px);
 }
 
+#profile-img-base {
+  width: 100%;
+  height: auto;
+}

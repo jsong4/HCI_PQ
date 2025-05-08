@@ -33,6 +33,12 @@
     </nav>
     <main class = "user-prompts">
         <h1>Lets get started on your <span class="text-highlight">Polar Persona!</span></h1>
+        <div id="survey-progress">
+            <div id="survey-progress-bar">
+                <div id="progress" style="width:0%"></div>
+            </div>
+            <div id="progress-value">0/4</div>
+        </div>
         <form>
             <label for="select-prompt">Please Select a Prompt:</label>
             <select class="select-prompt" id="select-prompt">
@@ -40,7 +46,7 @@
             <label for="response">Answer prompt:</label>
             <textarea id="response" name="response" class="prompt-response" maxlength="150" minlength="10"></textarea>
         </form>
-        <a class = "next-page" href = "newuser_prompt2.html">
+        <a class = "next-page">
             <button class = "next-page-button" id="next-btn">Next →</button>
         </a>
     </main>
