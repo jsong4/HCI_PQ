@@ -83,12 +83,19 @@ strong {
     height: 500px;
 }
 
+.bearColor {
+    z-index: 3;
+}
+
+.base {
+    z-index: 4;
+}
+
 .link {
     opacity: 100;
-    width: 25px;
-    height: 25px;
-    padding-bottom: 10px;
-    padding-right: 10px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
     cursor: url('../images/Cursor-black.svg'), pointer;
 }
 

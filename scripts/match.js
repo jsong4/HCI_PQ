@@ -7,6 +7,7 @@ centerY = 250
 
 positions = []
 
+
 const base = new Image();
 base.src = "images/prof_customization/base_circle.svg";
 
@@ -22,9 +23,9 @@ function drawGraph() {
 
         //calculate circle centerpoints
         radians = angles[i] * Math.PI/180
-        endX = distance * Math.cos(radians) * 250
+        endX = ((distance * Math.cos(radians)) + 0.05) * 250 
         endX = endX + centerX
-        endY = distance * Math.sin(radians) * 250
+        endY = ((distance * Math.sin(radians)) + 0.05) * 250
         endY = endY + centerY
 
         //draw a line connecting to the circle
@@ -35,18 +36,6 @@ function drawGraph() {
         ctx.lineWidth = 0.5;
         ctx.stroke();
         ctx.closePath();
-
-        //draw a circle
-        ctx.beginPath(); // Start a new path
-        ctx.arc(endX, endY, 20, 0, 2 * Math.PI); // Create the circle arc
-        ctx.strokeStyle = 'black' ; // Set the stroke color
-        ctx.lineWidth = 2; // Set the line width
-        ctx.fillStyle = pfColor;
-        ctx.fill();
-        ctx.stroke()
-
-        //place profile
-        ctx.drawImage(base, endX - 19, endY - 19, 38, 38);
 
         //accesories
         const accesory = new Image();
@@ -65,7 +54,7 @@ function drawGraph() {
     console.log(positions)
 }
 
-function positionLinks(){
+function positionItems(){
     const match1 = document.getElementById('match1');
     const match2 = document.getElementById('match2');
     const match3 = document.getElementById('match3');
@@ -77,18 +66,32 @@ function positionLinks(){
     const match9 = document.getElementById('match9');
     const match10 = document.getElementById('match10');
 
-    links = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
+    profiles = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
 
     for (i = 0; i < 10; i++) {
-        link = links[i]
-        link.style.position = 'absolute'
-        link.style.left = positions[i][0] - 20 + 'px';
-        link.style.top = positions[i][1] - 20 + 'px';
+        profile = profiles[i]
+        profile.style.position = 'absolute'
+        profile.style.left = positions[i][0] - 20 + 'px';
+        profile.style.top = positions[i][1] - 20 + 'px';
     }
+}
+
+function changeColors() {
+    document.getElementById("bear1").style.fill = "#007AFF";
+    document.getElementById("bear2").style.fill = "#007AFF";
+    document.getElementById("bear3").style.fill = "#007AFF";
+    document.getElementById("bear4").style.fill = "#007AFF";
+    document.getElementById("bear5").style.fill = "#007AFF";
+    document.getElementById("bear6").style.fill = "#007AFF";
+    document.getElementById("bear7").style.fill = "#007AFF";
+    document.getElementById("bear8").style.fill = "#007AFF";
+    document.getElementById("bear9").style.fill = "#007AFF";
+    document.getElementById("bear10").style.fill = "#007AFF";
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    changeColors() 
     drawGraph() 
-    positionLinks()
+    positionItems()
 });
