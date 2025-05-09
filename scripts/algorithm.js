@@ -303,6 +303,7 @@ if (DEBUG) {
 
   // Prints the results of the algorithm so you can see the order of the top 10 yourself
   console.log("Your userData is: " + JSON.stringify(exampleUserData, null, 2));
+  
 } else {
   // The intended execution for the file. This gets accessed when debugging is off
   const userMatches = getTopMatchesDict();

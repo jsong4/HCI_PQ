@@ -7,6 +7,17 @@ centerY = 250
 
 positions = []
 
+acessories = ["images/prof_customization/baseballcap.svg", "images/prof_customization/beanie.svg",
+    "images/prof_customization/bow.svg", "images/prof_customization/crown.svg",
+    "images/prof_customization/earrings.svg", "images/prof_customization/empty.svg",
+    "images/prof_customization/glasses.svg", "images/prof_customization/mustache.svg",
+    "images/prof_customization/necklace.svg", "images/prof_customization/partyhat.svg"
+]
+
+colors = ["#FE938C", "#99C1B9", "#8E7DBE", "#D1D646", "#06BA63", "#FE4A49", "#39304A", "#AFD0BF",
+    "#0075A2", "#E5446D"]
+
+
 
 const base = new Image();
 base.src = "images/prof_customization/base_circle.svg";
@@ -77,21 +88,36 @@ function positionItems(){
 }
 
 function changeColors() {
-    document.getElementById("bear1").style.fill = "#007AFF";
-    document.getElementById("bear2").style.fill = "#007AFF";
-    document.getElementById("bear3").style.fill = "#007AFF";
-    document.getElementById("bear4").style.fill = "#007AFF";
-    document.getElementById("bear5").style.fill = "#007AFF";
-    document.getElementById("bear6").style.fill = "#007AFF";
-    document.getElementById("bear7").style.fill = "#007AFF";
-    document.getElementById("bear8").style.fill = "#007AFF";
-    document.getElementById("bear9").style.fill = "#007AFF";
-    document.getElementById("bear10").style.fill = "#007AFF";
+    document.getElementById("bear1").style.fill = colors[0];
+    document.getElementById("bear2").style.fill = colors[1];
+    document.getElementById("bear3").style.fill = colors[2];
+    document.getElementById("bear4").style.fill = colors[3];
+    document.getElementById("bear5").style.fill = colors[4];
+    document.getElementById("bear6").style.fill = colors[5];
+    document.getElementById("bear7").style.fill = colors[6];
+    document.getElementById("bear8").style.fill = colors[7];
+    document.getElementById("bear9").style.fill = colors[8];
+    document.getElementById("bear10").style.fill = colors[9];
 }
+
+function changeaccesories() {
+    document.getElementById("accesory1").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[0]);
+    document.getElementById("accesory2").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[1]);
+    document.getElementById("accesory3").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[2]);
+    document.getElementById("accesory4").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[3]);
+    document.getElementById("accesory5").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[4]);
+    document.getElementById("accesory6").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[5]);
+    document.getElementById("accesory7").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[6]);
+    document.getElementById("accesory8").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[7]);
+    document.getElementById("accesory9").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[8]);
+    document.getElementById("accesory10").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[9]);
+}
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
     changeColors() 
     drawGraph() 
     positionItems()
+    changeaccesories()
 });
