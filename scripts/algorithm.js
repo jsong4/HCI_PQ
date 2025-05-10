@@ -5,7 +5,7 @@
  * These vectors are used to build a user’s overall personality profile.
  */
 const traitVectors = {
-  "Chronically online": [0.7, 0.2, 0.9, 0.1, 0.1],
+  "Chronically Online": [0.7, 0.2, 0.9, 0.1, 0.1],
   Loyal: [0.4, 1.0, 0.1, 0.6, 0.2],
   Outgoing: [1.0, 0.3, 0.5, 0.4, 0.5],
   Punctual: [0.2, 0.9, 0.1, 0.3, 0.2],
@@ -15,10 +15,10 @@ const traitVectors = {
   "Memecentral": [0.6, 0.2, 1.0, 0.3, 0.3],
   Honest: [0.3, 0.9, 0.3, 0.8, 0.3],
   Foodie: [0.5, 0.4, 0.6, 0.4, 0.4],
-  "Prefers voice notes": [0.7, 0.3, 0.3, 0.6, 0.2],
+  "Prefers Voice Notes": [0.7, 0.3, 0.3, 0.6, 0.2],
   Empathetic: [0.3, 0.7, 0.2, 1.0, 0.2],
   Optimistic: [0.6, 0.5, 0.6, 0.7, 0.5],
-  "Easily peer-pressured": [0.8, 0.2, 0.5, 0.3, 0.6],
+  "Easily Peer-Pressured": [0.8, 0.2, 0.5, 0.3, 0.6],
   Sporty: [0.7, 0.3, 0.3, 0.2, 1.0],
 };
 
@@ -26,7 +26,6 @@ const usersList = JSON.parse(localStorage.getItem("usersList"));
 const currentUsername = localStorage.getItem("currentUser");
 const currentUser = usersList[currentUsername];
 const checkbox = currentUser.checkbox;
-console.log(checkbox);
 
 /* =============================
  * Compute the user's full personality vector
@@ -105,12 +104,13 @@ function calculateOtherUserVectors(usersList) {
  * Output: numeric distance (lower = more similar)
  */
 function euclideanDistance(v1, v2) {
-  return Math.sqrt(
+  const distance = Math.sqrt(
     /* reduce() takes the paramaters (accumulator, currentValue, currentIndex)
      * and returns the result of some function using the accumulator starting
      * at the value 0 */
     v1.reduce((sum, val, i) => sum + (val - v2[i]) ** 2, 0),
   );
+  return distance;
 }
 
 /* =============================
@@ -146,6 +146,8 @@ function binaryInsert(arr, newItem) {
  */
 function computeSortedMatches() {
   const result = computeUserVectorFromStorage();
+
+  // If there is no user then return an empty array
   if (!result) return [];
 
   const { vector: mainVector, usersList } = result; // Defining it like this so that I can access each part more easily. Learned this from PPL while using OCaml :)
@@ -155,11 +157,17 @@ function computeSortedMatches() {
 
   for (const other of otherUsers) {
     const distance = euclideanDistance(mainVector, other.vector);
+    
+    // Checking output for debugging
+    console.log(distance);
 
     binaryInsert(sortedMatches, {
       username: other.username,
       distance: distance,
     });
+
+    // Checking output for debugging
+    console.log(sortedMatches);
   }
 
   return sortedMatches;
@@ -171,36 +179,55 @@ function computeSortedMatches() {
  * This function retrieves the top sorted matches using `computeSortedMatches`,
  * calculates the minimum and maximum distances, and scales each match's distance
  * such that:
- *   - 0 represents the closest (most similar) match
- *   - 1 represents the furthest (least similar) match in the top list
+ *   - 0 represents a perfect match (exact same vector as the current user)
+ *   - 1 represents the furthest match in the top list
+ *   - All other distances are scaled proportionally between 0 and 1
  *
- * If all distances are equal, normalization falls back to dividing by 1 to avoid
- * divide-by-zero errors.
+ * If all distances are equal but non-zero, normalization defaults all distances to 1
+ * to ensure no false 0 values are introduced.
  *
  * Returns: {Array<Object>} An array of objects, each containing:
  *   - `username` {string}: The username of the match
- *   - `distance` {number}: The normalized distance (0–1)
+ *   - `distance` {number}: The normalized distance (0–1, where 0 = perfect match)
  */
 function normalizeTopMatches() {
   const matches = computeSortedMatches();
 
+  // If there are no matches return an empty array
   if (!matches || matches.length === 0) return [];
 
-  // Gets an array of all the distances
   const distances = matches.map((match) => match.distance);
-
-  // Gets the min and max distances from the array of al the distances
   const min = Math.min(...distances);
   const max = Math.max(...distances);
 
-  // Prevent divide-by-zero in case all distances are the same
-  const range = max - min || 1;
+  // Handle the edge case where all distances are the same and non-zero
+  const range = max - min;
 
-  // Return normalized matches
-  return matches.map((match) => ({
-    username: match.username,
-    distance: (match.distance - min) / range,
-  }));
+  return matches.map((match) => {
+    const originalDistance = match.distance;
+
+    // If this is a perfect match, keep it as 0
+    if (originalDistance === 0) {
+      return {
+        username: match.username,
+        distance: 0,
+      };
+    }
+
+    // If all distances were the same but non-zero, treat them as distance 1
+    if (range === 0) {
+      return {
+        username: match.username,
+        distance: 1,
+      };
+    }
+
+    // Otherwise, normalize as usual
+    return {
+      username: match.username,
+      distance: (originalDistance - min) / range,
+    };
+  });
 }
 
 /* =============================
@@ -218,6 +245,10 @@ function getTopMatchesDict() {
   const sortedMatches = normalizeTopMatches();
   const topTenMatches = sortedMatches.slice(0, 10);
 
+  //Checking outputs for debugging
+  console.log(sortedMatches);
+  console.log(topTenMatches);
+
   const userData = {};
 
   topTenMatches.forEach((match) => {
@@ -231,22 +262,40 @@ function getTopMatchesDict() {
 }
 
 /* =============================
- * Returns a nested array of the 10 users closest/most similar
- * to the current user.
+ * Converts the top matches object into a nested array format.
+ *
+ * This function takes an object where each key is a username
+ * and each value is an object containing at least a `distance` field.
+ * It returns an array of [username, distance] pairs, suitable for
+ * simplified display or plotting.
+ *
+ * Example input:
+ * {
+ *   user1: { distance: 0.23, matchBool: false },
+ *   user2: { distance: 0.44, matchBool: false },
+ * }
  *
  * Output:
- * [[username2, .23],
- *  [username3, .26],
- *  [username4, .44],
- *  etc.
+ * [
+ *   ["user1", 0.23],
+ *   ["user2", 0.44]
  * ]
+ *
+ * Returns: {Array<Array>} A nested array where each subarray contains:
+ *   - `username` {string}: The user's ID
+ *   - `distance` {number}: The normalized distance to the current user
  */
 function getNestedArray(userData) {
   const distancesArray = [];
-  for (const user in userData) {
-    const username = user;
-    const distance = user.distance;
-    distancesArray.push([username, distance]);
+
+  // Loop through each entry in the userData object
+  // Object.entries() gives us both the username and their associated data
+  for (const [username, data] of Object.entries(userData)) {
+    // Push a [username, distance] pair to the result array
+    distancesArray.push([username, data.distance]);
+
+    // Checking output for debugging
+    console.log([username, data.distance]);
   }
   return distancesArray;
 }
@@ -254,6 +303,10 @@ function getNestedArray(userData) {
 // The intended execution for the file. This gets accessed when debugging is off
 const userMatches = getTopMatchesDict();
 const userDistances = getNestedArray(userMatches);
+
+//Checking outputs of the algorithm for debugging
+console.log(userMatches);
+console.log(userDistances);
 
 // Adding the userMathes and userDistances to the local storage
 localStorage.setItem("userData", JSON.stringify(userMatches));
