@@ -1,7 +1,6 @@
 const currentUser = localStorage.getItem("currentUser")
 
 function updateUser() {
-    console.log("hello world ELEPHANT")
     //grab current user
     let usersList = JSON.parse(localStorage.getItem("usersList")) || { currentUser: {} };
     const currentUser = localStorage.getItem("currentUser")
@@ -25,16 +24,21 @@ function updateUser() {
     const cannabis = document.getElementById("cannabis-select");
     const selectedCannabis = cannabis.value;
 
+    userInfo = usersList[currentUser];
+
     //update current user
-    usersList[currentUser]["activity"] = selectedActivity;
-    usersList[currentUser]["politics"] = selectedPolitics;
-    usersList[currentUser]["religion"] = selectedReligion;
-    usersList[currentUser]["alcohol"] = selectedAlcohol;
-    usersList[currentUser]["tobacco"] = selectedTobacco;
-    usersList[currentUser]["cannabis"] = selectedCannabis;
+    userInfo["activity"] = selectedActivity;
+    userInfo["politics"] = selectedPolitics;
+    userInfo["religion"] = selectedReligion;
+    userInfo["alcohol"] = selectedAlcohol;
+    userInfo["tobacco"] = selectedTobacco;
+    userInfo["cannabis"] = selectedCannabis;
 
     // Store updated data
     localStorage.setItem("usersList", JSON.stringify(usersList));
+
+    localStorage.setItem("test", "test");
+    window.location.href = "newuser_checkbox.html"
 }
 
 const UsersList = {
