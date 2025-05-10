@@ -12,7 +12,7 @@ const traitVectors = {
   Adventurous: [0.8, 0.3, 0.4, 0.5, 1.0],
   Listener: [0.3, 0.6, 0.2, 1.0, 0.2],
   Easygoing: [0.5, 0.5, 0.6, 0.7, 0.4],
-  "Meme central": [0.6, 0.2, 1.0, 0.3, 0.3],
+  "Memecentral": [0.6, 0.2, 1.0, 0.3, 0.3],
   Honest: [0.3, 0.9, 0.3, 0.8, 0.3],
   Foodie: [0.5, 0.4, 0.6, 0.4, 0.4],
   "Prefers voice notes": [0.7, 0.3, 0.3, 0.6, 0.2],
@@ -22,10 +22,16 @@ const traitVectors = {
   Sporty: [0.7, 0.3, 0.3, 0.2, 1.0],
 };
 
+const usersList = JSON.parse(localStorage.getItem("usersList"));
+const currentUsername = localStorage.getItem("currentUser");
+const currentUser = usersList[currentUsername];
+const checkbox = currentUser.checkbox;
+console.log(checkbox);
+
 /* =============================
  * Compute the user's full personality vector
  * based on the traits they selected.
- *
+ *s
  * Input: selectedTraits - array of trait names (e.g., ["Sporty", "Empathetic"])
  * Output: summed 5D vector representing the user
  */
@@ -56,16 +62,14 @@ function getUserVector(selectedTraits) {
  * }
  */
 function computeUserVectorFromStorage() {
-  const usersList = JSON.parse(localStorage.getItem("usersList"));
-
-  if (usersList?.user1?.checkbox) {
-    const vector = getUserVector(usersList.user1.checkbox);
-    delete usersList.user1; // exclude user1 from future comparisons
-    return { vector, usersList };
-  } else {
-    console.warn("User1 not found or missing checkbox data.");
+  if (!currentUser.checkbox) {
+    console.warn(`First user (${currentUsername}) has no checkbox data.`);
     return null;
   }
+
+  // Compute their vector
+  const vector = getUserVector(currentUser.checkbox);
+  return { vector, usersList };
 }
 
 /* =============================
@@ -79,6 +83,8 @@ function calculateOtherUserVectors(usersList) {
   const otherUserVectors = [];
 
   for (const username in usersList) {
+    if (username === currentUsername) continue; // Skip the current user
+
     const userData = usersList[username];
 
     if (userData?.checkbox) {
@@ -176,7 +182,7 @@ function computeSortedMatches() {
  *   - `distance` {number}: The normalized distance (0–1)
  */
 function normalizeTopMatches() {
-  const matches = computeSortedMatches;
+  const matches = computeSortedMatches();
 
   if (!matches || matches.length === 0) return [];
 
@@ -245,70 +251,10 @@ function getNestedArray(userData) {
   return distancesArray;
 }
 
-// Way to enable and disable the debugging tests as needed
-const DEBUG = false;
-if (DEBUG) {
-  // Test the function with an example user
-  const selectedTraits = ["Sporty", "Easygoing", "Empathetic"];
-  const testResultVector = getUserVector(selectedTraits);
-  console.log("User vector:", testResultVector);
+// The intended execution for the file. This gets accessed when debugging is off
+const userMatches = getTopMatchesDict();
+const userDistances = getNestedArray(userMatches);
 
-  /* Example list of potential users. user1 is the current
-   * user and the other 10 are the users to match with
-   */
-  const sampleUsers = {
-    user1: {
-      checkbox: ["Sporty", "Easygoing", "Empathetic"],
-    },
-    user2: {
-      checkbox: ["Meme central", "Adventurous", "Honest"],
-    },
-    user3: {
-      checkbox: ["Chronically online", "Loyal", "Foodie"],
-    },
-    user4: {
-      checkbox: ["Empathetic", "Punctual", "Listener"],
-    },
-    user5: {
-      checkbox: ["Sporty", "Optimistic", "Easygoing"],
-    },
-    user6: {
-      checkbox: ["Adventurous", "Honest", "Outgoing"],
-    },
-    user7: {
-      checkbox: ["Loyal", "Punctual", "Empathetic"],
-    },
-    user8: {
-      checkbox: ["Chronically online", "Meme central", "Foodie"],
-    },
-    user9: {
-      checkbox: ["Easygoing", "Optimistic", "Listener"],
-    },
-    user10: {
-      checkbox: ["Sporty", "Honest", "Adventurous"],
-    },
-    user11: {
-      checkbox: ["Empathetic", "Listener", "Easygoing"],
-    },
-  };
-
-  /* Adds the example list to the local storage under usersList which
-   * is where the functions access from and the current actual list of
-   * users is stored
-   */
-  localStorage.setItem("usersList", JSON.stringify(sampleUsers));
-
-  // Sets the constant 'exampleUserData' equal to the result of the algorithm
-  const exampleUserData = getTopMatchesDict();
-
-  // Prints the results of the algorithm so you can see the order of the top 10 yourself
-  console.log("Your userData is: " + JSON.stringify(exampleUserData, null, 2));
-} else {
-  // The intended execution for the file. This gets accessed when debugging is off
-  const userMatches = getTopMatchesDict();
-  const userDistances = getNestedArray(userMatches);
-
-  // Adding the userMathes and userDistances to the local storage
-  localStorage.setItem("userData", JSON.stringify(userMatches));
-  localStorage.setItem("userDistances", JSON.stringify(userDistances));
-}
+// Adding the userMathes and userDistances to the local storage
+localStorage.setItem("userData", JSON.stringify(userMatches));
+localStorage.setItem("userDistances", JSON.stringify(userDistances));
