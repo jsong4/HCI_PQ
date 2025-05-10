@@ -33,37 +33,36 @@
     </nav>  
     <main class = "matches">
         <h1>Lets make new <span class="text-highlight">Pals!</span></h1>
-        <button id = 'filter'>Filter by preferences and Deal Breakers</button>
+        <button id = 'filter'>Filter out Deal Breakers</button>
         <form>
             <select name="activity" id="activity-select">
-                <option value="">--activity--</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
-            </select>
-            <select name="values" id="values-select">
-                <option value="">--values--</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
+                <option value="">--Activity--</option>
+                <option value="sports">Sports</option>
+                <option value="BOC">BOC</option>
+                <option value="theater">Theater</option>
             </select>
             <select name="politics" id="politics-select">
-                <option value="">--politics--</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
+                <option value="">--Political Affilition--</option>
+                <option value="democrat">Democrat</option>
+                <option value="republican">Republican</option>
+                <option value="libertarian">Libertarian</option>
+                <option value="other">Other</option>
             </select>
             <select name="religion" id="religion-select">
-                <option value="">--religion--</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
+                <option value="">--Religious Affilition--</option>
+                <option value="christian">Christian</option>
+                <option value="muslim">Muslim</option>
+                <option value="jewish">Jewish</option>
+                <option value="hindu">Hindu</option>
+                <option value="buhddist">Buhddist</option>
+                <option value="other">Other</option>
+                <option value="athiest">Athiest</option>
             </select>
             <select name="substances" id="substances-select">
-                <option value="">--substances--</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
+                <option value="">--Substances--</option>
+                <option value="alcohol">Alcohol</option>
+                <option value="tobacco">Tobacco</option>
+                <option value="cannabis">Cannabis</option>
             </select>
         </form>
         <h2>
@@ -72,30 +71,96 @@
         <div class = "container" valign = middle>
             <canvas id = matchesGraph width=500 height="500"></canvas>
             <div class = info>
-                <a class = 'link' id = match1 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match2 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match3 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match4 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match5 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match6 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match7 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match8 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match9 href="inbox.html" target="_blank">
-                </a>
-                <a class = 'link' id = match10 href="inbox.html" target="_blank">
-                </a>
-                <img class = help src="images/help.svg" alt="help" />
-                <a class = tooltip >
-                    <text class = 'tooltiptext'>Click on a profile to chat with your match</text>
-                </a>
+                <div id = match1>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear1 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image class = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory1 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match2>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear2 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image class = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory2 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match3>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear3 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory3 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match4>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear4 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory4 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match5>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear5 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory5 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match6>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear6 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory6 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match7>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear7 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory7 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match8>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear8 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory8 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match9>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear9 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory9 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
+                <div id = match10>
+                    <a class = 'link' href="inbox.html" target="_blank">
+                    <svg>
+                        <circle class = bearColor id = bear10 cx = 20 cy = 20 r = 19.5 fill = "#409AFD"/>
+                        <image id = base width = 40 xlink:href = "images/prof_customization/base_circle.svg"></image>
+                        <image id = accesory10 width = 40 xlink:href = "images/prof_customization/beanie.svg"/>
+                    </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
@@ -105,7 +170,7 @@
         <p>Any Questions or Concerns? Contact Us at xxxxxxxxxxx@xxxxxxxx.xxx</p>
       </div>
     </footer>
-    <script src="scripts/match.js"></script>
     <script src="scripts/algorithm.js"></script>
+    <script src="scripts/match.js"></script>
   </body>
 </html>

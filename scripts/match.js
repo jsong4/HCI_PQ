@@ -7,6 +7,18 @@ centerY = 250
 
 positions = []
 
+acessories = ["images/prof_customization/baseballcap.svg", "images/prof_customization/beanie.svg",
+    "images/prof_customization/bow.svg", "images/prof_customization/crown.svg",
+    "images/prof_customization/earrings.svg", "images/prof_customization/empty.svg",
+    "images/prof_customization/glasses.svg", "images/prof_customization/mustache.svg",
+    "images/prof_customization/necklace.svg", "images/prof_customization/partyhat.svg"
+]
+
+colors = ["#FE938C", "#99C1B9", "#8E7DBE", "#D1D646", "#06BA63", "#FE4A49", "#39304A", "#AFD0BF",
+    "#0075A2", "#E5446D"]
+
+
+
 const base = new Image();
 base.src = "images/prof_customization/base_circle.svg";
 
@@ -22,9 +34,9 @@ function drawGraph() {
 
         //calculate circle centerpoints
         radians = angles[i] * Math.PI/180
-        endX = distance * Math.cos(radians) * 250
+        endX = ((distance * Math.cos(radians)) + 0.05) * 250 
         endX = endX + centerX
-        endY = distance * Math.sin(radians) * 250
+        endY = ((distance * Math.sin(radians)) + 0.05) * 250
         endY = endY + centerY
 
         //draw a line connecting to the circle
@@ -35,18 +47,6 @@ function drawGraph() {
         ctx.lineWidth = 0.5;
         ctx.stroke();
         ctx.closePath();
-
-        //draw a circle
-        ctx.beginPath(); // Start a new path
-        ctx.arc(endX, endY, 20, 0, 2 * Math.PI); // Create the circle arc
-        ctx.strokeStyle = 'black' ; // Set the stroke color
-        ctx.lineWidth = 2; // Set the line width
-        ctx.fillStyle = pfColor;
-        ctx.fill();
-        ctx.stroke()
-
-        //place profile
-        ctx.drawImage(base, endX - 19, endY - 19, 38, 38);
 
         //accesories
         const accesory = new Image();
@@ -65,7 +65,7 @@ function drawGraph() {
     console.log(positions)
 }
 
-function positionLinks(){
+function positionItems(){
     const match1 = document.getElementById('match1');
     const match2 = document.getElementById('match2');
     const match3 = document.getElementById('match3');
@@ -77,18 +77,45 @@ function positionLinks(){
     const match9 = document.getElementById('match9');
     const match10 = document.getElementById('match10');
 
-    links = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
+    profiles = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
 
     for (i = 0; i < 10; i++) {
-        link = links[i]
-        link.style.position = 'absolute'
-        link.style.left = positions[i][0] - 20 + 'px';
-        link.style.top = positions[i][1] - 20 + 'px';
+        profile = profiles[i]
+        profile.style.position = 'absolute'
+        profile.style.left = positions[i][0] - 20 + 'px';
+        profile.style.top = positions[i][1] - 20 + 'px';
     }
 }
 
+function changeColors() {
+    document.getElementById("bear1").style.fill = colors[0];
+    document.getElementById("bear2").style.fill = colors[1];
+    document.getElementById("bear3").style.fill = colors[2];
+    document.getElementById("bear4").style.fill = colors[3];
+    document.getElementById("bear5").style.fill = colors[4];
+    document.getElementById("bear6").style.fill = colors[5];
+    document.getElementById("bear7").style.fill = colors[6];
+    document.getElementById("bear8").style.fill = colors[7];
+    document.getElementById("bear9").style.fill = colors[8];
+    document.getElementById("bear10").style.fill = colors[9];
+}
+
+function changeaccesories() {
+    document.getElementById("accesory1").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[0]);
+    document.getElementById("accesory2").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[1]);
+    document.getElementById("accesory3").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[2]);
+    document.getElementById("accesory4").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[3]);
+    document.getElementById("accesory5").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[4]);
+    document.getElementById("accesory6").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[5]);
+    document.getElementById("accesory7").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[6]);
+    document.getElementById("accesory8").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[7]);
+    document.getElementById("accesory9").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[8]);
+    document.getElementById("accesory10").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', acessories[9]);
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+    changeColors() 
     drawGraph() 
-    positionLinks()
+    positionItems()
+    changeaccesories()
 });

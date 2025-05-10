@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (selectedPrompts.length < 3){
                 window.location.href = `newuser_prompt${selectedPrompts.length+1}.html`
             } else {
-                window.location.href = `newuser_checkbox.html`
+                window.location.href = `values.html`
             }
         } else {
             alert("Please select a prompt and enter an answer.");
