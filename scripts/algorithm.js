@@ -50,14 +50,13 @@ function getUserVector(selectedTraits) {
 }
 
 /* =============================
- * Retrieves the main user's vector (user1) from localStorage,
- * computes their vector, removes user1 from the list,
- * and returns both the vector and the rest of the users.
+ * Retrieves the current user's trait vectors (currentUser) from localStorage,
+ * computes their user vector, and returns both the vector and the list of users.
  *
  * Output:
  * {
  *   vector: [calculated 5D vector],
- *   usersList: { user2: {...}, user3: {...}, ... }
+ *   usersList: { user1: {...}, user2: {...}, ... }
  * }
  */
 function computeUserVectorFromStorage() {
@@ -72,7 +71,7 @@ function computeUserVectorFromStorage() {
 }
 
 /* =============================
- * Iterates over the remaining users and computes
+ * Iterates over the users skipping over the current user and computes
  * a vector for each one based on their checkbox data.
  *
  * Input: usersList - object with usernames as keys
@@ -104,13 +103,13 @@ function calculateOtherUserVectors(usersList) {
  * Output: numeric distance (lower = more similar)
  */
 function euclideanDistance(v1, v2) {
-  const distance = Math.sqrt(
+  const lindistance = Math.sqrt(
     /* reduce() takes the paramaters (accumulator, currentValue, currentIndex)
      * and returns the result of some function using the accumulator starting
      * at the value 0 */
     v1.reduce((sum, val, i) => sum + (val - v2[i]) ** 2, 0),
   );
-  return distance;
+  return lindistance;
 }
 
 /* =============================
@@ -138,9 +137,9 @@ function binaryInsert(arr, newItem) {
 
 /* =============================
  * The main matching function:
- * - Retrieves user1 from localStorage
+ * - Retrieves currentUser from localStorage
  * - Computes vectors and distances to all other users
- * - Sorts other users by similarity
+ * - Sorts other users by similarity (distance to current user)
  *
  * Output: sorted array of matches with distances
  */
@@ -179,16 +178,15 @@ function computeSortedMatches() {
  * This function retrieves the top sorted matches using `computeSortedMatches`,
  * calculates the minimum and maximum distances, and scales each match's distance
  * such that:
- *   - 0 represents a perfect match (exact same vector as the current user)
  *   - 1 represents the furthest match in the top list
  *   - All other distances are scaled proportionally between 0 and 1
  *
  * If all distances are equal but non-zero, normalization defaults all distances to 1
  * to ensure no false 0 values are introduced.
  *
- * Returns: {Array<Object>} An array of objects, each containing:
+ * Returns: An array of objects, each containing:
  *   - `username` {string}: The username of the match
- *   - `distance` {number}: The normalized distance (0–1, where 0 = perfect match)
+ *   - `distance` {number}: The normalized distance (0–1)
  */
 function normalizeTopMatches() {
   const matches = computeSortedMatches();
@@ -205,14 +203,6 @@ function normalizeTopMatches() {
 
   return matches.map((match) => {
     const originalDistance = match.distance;
-
-    // If this is a perfect match, keep it as 0
-    if (originalDistance === 0) {
-      return {
-        username: match.username,
-        distance: 0,
-      };
-    }
 
     // If all distances were the same but non-zero, treat them as distance 1
     if (range === 0) {
@@ -232,12 +222,12 @@ function normalizeTopMatches() {
 
 /* =============================
  * Returns a dictionary of the 10 closest users to the main user.
- * Each entry includes the distance and a matchBool flag.
+ * Each entry includes the normalized distance and a matchBool flag.
  *
  * Output:
  * {
- *    user2: { distance: 1.12, matchBool: false},
- *    user5: { distance: 1.26, matchBool: false},
+ *    user2: { distance: 0.12, matchBool: false},
+ *    user5: { distance: 0.76, matchBool: false},
  *    ...
  * }
  */
@@ -264,10 +254,9 @@ function getTopMatchesDict() {
 /* =============================
  * Converts the top matches object into a nested array format.
  *
- * This function takes an object where each key is a username
+ * Takes object where each key is a username
  * and each value is an object containing at least a `distance` field.
- * It returns an array of [username, distance] pairs, suitable for
- * simplified display or plotting.
+ * It returns an array of [username, distance] pairs
  *
  * Example input:
  * {
@@ -282,7 +271,7 @@ function getTopMatchesDict() {
  * ]
  *
  * Returns: {Array<Array>} A nested array where each subarray contains:
- *   - `username` {string}: The user's ID
+ *   - `username` {string}: The username
  *   - `distance` {number}: The normalized distance to the current user
  */
 function getNestedArray(userData) {
