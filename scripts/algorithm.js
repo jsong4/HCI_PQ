@@ -405,7 +405,7 @@ function getTopMatchesDict() {
  *   ["user2", 0.44]
  * ]
  *
- * Returns: {Array<Array>} A nested array where each subarray contains:
+ * Returns: A nested array where each subarray contains:
  *   - `username` {string}: The username
  *   - `distance` {number}: The normalized distance to the current user
  */
