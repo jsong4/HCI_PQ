@@ -11,7 +11,7 @@ main {
         "title title title title"
         "prof-img prompt1 prompt2 prompt3"
         "checkbox prompt1 prompt2 prompt3"
-        "logout logout logout logout"
+        "values values values logout"
     ;
     padding: 20px;
 }
@@ -286,7 +286,8 @@ button:active {
     text-decoration: none;
 }
 
-#update-checkbox-button, #update-resp-button {
+#update-checkbox-button,
+#update-resp-button {
     display: inline-block;
     margin: 20px;
 }
@@ -317,11 +318,18 @@ button:active {
     font-size: 18px;
 }
 
+#logout-button {
+    grid-area: logout;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #logout-button button {
     background-color: var(--alert-red);
     border: none;
     border-radius: 15px;
-    height:40px;
+    height: 40px;
     padding: 0px 10px;
     width: fit-content;
     font-size: 20px;
@@ -340,4 +348,66 @@ button:active {
     background-color: #8B0000;
     box-shadow: 0px 2px var(--text-black);
     transform: translateY(3px);
+}
+
+#values-container {
+    grid-area: values;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "activity politic religion"
+        "alcohol tobacco cannabis";
+    width: auto;
+}
+
+#activity-select {
+    grid-area: activity;
+}
+
+#politics-select {
+    grid-area: politic;
+}
+
+#religion-select {
+    grid-area: religion;
+}
+
+#alcohol-select {
+    grid-area: alcohol;
+}
+
+#tobacco-select {
+    grid-area: tobacco;
+}
+
+#cannibis-select {
+    grid-area: cannabis;
+}
+
+#values-container select {
+    appearance: base-select;
+    border: 2px solid #409AFD;
+    background: white;
+    padding: 10px;
+    transition: 0.4s;
+    font-size: 15px;
+    font-family: var(--text-carlito);
+    border-radius: 15px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    cursor: url('../images/Cursor.svg'), pointer;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 10px var(--secondary-bright-blue);
+}
+
+#values-container select::picker-icon {
+    color: #007AFF;
+}
+
+#values-container option {
+    font-size: 15px;
+    font-family: var(--text-carlito);
 }

@@ -135,7 +135,7 @@
 
 #user-login {
   grid-area: password;
-  width: 100%;
+  width: auto;
   font-size: 20px;
   background-color: var(--text-white);
   border-radius: 15px;
@@ -230,14 +230,15 @@
     "title title title title"
     "prof-img prompt1 prompt2 prompt3"
     "checkbox prompt1 prompt2 prompt3"
-    "password password create-btn create-btn";
+    "values values password password"
+    "values values create-btn create-btn";
   margin-bottom: 100px;
 }
 
 .written-response {
   background-color: var(--text-white);
   border-radius: 15px;
-  filter: drop-shadow(10px 5px 4px var(--secondary-bright-blue));
+  /* filter: drop-shadow(10px 5px 4px var(--secondary-bright-blue)); */
   text-align: left;
   padding: 10px;
   font-family: var(--text-carlito);

@@ -49,6 +49,12 @@ function loadUserData() {
             var prompts = [prompt1, prompt2, prompt3]
             var color = userInfo["profile"]["color"]
             var accessory = userInfo["profile"]["accessory"]
+            var activity = userInfo["activity"]
+            var politics = userInfo["politics"]
+            var religion = userInfo["religion"]
+            var alcohol = userInfo["alcohol"]
+            var tobacco = userInfo["tobacco"]
+            var cannabis = userInfo["cannabis"]
             bear_color.style.backgroundColor = color
             profile_accessory.src = accessory
             color_input.value = color
@@ -84,6 +90,13 @@ function loadUserData() {
             listChild.textContent = checkbox[i];
             listParent.appendChild(listChild);
         }
+
+        let valueMap = {activity, politics, religion, alcohol, tobacco, cannabis};
+        let values = document.querySelectorAll('#values-container select')
+        values.forEach(select => {
+            let savedValue = valueMap[select.name]
+            select.value = savedValue;
+        })
     }
 }
 
@@ -301,6 +314,79 @@ color_form.addEventListener("submit", function (event) {
     console.log("new color", usersList[curUser].profile.color)
     localStorage.setItem("usersList", JSON.stringify(usersList))
     return false
+})
+
+const activity = document.getElementById("activity-select")
+activity.addEventListener('click', function(event) {
+    event.preventDefault();
+    let usersList = JSON.parse(localStorage.getItem("usersList"));
+    const selectedActivity = activity.value;
+
+    userInfo = usersList[currentUser];
+    userInfo["activity"] = selectedActivity;
+    console.log(usersList)
+
+    localStorage.setItem("usersList", JSON.stringify(usersList));
+})
+
+const politics = document.getElementById("politics-select")
+politics.addEventListener('click', function(event) {
+    event.preventDefault();
+    let usersList = JSON.parse(localStorage.getItem("usersList"));
+    const selectedPolitics = politics.value;
+
+    userInfo = usersList[currentUser];
+    userInfo["politics"] = selectedPolitics;
+
+    localStorage.setItem("usersList", JSON.stringify(usersList));
+})
+
+const religion = document.getElementById("religion-select")
+religion.addEventListener('click', function(event) {
+    event.preventDefault();
+    let usersList = JSON.parse(localStorage.getItem("usersList"));
+    const selectedReligion = religion.value;
+
+    userInfo = usersList[currentUser];
+    userInfo["religion"] = selectedReligion;
+
+    localStorage.setItem("usersList", JSON.stringify(usersList));
+})
+
+const alcohol = document.getElementById("alcohol-select")
+alcohol.addEventListener('click', function(event) {
+    event.preventDefault();
+    let usersList = JSON.parse(localStorage.getItem("usersList"));
+    const selectedAlcohol = alcohol.value;
+
+    userInfo = usersList[currentUser];
+    userInfo["alcohol"] = selectedAlcohol;
+
+    localStorage.setItem("usersList", JSON.stringify(usersList));
+})
+
+const tobacco = document.getElementById("tobacco-select")
+tobacco.addEventListener('click', function(event) {
+    event.preventDefault();
+    let usersList = JSON.parse(localStorage.getItem("usersList"));
+    const selectedTobacco = tobacco.value;
+
+    userInfo = usersList[currentUser];
+    userInfo["tobacco"] = selectedTobacco;
+
+    localStorage.setItem("usersList", JSON.stringify(usersList));
+})
+
+const cannabis = document.getElementById("cannabis-select")
+cannabis.addEventListener('click', function(event) {
+    event.preventDefault();
+    let usersList = JSON.parse(localStorage.getItem("usersList"));
+    const selectedCannabis = cannabis.value;
+
+    userInfo = usersList[currentUser];
+    userInfo["cannabis"] = selectedCannabis;
+
+    localStorage.setItem("usersList", JSON.stringify(usersList));
 })
 
 if (window.location.href.includes("newuser_createprof.html")) {
