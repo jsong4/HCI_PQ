@@ -1,3 +1,14 @@
+/* =============================
+ * Saves selected dealbreakers to localStorage on button click.
+ *
+ * Listens for a click on the "Filter out Deal Breakers" button.
+ * It gathers the current values from the dropdown menus (activity, politics,
+ * religion, and substances) and stores them as a JSON object in localStorage
+ * under "dealbreakerFilters", and then reloads the page.
+ *
+ * This allows the algorithm to retrieve and apply these
+ * dealbreakers when ranking or filtering potential matches.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity-select");
   const politicsSelect = document.getElementById("politics-select");
@@ -23,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
 /* =============================
  * Trait Vectors
  * Each trait is represented by a 5D vector:
@@ -47,11 +59,11 @@ const traitVectors = {
   Sporty: [0.7, 0.3, 0.3, 0.2, 1.0],
 };
 
+
 const usersList = JSON.parse(localStorage.getItem("usersList"));
 const currentUsername = localStorage.getItem("currentUser");
 const currentUser = usersList[currentUsername];
 const checkbox = currentUser.checkbox;
-
 const userValues = Object.fromEntries(
   Object.entries(usersList).map(([username, user]) => [
     username,
@@ -68,6 +80,7 @@ const userValues = Object.fromEntries(
   ])
 );
 console.log(userValues);
+
 
 /* =============================
  * Compute the user's full personality vector
@@ -91,6 +104,7 @@ function getUserVector(selectedTraits) {
   return vector;
 }
 
+
 /* =============================
  * Retrieves the current user's trait vectors (currentUser) from localStorage,
  * computes their user vector, and returns both the vector and the list of users.
@@ -111,6 +125,7 @@ function computeUserVectorFromStorage() {
   const vector = getUserVector(currentUser.checkbox);
   return { vector, usersList };
 }
+
 
 /* =============================
  * Iterates over the users skipping over the current user and computes
@@ -138,6 +153,7 @@ function calculateOtherUserVectors(usersList) {
   return otherUserVectors;
 }
 
+
 /* =============================
  * Computes the Euclidean distance between two vectors.
  *
@@ -153,6 +169,7 @@ function euclideanDistance(v1, v2) {
   );
   return lindistance;
 }
+
 
 /* =============================
  * Inserts a new user into a sorted array of users based on distance,
@@ -176,6 +193,7 @@ function binaryInsert(arr, newItem) {
 
   arr.splice(left, 0, newItem); // insert at correct index
 }
+
 
 /* =============================
  * The main matching function:
@@ -214,36 +232,69 @@ function computeSortedMatches() {
   return sortedMatches;
 }
 
+
+/* =============================
+ * Applies dealbreaker penalties to sorted user matches.
+ *
+ * Gets the list of sorted user matches from `computeSortedMatches()`,
+ * then checks if the current user has specified any dealbreakers. 
+ * If dealbreakers are found, it evaluates each match
+ * to determine how many dealbreaker traits they have.
+ *
+ * The match's distance is then multiplied by 1.3^n, where n is the number
+ * of dealbreakers they have. This increases the match's effective distance, 
+ * lowering their ranking in the final match list.
+ *
+ * Top-level categories checked: activity, politics, religion  
+ * Substance dealbreakers are stored under a single key (e.g., "alcohol") and compared
+ * against whether the match has "yes" for that substance.
+ *
+ * Returns: A list of match objects, each with:
+ *   - `username` {string}: The matched user's ID
+ *   - `distance` {number}: The adjusted distance after applying dealbreaker penalties
+ */
 function applyDealbreakers() {
   const matchesNoDBreakers = computeSortedMatches();
+
+  // If no dealbreakers are set in localStorage, just return the unmodified list
   if (!localStorage.getItem("dealbreakerFilters")) {
     return matchesNoDBreakers;
   };
 
   const dealbreakers = JSON.parse(localStorage.getItem("dealbreakerFilters"));
 
+  // Iterate through each match and apply penalties if they have any dealbreakers
   const matchesWDBreakers = matchesNoDBreakers.map((match) => {
-    const matchValues = userValues[match.username]; 
-    let dealbreakerCount = 0;
+    const matchValues = userValues[match.username]; // Get stored trait values for this user
+    let dealbreakerCount = 0; // Count for how many dealbreakers the match violates
 
-    // Top-level comparisons (activity, politics, religion)
     ["activity", "politics", "religion"].forEach((category) => {
-      if (dealbreakers[category] && matchValues[category] && (dealbreakers[category] === matchValues[category])) {
+      if (
+        dealbreakers[category] && // Is the dealbreaker set?
+        (dealbreakers[category] === matchValues[category]) // Does the match have a dealbreaker?
+      ) {
         dealbreakerCount++;
       }
     });
 
+    // Check the selected substance dealbreaker (e.g. "alcohol") against the match's substance use
     ["alcohol", "tobacco", "cannabis"].forEach((sub) => {
-      if (dealbreakers[sub] && matchValues.substances[dealbreakers.sub] === "yes") {
+      if (
+        dealbreakers[sub] && // Is a substance dealbreaker is set?
+        matchValues.substances[dealbreakers.sub] === "yes" // Is the respective value of the match "yes"?
+      ) {
         dealbreakerCount++;
       }
     });
 
-    // Apply penalty per dealbreaker: multiply by 1.3 ^ violations
+    // Increase distance by multiplying 1.3 for each dealbreaker
     const adjustedDistance = match.distance * Math.pow(1.3, dealbreakerCount);
+
+    // Debug: log original vs adjusted distance
     console.log(match.distance);
     console.log(adjustedDistance);
 
+    // Return updated match object with adjusted distance
     return {
       username: match.username,
       distance: adjustedDistance,
@@ -252,6 +303,7 @@ function applyDealbreakers() {
 
   return matchesWDBreakers;
 }
+
 
 /* =============================
  * Normalizes the distances of the top matches to a 0–1 scale.
@@ -301,6 +353,7 @@ function normalizeTopMatches() {
   });
 }
 
+
 /* =============================
  * Returns a dictionary of the 10 closest users to the main user.
  * Each entry includes the normalized distance and a matchBool flag.
@@ -331,6 +384,7 @@ function getTopMatchesDict() {
 
   return userData;
 }
+
 
 /* =============================
  * Converts the top matches object into a nested array format.
@@ -369,6 +423,7 @@ function getNestedArray(userData) {
   }
   return distancesArray;
 }
+
 
 // The intended execution for the file. This gets accessed when debugging is off
 const userMatches = getTopMatchesDict();
