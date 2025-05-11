@@ -97,78 +97,83 @@ function positionItems(){
 
 function changeColors() {
     let usersList = JSON.parse(localStorage.getItem("usersList"))
-    color9 = JSON.stringify(usersList[matches[9][0]]["profile"]["color"])
 
-    colors = [JSON.stringify(usersList[matches[0][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[1][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[2][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[3][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[4][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[5][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[6][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[7][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[8][0]]["profile"]["color"]),
-                JSON.stringify(usersList[matches[9][0]]["profile"]["color"])
-            ];
-
-    console.log(color9)
-    console.log(typeof color9)
-    document.getElementById("bear1").style.fill = colors[0]
-    document.getElementById("bear2").style.fill = colors[1]
-    document.getElementById("bear3").style.fill = colors[2]
-    document.getElementById("bear4").style.fill = colors[3]
-    document.getElementById("bear5").style.fill = colors[4]
-    document.getElementById("bear6").style.fill = colors[5]
-    document.getElementById("bear7").style.fill = colors[6]
-    document.getElementById("bear8").style.fill = colors[7]
-    document.getElementById("bear9").style.fill = colors[8]
-    document.getElementById("bear10").style.fill = colors[9]
+    document.getElementById("bear1").style.fill = usersList[matches[0][0]]["profile"]["color"]
+    document.getElementById("bear2").style.fill = usersList[matches[1][0]]["profile"]["color"]
+    document.getElementById("bear3").style.fill = usersList[matches[2][0]]["profile"]["color"]
+    document.getElementById("bear4").style.fill = usersList[matches[3][0]]["profile"]["color"]
+    document.getElementById("bear5").style.fill = usersList[matches[4][0]]["profile"]["color"]
+    document.getElementById("bear6").style.fill = usersList[matches[5][0]]["profile"]["color"]
+    document.getElementById("bear7").style.fill = usersList[matches[6][0]]["profile"]["color"]
+    document.getElementById("bear8").style.fill = usersList[matches[7][0]]["profile"]["color"]
+    document.getElementById("bear9").style.fill = usersList[matches[8][0]]["profile"]["color"]
+    document.getElementById("bear10").style.fill = usersList[matches[9][0]]["profile"]["color"]
 }
 
 function changeaccesories() {
 
+    //grab and fix file paths
     accesory1 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory1 = '"' + accesory1.substring(1);
-
-    console.log(accesory1)
+    accesory1 = JSON.parse(accesory1)
 
     accesory2 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory2 = '"' + accesory2.substring(1);
+    accesory2 = JSON.parse(accesory2)
 
     accesory3 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory3 = '"' + accesory3.substring(1);
+    accesory3 = JSON.parse(accesory3)
 
     accesory4 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory4 = '"' + accesory4.substring(1);
+    accesory4 = JSON.parse(accesory4)
 
     accesory5 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory5 = '"' + accesory5.substring(1);
+    accesory5 = JSON.parse(accesory5)
 
     accesory6 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory6 = '"' + accesory6.substring(1);
+    accesory6 = JSON.parse(accesory6)
 
     accesory7 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory7 = '"' + accesory7.substring(1);
+    accesory7 = JSON.parse(accesory7)
 
     accesory8 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory8 = '"' + accesory8.substring(1);
+    accesory8 = JSON.parse(accesory8)
 
     accesory9 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
     accesory9 = '"' + accesory9.substring(1);
+    accesory9 = JSON.parse(accesory9)
 
-    accesory10 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory10 = JSON.stringify(usersList[matches[9][0]]["profile"]["accessory"]);
     accesory10 = '"' + accesory10.substring(1);
+    accesory10 = JSON.parse(accesory10)
 
-    document.getElementById("accesory1").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory1);
-    document.getElementById("accesory2").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory2);
-    document.getElementById("accesory3").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory3);
-    document.getElementById("accesory4").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory4);
-    document.getElementById("accesory5").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory5);
-    document.getElementById("accesory6").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory6);
-    document.getElementById("accesory7").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory7);
-    document.getElementById("accesory8").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory8);
-    document.getElementById("accesory9").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory9);
-    document.getElementById("accesory10").setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', accesory10);
+    //update accesories
+    document.getElementById("accesory1").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory1);
+    document.getElementById("accesory2").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory2);
+    document.getElementById("accesory3").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory3);
+    document.getElementById("accesory4").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory4);
+    document.getElementById("accesory5").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory5);
+    document.getElementById("accesory6").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory6);
+    document.getElementById("accesory7").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory7);
+    document.getElementById("accesory8").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory8);
+    document.getElementById("accesory9").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory9);
+    document.getElementById("accesory10").setAttributeNS('http://www.w3.org/1999/xlink',
+        'xlink:href', accesory10);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
