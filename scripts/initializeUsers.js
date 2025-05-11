@@ -1,6 +1,17 @@
 // localStorage.removeItem("usersList")
 localStorage.removeItem("currentUser");
-console.log(JSON.parse(localStorage.getItem("usersList")))
+
+// Check for empty/ghost users that never finished their profile
+let usersList = JSON.parse(localStorage.getItem("usersList"))
+console.log(usersList)
+
+Object.entries(usersList).forEach(([username, userData]) => {
+    if (!Object.keys(userData).includes("password")) {
+        delete usersList[username]
+        localStorage.setItem("usersList", JSON.stringify(usersList))
+        console.log("updated list:", usersList)
+    }
+})
 
 function generateUsername() {
     const adjectives = [
