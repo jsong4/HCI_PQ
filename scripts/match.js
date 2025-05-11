@@ -1,6 +1,6 @@
 angles = [0, 36, 72, 108, 144, 180, 216, 252, 288, 324, 360]
 
-matches = [[0, 0.1], [0, 0.2], [0, 0.3], [0, 0.4], [0, 0.5], [0, 0.6], [0, 0.7], [0, 0.8], [0, 0.9], [0, 1]]
+//matches = [[0, 0.1], [0, 0.2], [0, 0.3], [0, 0.4], [0, 0.5], [0, 0.6], [0, 0.7], [0, 0.8], [0, 0.9], [0, 1]]
 
 centerX = 250
 centerY = 250
@@ -8,6 +8,8 @@ centerY = 250
 positions = []
 
 matches = JSON.parse(localStorage.getItem("userDistances"))
+console.log(matches.length)
+
 
 acessories = ["images/prof_customization/baseballcap.svg", "images/prof_customization/beanie.svg",
     "images/prof_customization/bow.svg", "images/prof_customization/crown.svg",
@@ -30,13 +32,15 @@ function drawGraph() {
     const c = document.getElementById("matchesGraph");
     const ctx = c.getContext("2d");
 
-    for (i = 0; i < 10; i++) {
-        id = matches[i][0]
+    let counter = 0;
+    for (const [i, match] of matches.entries()) {
+        const id = match[0];
+        const distance = match[1];
+        console.log(matches[i][0])
         var pfColor = '#409AFD' //NOTE: get color from id
-        distance = matches[i][1]
 
         //calculate circle centerpoints
-        radians = angles[i] * Math.PI/180
+        radians = angles[counter] * Math.PI/180
         endX = ((distance * Math.cos(radians)) + 0.05) * 250 
         endX = endX + centerX
         endY = ((distance * Math.sin(radians)) + 0.05) * 250
@@ -57,6 +61,7 @@ function drawGraph() {
         ctx.drawImage(accesory, endX - 19, endY - 19, 38, 38);
         ctx.closePath();
         positions.push([endX, endY])
+        counter++;
     }
 
     ctx.beginPath();
@@ -82,7 +87,7 @@ function positionItems(){
 
     profiles = [match1, match2, match3, match4, match5, match6, match7, match8, match9, match10]
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < matches.length; i++) {
         profile = profiles[i]
         profile.style.position = 'absolute'
         profile.style.left = positions[i][0] - 20 + 'px';
