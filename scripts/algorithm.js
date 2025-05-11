@@ -300,6 +300,8 @@ function applyDealbreakers() {
       distance: adjustedDistance,
     };
   });
+  // Sort the adjusted matches by ascending distance
+  matchesWDBreakers.sort((a, b) => a.distance - b.distance);
 
   return matchesWDBreakers;
 }
@@ -368,6 +370,8 @@ function normalizeTopMatches() {
 function getTopMatchesDict() {
   const sortedMatches = normalizeTopMatches();
   const topTenMatches = sortedMatches.slice(0, 10);
+
+  topTenMatches.sort(function(){return 0.5 - Math.random()});
 
   //Checking outputs for debugging
   console.log(sortedMatches);
