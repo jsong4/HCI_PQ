@@ -7,6 +7,8 @@ centerY = 250
 
 positions = []
 
+matches = JSON.parse(localStorage.getItem("userDistances"))
+
 acessories = ["images/prof_customization/baseballcap.svg", "images/prof_customization/beanie.svg",
     "images/prof_customization/bow.svg", "images/prof_customization/crown.svg",
     "images/prof_customization/earrings.svg", "images/prof_customization/empty.svg",
@@ -23,6 +25,7 @@ const base = new Image();
 base.src = "images/prof_customization/base_circle.svg";
 
 function drawGraph() {
+    console.log(matches)
 
     const c = document.getElementById("matchesGraph");
     const ctx = c.getContext("2d");
