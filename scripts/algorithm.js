@@ -1,3 +1,28 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const activitySelect = document.getElementById("activity-select");
+  const politicsSelect = document.getElementById("politics-select");
+  const religionSelect = document.getElementById("religion-select");
+  const substancesSelect = document.getElementById("substances-select");
+
+  const filterButton = document.getElementById("filter");
+
+  filterButton.addEventListener("click", () => {
+    const dealbreakerSelections = {
+      activity: activitySelect.value,
+      politics: politicsSelect.value,
+      religion: religionSelect.value,
+      substances: substancesSelect.value,
+    };
+
+    localStorage.setItem("dealbreakerFilters", JSON.stringify(dealbreakerSelections));
+
+    console.log("Dealbreakers saved to localStorage:", dealbreakerSelections);
+
+    // Reload the page after saving
+    location.reload();
+  });
+});
+
 /* =============================
  * Trait Vectors
  * Each trait is represented by a 5D vector:
@@ -26,6 +51,23 @@ const usersList = JSON.parse(localStorage.getItem("usersList"));
 const currentUsername = localStorage.getItem("currentUser");
 const currentUser = usersList[currentUsername];
 const checkbox = currentUser.checkbox;
+
+const userValues = Object.fromEntries(
+  Object.entries(usersList).map(([username, user]) => [
+    username,
+    {
+      activity: user.activity || "none",
+      politics: user.politics || "none",
+      religion: user.religion || "none",
+      substances: {
+        alcohol: user.alcohol || "unknown",
+        tobacco: user.tobacco || "unknown",
+        cannabis: user.cannabis || "unknown",
+      },
+    },
+  ])
+);
+console.log(userValues);
 
 /* =============================
  * Compute the user's full personality vector
@@ -172,6 +214,45 @@ function computeSortedMatches() {
   return sortedMatches;
 }
 
+function applyDealbreakers() {
+  const matchesNoDBreakers = computeSortedMatches();
+  if (!localStorage.getItem("dealbreakerFilters")) {
+    return matchesNoDBreakers;
+  };
+
+  const dealbreakers = JSON.parse(localStorage.getItem("dealbreakerFilters"));
+
+  const matchesWDBreakers = matchesNoDBreakers.map((match) => {
+    const matchValues = userValues[match.username]; 
+    let dealbreakerCount = 0;
+
+    // Top-level comparisons (activity, politics, religion)
+    ["activity", "politics", "religion"].forEach((category) => {
+      if (dealbreakers[category] && matchValues[category] && (dealbreakers[category] === matchValues[category])) {
+        dealbreakerCount++;
+      }
+    });
+
+    ["alcohol", "tobacco", "cannabis"].forEach((sub) => {
+      if (dealbreakers[sub] && matchValues.substances[dealbreakers.sub] === "yes") {
+        dealbreakerCount++;
+      }
+    });
+
+    // Apply penalty per dealbreaker: multiply by 1.3 ^ violations
+    const adjustedDistance = match.distance * Math.pow(1.3, dealbreakerCount);
+    console.log(match.distance);
+    console.log(adjustedDistance);
+
+    return {
+      username: match.username,
+      distance: adjustedDistance,
+    };
+  });
+
+  return matchesWDBreakers;
+}
+
 /* =============================
  * Normalizes the distances of the top matches to a 0–1 scale.
  *
@@ -189,7 +270,7 @@ function computeSortedMatches() {
  *   - `distance` {number}: The normalized distance (0–1)
  */
 function normalizeTopMatches() {
-  const matches = computeSortedMatches();
+  const matches = applyDealbreakers();
 
   // If there are no matches return an empty array
   if (!matches || matches.length === 0) return [];
