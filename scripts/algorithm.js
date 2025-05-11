@@ -413,7 +413,7 @@ function getNestedArray(userData) {
   const distancesArray = [];
 
   // Loop through each entry in the userData object
-  // Object.entries() gives us both the username and their associated data
+  // Object.entries() gives both the username and their associated data
   for (const [username, data] of Object.entries(userData)) {
     // Push a [username, distance] pair to the result array
     distancesArray.push([username, data.distance]);
