@@ -141,7 +141,7 @@ footer {
     width: 100%;
   }
   
-  .footer-text {
+.footer-text {
     line-height: 10px;
     color: var(--text-white);
     position: relative;
@@ -149,4 +149,4 @@ footer {
     bottom: 0;
     text-align: center;
     width: 100%;
-  }
+}
