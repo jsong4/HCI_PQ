@@ -1,31 +1,20 @@
 angles = [0, 36, 72, 108, 144, 180, 216, 252, 288, 324, 360]
 
-//matches = [[0, 0.1], [0, 0.2], [0, 0.3], [0, 0.4], [0, 0.5], [0, 0.6], [0, 0.7], [0, 0.8], [0, 0.9], [0, 1]]
-
 centerX = 250
 centerY = 250
 
 positions = []
 
 matches = JSON.parse(localStorage.getItem("userDistances"))
-console.log(matches.length)
-
-// acessories = ["images/prof_customization/baseballcap.svg", "images/prof_customization/beanie.svg",
-//     "images/prof_customization/bow.svg", "images/prof_customization/crown.svg",
-//     "images/prof_customization/earrings.svg", "images/prof_customization/empty.svg",
-//     "images/prof_customization/glasses.svg", "images/prof_customization/mustache.svg",
-//     "images/prof_customization/necklace.svg", "images/prof_customization/partyhat.svg"
-// ]
-
-// colors = ["#FE938C", "#99C1B9", "#8E7DBE", "#D1D646", "#06BA63", "#FE4A49", "#39304A", "#AFD0BF",
-//     "#0075A2", "#E5446D"]
 
 const base = new Image();
 base.src = "images/prof_customization/base_circle.svg";
 
+/* =============================
+ * Creates the base graph for the match interface to be later populated with
+ * potential matches.
+ */
 function drawGraph() {
-    console.log(matches)
-
     const c = document.getElementById("matchesGraph");
     const ctx = c.getContext("2d");
 
@@ -33,7 +22,6 @@ function drawGraph() {
     for (const [i, match] of matches.entries()) {
         const id = match[0];
         const distance = match[1];
-        console.log(matches[i][0])
         var pfColor = '#409AFD' //NOTE: get color from id
 
         //calculate circle centerpoints
@@ -63,9 +51,13 @@ function drawGraph() {
     ctx.fill()
     ctx.stroke(); // Draw the circle
     ctx.closePath(); // Close the path
-    console.log(positions)
 }
 
+/* =============================
+ * From the given top 10 matches returned from the algorithm, the matches
+ * polar persona nodes are positioned onto the base graph relative to the
+ * center (where you are the center) based on how closely similar you are.
+ */
 function positionItems(){
     const match1 = document.getElementById('match1');
     const match2 = document.getElementById('match2');
@@ -88,6 +80,9 @@ function positionItems(){
     }
 }
 
+/* =============================
+ * Changes the polar persona color of the positioned node.
+ */
 function changeColors() {
     let usersList = JSON.parse(localStorage.getItem("usersList"))
 
@@ -103,8 +98,10 @@ function changeColors() {
     document.getElementById("bear10").style.fill = usersList[matches[9][0]]["profile"]["color"]
 }
 
+/* =============================
+ * Changes the polar persona accessories of the positioned node.
+ */
 function changeaccesories() {
-
     //grab and fix file paths
     accesory1 = JSON.stringify(usersList[matches[0][0]]["profile"]["accessory"]);
     accesory1 = '"' + accesory1.substring(1);

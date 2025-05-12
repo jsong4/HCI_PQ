@@ -1,5 +1,14 @@
+/* =============================
+ * Pre-set the current user generated at the start of the questionnaire to
+ * store their responses in localStorage.
+ */
 const currentUser = localStorage.getItem("currentUser")
 
+/* =============================
+ * Update the current users personal values (preferences) based on what they
+ * select from each dropdown and save them as individual keys into under their
+ * username in localStorage.
+ */
 function updateUser() {
     //grab current user
     let usersList = JSON.parse(localStorage.getItem("usersList")) || { currentUser: {} };

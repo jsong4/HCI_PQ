@@ -1,12 +1,22 @@
+/* =============================
+ * Pre-set the current user generated at the start of the questionnaire to
+ * store their responses in localStorage.
+ */
 const currentUser = localStorage.getItem("currentUser")
 
+/* =============================
+ * On page load, listen to all checkboxes and ensure that at least 1 and at
+ * most 5 checkboxes are selected before proceeding.
+ *
+ * Once a user has chosen 1-5 checkboxes, the selected checkboxes are stored
+ * as a list under their username (currentUser).
+ */
 document.addEventListener("DOMContentLoaded", () => {
     const checkboxes = document.querySelectorAll(".checkbox-option");
     const nextButton = document.getElementById("next-btn");
 
     // Retrieve stored data or initialize it
     let usersList = JSON.parse(localStorage.getItem("usersList")) || { currentUser: {} };
-    // let selectedPrompts = usersList.user1.selectedPrompts || [];
 
     // Limit the number of checkboxes that can be selected to 3
     checkboxes.forEach(checkbox => {
@@ -14,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
             if (checkedCount > 5) {
                 alert("You can only select up to 5 options.");
-                checkbox.checked = false;  // Uncheck the last one if more than 3 are selected
+                checkbox.checked = false;  // Uncheck the last one if more than 5 are selected
             }
         });
     });

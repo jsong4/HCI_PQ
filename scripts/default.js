@@ -1,5 +1,8 @@
+/* =============================
+ * Depending on whether or not a user has logged in or not, the navigation
+ * toolbar will be available.
+ */
 const currentUser = localStorage.getItem("currentUser")
-console.log(currentUser)
 
 if (currentUser != null && !window.location.href.includes("newuser")) {
     // User has logged in

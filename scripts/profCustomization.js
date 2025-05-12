@@ -1,42 +1,15 @@
+/* =============================
+ * Pre-set the current user generated at the start of the questionnaire to
+ * store their responses in localStorage.
+ */
 const curUser = localStorage.getItem("currentUser")
 
-// Using localStorage
-// var test = {
-//     "user1": {
-//         "prompt1": ["In a parallel universe, I'm definitely...", "A polar bear who noms on fish all day"],
-//         "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
-//         "prompt3": ["A letter to future me would definitely include...", "what up"],
-//         "checkbox": ["Chronically Online", "Listener", "Easygoing", "Outgoing", "Foodie"],
-//         "profile": {
-//             "color": "#fffdbd",
-//             "accessory": "images/prof_customization/empty.svg"
-//         },
-//         "selectedPrompts": [
-//             "In a parallel universe, I'm definitely...",
-//             "One rule of society I'd totally rewrite...",
-//             "A letter to future me would definitely include..."
-//         ]
-//     }
-// }
-
-// userData = {
-//     "user2": {
-//         "distance": 0.2,
-//         "match_bool": 0 // 0 for false, 1 for true
-//     },
-//     "user3": {
-//         "distance": 0.9,
-//         "match_bool": 1 // 0 for false, 1 for true
-//     }
-// }
-
-// localStorage.removeItem("usersList")
-// var current_user = "user1"
-// localStorage.setItem("usersList", JSON.stringify(test));
-
+/* =============================
+ * Gets the currentUser information from localStorage from the usersList and
+ * loads it onto the profile interface page.
+ */
 function loadUserData() {
     let usersList = JSON.parse(localStorage.getItem("usersList"))
-    console.log(usersList);
 
     if (usersList != null) { // Valid User
         var userInfo = usersList[curUser];
@@ -114,6 +87,11 @@ const list_of_prompts = [
     "If my life were a meme right now, it would be..."
 ];
 
+/* =============================
+ * If a user wants to edit their prompt and/or written response, a pop up opens
+ * to allow user to update their information for those items and have it
+ * updated in localStorage.
+ */
 function editResponse(promptNum) {
     popup = document.getElementById("prompt-popup");
 
@@ -200,6 +178,11 @@ const list_of_checkboxes = [
     "Easily Peer-Pressured"
 ];
 
+/* =============================
+ * If a user wants to update their current selected checkboxes, a pop up opens
+ * with their current selected checkboxes and allows them to update them
+ * and have it saved to localStorage.
+ */
 function editCheckboxes() {
     var popup = document.getElementById("checkbox-popup");
     popup.style.display = "block";
@@ -210,11 +193,9 @@ function editCheckboxes() {
     // Retrieve stored data or initialize it
     let usersList = JSON.parse(localStorage.getItem("usersList"))
     let selectedCheckboxes = usersList[curUser].checkbox || [];
-    console.log(selectedCheckboxes)
 
     // Limit the number of checkboxes that can be selected to 5
     checkboxes.forEach(checkbox => {
-        console.log(checkbox.nextSibling.textContent)
         if (selectedCheckboxes.includes(checkbox.nextSibling.textContent.trim())) { // Check previously checked values
             checkbox.checked = true;
         }
@@ -230,7 +211,6 @@ function editCheckboxes() {
 
     close_check = document.getElementById("check-close-icon");
     close_check.addEventListener("click", function () {
-        console.log("closing");
         popup.style.display = "none";
     })
 
@@ -239,7 +219,6 @@ function editCheckboxes() {
         const selectedOptions = Array.from(checkboxes)
             .filter(checkbox => checkbox.checked)
             .map(checkbox => checkbox.nextSibling.textContent.trim()); // Collect the label text
-        console.log(selectedOptions)
 
         if (selectedOptions.length > 0) { // might not be necessary
             // Store the selected options in localStorage
@@ -277,6 +256,11 @@ var color_form = document.getElementById("color-input")
 var bear_color = document.getElementById("profile-img-container")
 var color_input = document.getElementById("profile-img-color")
 
+/* =============================
+ * A user can edit and update what their current accessory is by parsing
+ * through the accessories list using the arrow buttons beside the polar bear
+ * profile and have it saved to localStorage.
+ */
 profile_left.addEventListener("click", function () {
     let usersList = JSON.parse(localStorage.getItem("usersList"));
     idx = accessories.indexOf(profile_accessory.getAttribute("src"))
@@ -291,6 +275,11 @@ profile_left.addEventListener("click", function () {
     localStorage.setItem("usersList", JSON.stringify(usersList))
 })
 
+/* =============================
+ * A user can edit and update what their current accessory is by parsing
+ * through the accessories list using the arrow buttons beside the polar bear
+ * profile and have it saved to localStorage.
+ */
 profile_right.addEventListener("click", function () {
     let usersList = JSON.parse(localStorage.getItem("usersList"));
     idx = accessories.indexOf(profile_accessory.getAttribute("src"))
@@ -305,17 +294,24 @@ profile_right.addEventListener("click", function () {
     localStorage.setItem("usersList", JSON.stringify(usersList))
 })
 
+/* =============================
+ * A user can edit and update what their current bear color is by clicking on
+ * any color they want on the color scheme or enter a specific hex/rgb value
+ * on the color picker interface and have it saved to localStorage.
+ */
 color_form.addEventListener("submit", function (event) {
     event.preventDefault()
     let usersList = JSON.parse(localStorage.getItem("usersList"));
-    console.log("current color", usersList[curUser].profile.color)
     bear_color.style.backgroundColor = color_input.value
     usersList[curUser].profile.color = color_input.value;
-    console.log("new color", usersList[curUser].profile.color)
     localStorage.setItem("usersList", JSON.stringify(usersList))
     return false
 })
 
+/* =============================
+ * A user can update their activity preferences on the dropdown and have it
+ * saved to localStorage.
+ */
 const activity = document.getElementById("activity-select")
 activity.addEventListener('click', function(event) {
     event.preventDefault();
@@ -324,11 +320,14 @@ activity.addEventListener('click', function(event) {
 
     userInfo = usersList[currentUser];
     userInfo["activity"] = selectedActivity;
-    console.log(usersList)
 
     localStorage.setItem("usersList", JSON.stringify(usersList));
 })
 
+/* =============================
+ * A user can update their politics preferences on the dropdown and have it
+ * saved to localStorage.
+ */
 const politics = document.getElementById("politics-select")
 politics.addEventListener('click', function(event) {
     event.preventDefault();
@@ -341,6 +340,10 @@ politics.addEventListener('click', function(event) {
     localStorage.setItem("usersList", JSON.stringify(usersList));
 })
 
+/* =============================
+ * A user can update their religion preferences on the dropdown and have it
+ * saved to localStorage.
+ */
 const religion = document.getElementById("religion-select")
 religion.addEventListener('click', function(event) {
     event.preventDefault();
@@ -353,6 +356,10 @@ religion.addEventListener('click', function(event) {
     localStorage.setItem("usersList", JSON.stringify(usersList));
 })
 
+/* =============================
+ * A user can update their alcohol preferences on the dropdown and have it
+ * saved to localStorage.
+ */
 const alcohol = document.getElementById("alcohol-select")
 alcohol.addEventListener('click', function(event) {
     event.preventDefault();
@@ -365,6 +372,10 @@ alcohol.addEventListener('click', function(event) {
     localStorage.setItem("usersList", JSON.stringify(usersList));
 })
 
+/* =============================
+ * A user can update their tobacco preferences on the dropdown and have it
+ * saved to localStorage.
+ */
 const tobacco = document.getElementById("tobacco-select")
 tobacco.addEventListener('click', function(event) {
     event.preventDefault();
@@ -377,6 +388,10 @@ tobacco.addEventListener('click', function(event) {
     localStorage.setItem("usersList", JSON.stringify(usersList));
 })
 
+/* =============================
+ * A user can update their cannabis preferences on the dropdown and have it
+ * saved to localStorage.
+ */
 const cannabis = document.getElementById("cannabis-select")
 cannabis.addEventListener('click', function(event) {
     event.preventDefault();
@@ -389,6 +404,14 @@ cannabis.addEventListener('click', function(event) {
     localStorage.setItem("usersList", JSON.stringify(usersList));
 })
 
+/* =============================
+ * If it is a new user, the interface will include a password text area for
+ * users to complete their profile and be able to return to it later on.
+ *
+ * If it is a returning user who wants to edit their current saved profile,
+ * they have a log out button option to log out of their current profile and
+ * go back to the home page.
+ */
 if (window.location.href.includes("newuser_createprof.html")) {
     createUserButton = document.getElementById("createprof-button")
     createUserButton.addEventListener('click', function() {
@@ -399,7 +422,6 @@ if (window.location.href.includes("newuser_createprof.html")) {
             let usersList = JSON.parse(localStorage.getItem("usersList"))
             usersList[curUser].password = profPassword
             localStorage.setItem("usersList", JSON.stringify(usersList))
-            console.log(usersList)
             window.location.href = "match.html"
         }
     })

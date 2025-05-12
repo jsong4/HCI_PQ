@@ -1,3 +1,7 @@
+/* =============================
+ * Tests users displayed on the of the chat interface.
+ * (NOT ones present in current usersList stored in localStorage)
+ */
 const Users = {
 	"Snergle": {
 		"prompt1": ["In a parallel universe, I'm definitely...", "A polar bear who noms on fish all day"],
@@ -49,13 +53,14 @@ const Users = {
 	}
 }
 
-
-  
-
+/* =============================
+ * Refreshes the chat and re-randomizes the prompts on page load.
+ *
+ * Initialize the stored messages/prompts if available in localStorage to
+ * populate the chat history.
+ */
 document.addEventListener('DOMContentLoaded', function() {
-	// Resets and refreshes the chat
 	localStorage.removeItem('messages');
-	// Clear out prompts so they’ll re-randomize on refresh 
 	localStorage.removeItem('prompts');
 	
 	console.log("Chat.js loaded!");
@@ -72,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	let storedMessages = {};
 	let storedPrompts = {};
 
-	// Load stored messages and prompts from localStorage 
 	if (localStorage.getItem('messages')) {
 		storedMessages = JSON.parse(localStorage.getItem('messages'));
 	}
@@ -81,14 +85,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		storedPrompts = JSON.parse(localStorage.getItem('prompts'));
 	}
 
-
-
+	
+	/* =============================
+	* From the 3 users prompts, the system selects a random prompt from the
+	* matched user to start the conversation with an ice breaker.
+	*/
 	function getRandomPrompt(userData){
 		const keys = ['prompt1', 'prompt2', 'prompt3'];
 		const randomKey = keys[Math.floor(Math.random() * keys.length)];
 		return userData[randomKey];
 	}
 
+	/* =============================
+	* From the test usersList, the chat inbox sidebar is rendered with other
+	* available previously matched individuals they've chat with.
+	*/
 	function renderUserToSidebar(userName) {
 		const li = document.createElement('li');
 		li.textContent = userName;
@@ -110,10 +121,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (unmatchBtn) {
 		unmatchBtn.addEventListener('click', () => {
 		alert("You have unmatched with this user.");
-		// What now? clear chat, remove from localStorage, redirect..?
 		});
 	}
 
+	/* =============================
+	* Loads the chat with the current user and a matched user.
+	*/
 	function loadChat(userName){
 		// Mark which user is active
 		currentUser = userName;
@@ -139,8 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		const [prompt, answer] = promptAnswer;
 
-	
-
 		// Show intro prompt
 		const msgHTML = `
 			<div class="received-chats">
@@ -157,25 +168,31 @@ document.addEventListener('DOMContentLoaded', function() {
 		msgPage.insertAdjacentHTML('beforeend', msgHTML);
 
 		// re-load this user's past messages
-
 		const messages = storedMessages[userName] || [];
 		messages.forEach(addMessageToChat);
 		// scroll to bottom
-  		msgPage.scrollTop = msgPage.scrollHeight;
+		msgPage.scrollTop = msgPage.scrollHeight;
 	}
 
-		
+	/* =============================
+	* Creates a new chat HTML element when a user enters a new message.
+	*/
 	function addMessageToChat({ text, time }) {
 		const msgHTML = `
 			<div class="outgoing-msg">
-			  <div class="outgoing-chats-msg">
-				<p>${text}</p>
-				<span class="time">${time}</span>
-			  </div>
+				<div class="outgoing-chats-msg">
+					<p>${text}</p>
+					<span class="time">${time}</span>
+				</div>
 			</div>`;
 		msgPage.insertAdjacentHTML('beforeend', msgHTML);
 	}
 
+	/* =============================
+	* Takes the current user's text input and saves the current datetime and
+	* outputs a message HTML element to display on screen with the matched
+	* individual.
+	*/
 	function handleSend() {
 		const message = inputField.value.trim();
 		if (message !== '' && currentUser) {
@@ -191,19 +208,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			localStorage.setItem('messages', JSON.stringify(storedMessages))
 
 			addMessageToChat(newMsg);
-      		inputField.value = '';
-      		msgPage.scrollTop = msgPage.scrollHeight;
+			inputField.value = '';
+			msgPage.scrollTop = msgPage.scrollHeight;
 		}
 	}
 
 	sendIcon.addEventListener('click', handleSend);
-  	inputField.addEventListener('keydown', e => {
-    	if (e.key === 'Enter') handleSend();
-  	});
-
+	inputField.addEventListener('keydown', e => {
+		if (e.key === 'Enter') handleSend();
+	});
 
 	// Auto-load first user
 	const firstUser = Object.keys(Users)[0];
 	if (firstUser) loadChat(firstUser);
-
 });

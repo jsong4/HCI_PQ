@@ -1,4 +1,9 @@
-
+/* =============================
+ * Given a username and password from the user, it checks to see if given
+ * username exists in usersList. If username exists, it checks if the given
+ * password is also correct. If both are correct, it sets the currentUser to
+ * the given username and sends them to the match interface page.
+ */
 function setUser(username, password) {
     var usersList = JSON.parse(localStorage.getItem("usersList"))
     if (username in usersList) {
@@ -20,6 +25,5 @@ loginButton.addEventListener('click', function(e) {
     e.preventDefault();
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
-    console.log(username, password);
     setUser(username, password)
 })

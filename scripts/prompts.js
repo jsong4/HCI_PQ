@@ -12,9 +12,20 @@ const prompts = [
     "If my life were a meme right now, it would be..."
 ];
 
+/* =============================
+ * Pre-set the current user generated at the start of the questionnaire to
+ * store their responses in localStorage.
+ */
 const currentUser = localStorage.getItem("currentUser")
-console.log(currentUser)
 
+/* =============================
+ * On page load, listen to see if a user has selected a prompt AND filled out
+ * a response yet.
+ *
+ * Once a user has selected a prompt and entered a response, depending on which
+ * numbered prompt/response they are on, the prompt and response are stored as
+ * a list under their username (currentUser).
+ */
 document.addEventListener("DOMContentLoaded", () => {
     // localStorage.removeItem("usersList");
 
@@ -33,9 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Retrieve stored data or initialize it
     let usersList = JSON.parse(localStorage.getItem("usersList")) || { currentUser: {} };
     let selectedPrompts = usersList[currentUser].selectedPrompts || [];
-    console.log(selectedPrompts)
-
-    console.log(usersList)
 
     // Filter out already selected prompts
     const filteredPrompts = prompts.filter(prompt => !selectedPrompts.includes(prompt));
@@ -52,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     nextButton.addEventListener("click", () => {
         const selectedOption = dropdown.value;
         const textValue = textEntry.value;
-        console.log(selectedOption, textValue)
 
         if (selectedOption && textValue) {
             // Update the selected prompts array

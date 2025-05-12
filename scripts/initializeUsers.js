@@ -1,19 +1,27 @@
-// localStorage.removeItem("usersList")
+// Resets the currentUser everytime they are on the home page
 localStorage.removeItem("currentUser");
 
 // Check for empty/ghost users that never finished their profile
 let usersList = JSON.parse(localStorage.getItem("usersList"))
-console.log(usersList)
 
+/* =============================
+ * Checks if the usersList is populated yet. We assume that all new users will
+ * start with 0 users, so we populate their usersList with 10 test users for
+ * the match interface later on.
+ *
+ * If the user does have a populated usersList already, it checks if they are
+ * valid users. This is because sometimes people can stop the create new user
+ * questionnaire mid-way, creating ghost users (or incomplete users). Thus,
+ * this filters out the ghost users from the usersList.
+ */
 if (usersList) {
     Object.entries(usersList).forEach(([username, userData]) => {
     if (!Object.keys(userData).includes("password")) {
         delete usersList[username]
         localStorage.setItem("usersList", JSON.stringify(usersList))
-        console.log("updated list:", usersList)
     }
     })
-} else { // add dummy values the usersList is empty
+} else { // Add dummy values to if usersList is empty
     usersList = {
         "GoopyShoehorn8309": { //1
             "prompt1": ["If I could have one superpower, it would be...", "iegufiuwegfilg"],
@@ -229,9 +237,12 @@ if (usersList) {
     }
     localStorage.setItem("usersList", JSON.stringify(usersList))
 }
-console.log(usersList)
+console.log(usersList) // NOTE: This should NOT be here but we left it for developemental purposes
 
-
+/* =============================
+ * From a selection of interesting adjectives and items, a unique random
+ * username.
+ */
 function generateUsername() {
     const adjectives = [
         "Spicy", "Cheesy", "Crunchy", "Zesty", "Greasy",
@@ -263,6 +274,11 @@ function generateUsername() {
     return username
 }
 
+/* =============================
+ * Generates a username for users after they click on the new user button. This
+ * username is used in localStorage to store their questionnare responses
+ * and becomes their profile username.
+ */
 function createUser(){
     var usersList = JSON.parse(localStorage.getItem("usersList")) || {};
     
@@ -272,16 +288,13 @@ function createUser(){
     } while (usersList[username] );
 
     usersList[username] = {};
-    console.log("new user added to usersList", usersList)
-
     localStorage.setItem("usersList", JSON.stringify(usersList))
 
     localStorage.setItem("currentUser", username)
-    console.log(`${username}`)
     window.location.href="newuser_prompt1.html"
 }
 
-newUserButton = document.getElementById("newuser-button")
-newUserButton.addEventListener('click', function() {
-    createUser()
+    newUserButton = document.getElementById("newuser-button")
+    newUserButton.addEventListener('click', function() {
+        createUser()
 })

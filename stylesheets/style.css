@@ -149,26 +149,6 @@ p {
   margin: 5px 0;
 }
 
-/* Footer CSS Rules */
-footer {
-  height: 70px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: var(--secondary-bright-blue);
-  width: 100%;
-  margin-top: 5rem;
-}
-
-.footer-text {
-  line-height: 10px;
-  color: var(--text-white);
-  position: fixed;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-}
-
 .h-container {
   display: flex;
   flex-direction: column;

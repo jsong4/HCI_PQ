@@ -1,7 +1,15 @@
+/* =============================
+ * Pre-set the current user generated at the start of the questionnaire to
+ * store their responses in localStorage.
+ */
 const currentUser = localStorage.getItem("currentUser")
 
+/* =============================
+ * Loads a progress bar to indicate to a user that their profile is being
+ * generated aka loading all their responses.
+ */
 function loadProgressBar() {
-    console.log("Load")
+    console.log("Loading profile...")
     var progress = document.getElementById("progress")
     var width = 0;
     var id = setInterval(frame, 30);
@@ -17,32 +25,11 @@ function loadProgressBar() {
     }
 }
 
-// Example
-test = {
-    "user1": {
-        "selectedPrompts": ["In a parallel universe, I am definitely...", "One rule of society I'd totally rewrite...", "A letter to my future me would start with..."],
-        "prompt1": ["In a parallel universe, I am definitely...", "A polar bear who noms on fish all day"],
-        "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
-        "prompt3": ["A letter to my future me would start with...", "what up"],
-        "checkbox": ["Chronically online", "Listener", "Easygoing"] // More than 3 now, but only top 3 on create prof preview
-    },
-    "user2": {
-        "selectedPrompts": ["In a parallel universe, I am definitely...", "One rule of society I'd totally rewrite...", "A letter to my future me would start with..."],
-        "prompt1": ["In a parallel universe, I am definitely...", "A polar bear who noms on fish all day"],
-        "prompt2": ["One rule of society I'd totally rewrite...", "the lazy dog jumped over the sleeping fox and ate a cheeseburger from in n out, specifically the double double because that's yummy. Animal style suck"],
-        "prompt3": ["A letter to my future me would start with...", "what up"],
-        "checkbox": ["Chronically online", "Listener", "Easygoing"] // More than 3 now, but only top 3 on create prof preview
-    }
-
-}
-// current_user = "user1"
- //let usersList = JSON.parse(localStorage.getItem("usersList")) || { "user1": {} };
-
-// Get item userList, JSON.parse the userList from , add new item to dictionary
-
-// // Add test to localStorage
-// localStorage.setItem("usersList", JSON.stringify(test));
-
+/* =============================
+ * If a user accidentally exits the page or does not follow the questionnaire
+ * process in the standardized way, it will send the user back to the start
+ * to ensure quality control.
+ */
 function redirectToStart() {
     msg = "Uh oh, it seems your profile wasn't saved properly. Click to proceed back to the home page and restart your Persona!"
     url = "index.html"
@@ -52,7 +39,6 @@ function redirectToStart() {
 
 // Access items from localStorage
 let usersList = JSON.parse(localStorage.getItem("usersList"))
-console.log(usersList)
 
 // Executes specific functions based on current page
 function loadSpecificPage() {
@@ -66,7 +52,6 @@ function loadSpecificPage() {
     // If welcome page, display generated name
     else if (window.location.href.includes("newuser_welcome.html")) {
         if (usersList != null) { // Valid User
-            console.log(currentUser)
             userInfo = usersList[currentUser];
             if (userInfo != null) {
                 let userName = currentUser;
@@ -76,8 +61,6 @@ function loadSpecificPage() {
                 }
                 localStorage.setItem("usersList", JSON.stringify(usersList))
                 var starterColor = userInfo.profile.color;
-                console.log(starterColor)
-                console.log(document.getElementById("welcome-img"))
                 document.getElementById("welcome-img").style.backgroundColor = starterColor;
                 document.getElementById("userName").textContent = userName + "!";
             }
@@ -98,7 +81,6 @@ function loadSpecificPage() {
         }, 3200);
     }
     else if (window.location.href.includes("newuser_createprof.html")) {
-        console.log("create prof page!")
         if (usersList == null) { // Invalid User
                 redirectToStart()
         }
