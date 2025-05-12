@@ -1,4 +1,4 @@
-localStorage.removeItem("usersList")
+// localStorage.removeItem("usersList")
 localStorage.removeItem("currentUser");
 
 // Check for empty/ghost users that never finished their profile
