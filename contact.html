@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
     <title>Polar Pals</title>
 </head>
 <body>
     <nav>
-        <div class="nav-logo">
-            <img src="images/logo.png"/>
-            <h1>POLAR PALS</h1>
-        </div>
+        <a id="logo-container" href="index.html">
+            <div class="nav-logo">
+                <img src="images/logo.png"/>
+                <h1>POLAR PALS</h1>
+            </div>
+        </a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="help.html">How it Works</a>
             <a class="active" href="contact.html">Contact Us</a>
         </div>
-        <div class="nav-icons">
+        <div class="nav-icons hidden" >
             <a href="match.html">
                 <img src="images/match.png"/>
             </a>
@@ -30,6 +32,11 @@
             </a>
         </div>
     </nav>
+    <main style="text-align: center;">
+        <h1>Contact Us</h1>
+        <p>&copy; Polar Pals 2025</p>
+        <p>Any Questions or Concerns? Contact Us at inquiries@polarpals.com</p>
+    </main>
 
     <script src="scripts/default.js"></script>
 </body>
