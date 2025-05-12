@@ -1,0 +1,86 @@
+
+.pair {
+  margin-top: 2rem;
+  margin-bottom: 0;        
+}
+
+
+.pair .text-container {
+  padding-bottom: 1rem;
+}
+
+/* 3) Tweak heading margins (if needed) */
+.pair h1,
+.team h2 {
+  margin-bottom: 0.5rem;    /* or whatever feels snug */
+}
+
+/* And make sure the paragraph below About Us isn’t adding extra space */
+.pair .text-container h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+
+.team {
+	padding: 1rem 4rem;
+	background-color: #eef5ff;
+	text-align: center;
+}
+
+.team h2{
+	font-size: 2.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.profiles-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: stretch;      
+  margin-bottom: 100px;
+}
+.profile-card {
+	background: #fff;
+	border-radius: 8px;
+	padding: 1.25rem;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.avatar-bg {
+  width: 120px;              
+  height: 120px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 107%;      
+}
+
+
+.avatar-bg:hover {
+  background-size: 170%;
+}
+
+.profile_card h3 {
+	margin: 0.25rem 0;
+	font-size: 1.1rem;
+	color: #222;
+}
+
+.profile-card .role {
+	color: #555;
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+}
+
+.profile-card .social-icons {
+	display: flex;
+	justify-content: center;
+}
+
+.profile-card .social-icons a {
+	margin: 0 0.5rem;
+	color: var(--accent-dark-blue);
+	font-size: 1.2rem;
+}
