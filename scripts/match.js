@@ -113,7 +113,7 @@ function changeColors() {
 function changeaccesories() {
 
     //grab and fix file paths
-    accesory1 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory1 = JSON.stringify(usersList[matches[0][0]]["profile"]["accessory"]);
     accesory1 = '"' + accesory1.substring(1);
     accesory1 = JSON.parse(accesory1)
 
@@ -121,31 +121,31 @@ function changeaccesories() {
     accesory2 = '"' + accesory2.substring(1);
     accesory2 = JSON.parse(accesory2)
 
-    accesory3 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory3 = JSON.stringify(usersList[matches[2][0]]["profile"]["accessory"]);
     accesory3 = '"' + accesory3.substring(1);
     accesory3 = JSON.parse(accesory3)
 
-    accesory4 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory4 = JSON.stringify(usersList[matches[3][0]]["profile"]["accessory"]);
     accesory4 = '"' + accesory4.substring(1);
     accesory4 = JSON.parse(accesory4)
 
-    accesory5 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory5 = JSON.stringify(usersList[matches[4][0]]["profile"]["accessory"]);
     accesory5 = '"' + accesory5.substring(1);
     accesory5 = JSON.parse(accesory5)
 
-    accesory6 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory6 = JSON.stringify(usersList[matches[5][0]]["profile"]["accessory"]);
     accesory6 = '"' + accesory6.substring(1);
     accesory6 = JSON.parse(accesory6)
 
-    accesory7 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory7 = JSON.stringify(usersList[matches[6][0]]["profile"]["accessory"]);
     accesory7 = '"' + accesory7.substring(1);
     accesory7 = JSON.parse(accesory7)
 
-    accesory8 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory8 = JSON.stringify(usersList[matches[7][0]]["profile"]["accessory"]);
     accesory8 = '"' + accesory8.substring(1);
     accesory8 = JSON.parse(accesory8)
 
-    accesory9 = JSON.stringify(usersList[matches[1][0]]["profile"]["accessory"]);
+    accesory9 = JSON.stringify(usersList[matches[8][0]]["profile"]["accessory"]);
     accesory9 = '"' + accesory9.substring(1);
     accesory9 = JSON.parse(accesory9)
 
