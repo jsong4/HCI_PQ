@@ -10,18 +10,15 @@ positions = []
 matches = JSON.parse(localStorage.getItem("userDistances"))
 console.log(matches.length)
 
+// acessories = ["images/prof_customization/baseballcap.svg", "images/prof_customization/beanie.svg",
+//     "images/prof_customization/bow.svg", "images/prof_customization/crown.svg",
+//     "images/prof_customization/earrings.svg", "images/prof_customization/empty.svg",
+//     "images/prof_customization/glasses.svg", "images/prof_customization/mustache.svg",
+//     "images/prof_customization/necklace.svg", "images/prof_customization/partyhat.svg"
+// ]
 
-acessories = ["images/prof_customization/baseballcap.svg", "images/prof_customization/beanie.svg",
-    "images/prof_customization/bow.svg", "images/prof_customization/crown.svg",
-    "images/prof_customization/earrings.svg", "images/prof_customization/empty.svg",
-    "images/prof_customization/glasses.svg", "images/prof_customization/mustache.svg",
-    "images/prof_customization/necklace.svg", "images/prof_customization/partyhat.svg"
-]
-
-colors = ["#FE938C", "#99C1B9", "#8E7DBE", "#D1D646", "#06BA63", "#FE4A49", "#39304A", "#AFD0BF",
-    "#0075A2", "#E5446D"]
-
-
+// colors = ["#FE938C", "#99C1B9", "#8E7DBE", "#D1D646", "#06BA63", "#FE4A49", "#39304A", "#AFD0BF",
+//     "#0075A2", "#E5446D"]
 
 const base = new Image();
 base.src = "images/prof_customization/base_circle.svg";
@@ -56,10 +53,6 @@ function drawGraph() {
         ctx.closePath();
 
         //accesories
-        const accesory = new Image();
-        accesory.src = "images/prof_customization/beanie.svg"; //NOTE: grab accesories from id
-        ctx.drawImage(accesory, endX - 19, endY - 19, 38, 38);
-        ctx.closePath();
         positions.push([endX, endY])
         counter++;
     }
