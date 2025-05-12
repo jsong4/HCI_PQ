@@ -13,6 +13,8 @@ if (usersList) {
         console.log("updated list:", usersList)
     }
     })
+} else { // add dummy values
+
 }
 
 function generateUsername() {
