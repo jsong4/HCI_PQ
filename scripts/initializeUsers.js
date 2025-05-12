@@ -13,7 +13,7 @@ if (usersList) {
         console.log("updated list:", usersList)
     }
     })
-} else { // add dummy values
+} else { // add dummy values the usersList is empty
     usersList = {
         "GoopyShoehorn8309": { //1
             "prompt1": ["If I could have one superpower, it would be...", "iegufiuwegfilg"],
@@ -227,6 +227,7 @@ if (usersList) {
             "password":"12345"
         }
     }
+    localStorage.setItem("usersList", JSON.stringify(usersList))
 }
 console.log(usersList)
 
