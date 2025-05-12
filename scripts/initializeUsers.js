@@ -19,7 +19,7 @@ if (usersList) {
             "prompt1": ["If I could have one superpower, it would be...", "iegufiuwegfilg"],
             "prompt2": ["In a parallel universe, I'm definitely...", "iugwef'"],
             "prompt3": ["Three dinner guests, unlimited wine, and chaos ensues...", "i;ugwfeueibf"],
-            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Chronically Online"],
+            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Memecentral"],
             "profile": {
                 "color": "#668a75",
                 "accessory": "images/prof_customization/mustache.svg"
@@ -41,7 +41,7 @@ if (usersList) {
             "prompt1": ["If I could have one superpower, it would be...", "iegufiuwegfilg"],
             "prompt2": ["In a parallel universe, I'm definitely...", "iugwef'"],
             "prompt3": ["Three dinner guests, unlimited wine, and chaos ensues...", "i;ugwfeueibf"],
-            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Chronically Online"],
+            "checkbox": ["Sporty", "Listener"],
             "profile": {
                 "color": "#448a75",
                 "accessory": "images/prof_customization/mustache.svg"
@@ -87,7 +87,7 @@ if (usersList) {
             "prompt1": ["If I could have one superpower, it would be...", "lwukgeflibwelfbliegyfilwueb"],
             "prompt2": ["In a parallel universe, I'm definitely...", "iugwef'"],
             "prompt3": ["Three dinner guests, unlimited wine, and chaos ensues...", "i;ugwfeueibf"],
-            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Chronically Online"],
+            "checkbox": ["Empathetic"],
             "profile": {
                 "color": "#aaa555",
                 "accessory": "images/prof_customization/empty.svg"
@@ -110,7 +110,7 @@ if (usersList) {
             "prompt1": ["If I could have one superpower, it would be...", "lwukgeflibwelfbliegyfilwueb"],
             "prompt2": ["In a parallel universe, I'm definitely...", "iugwef'"],
             "prompt3": ["Three dinner guests, unlimited wine, and chaos ensues...", "i;ugwfeueibf"],
-            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Chronically Online"],
+            "checkbox": ["Chronically Online"],
             "profile": {
                 "color": "#555aaa",
                 "accessory": "images/prof_customization/empty.svg"
@@ -132,7 +132,7 @@ if (usersList) {
             "prompt1": ["If I could have one superpower, it would be...", "lwukgeflibwelfbliegyfilwueb"],
             "prompt2": ["In a parallel universe, I'm definitely...", "iugwef'"],
             "prompt3": ["Three dinner guests, unlimited wine, and chaos ensues...", "i;ugwfeueibf"],
-            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Chronically Online"],
+            "checkbox": ["Listener", "Sporty"],
             "profile": {
                 "color": "#667ffa",
                 "accessory": "images/prof_customization/empty.svg"
@@ -154,7 +154,7 @@ if (usersList) {
             "prompt1": ["If I could have one superpower, it would be...", "lwukgeflibwelfbliegyfilwueb"],
             "prompt2": ["In a parallel universe, I'm definitely...", "iugwef'"],
             "prompt3": ["Three dinner guests, unlimited wine, and chaos ensues...", "i;ugwfeueibf"],
-            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Chronically Online"],
+            "checkbox": ["Outgoing", "Punctual"],
             "profile": {
                 "color": "#8951ac",
                 "accessory": "images/prof_customization/empty.svg"
@@ -177,7 +177,7 @@ if (usersList) {
             "prompt1": ["If I could have one superpower, it would be...", "lwukgeflibwelfbliegyfilwueb"],
             "prompt2": ["In a parallel universe, I'm definitely...", "iugwef'"],
             "prompt3": ["Three dinner guests, unlimited wine, and chaos ensues...", "i;ugwfeueibf"],
-            "checkbox": ["Sporty", "Optimistic", "Empathetic", "Chronically Online"],
+            "checkbox": ["Punctual"],
             "profile": {
                 "color": "#987654",
                 "accessory": "images/prof_customization/empty.svg"
@@ -205,7 +205,7 @@ if (usersList) {
             "religion":"atheist",
             "alcohol":"no",
             "tobacco":"no","cannabis":
-            "yes","checkbox":["Chronically Online","Easygoing","Memecentral","Easily Peer-Pressured"],
+            "yes","checkbox":["Foodie","Easygoing","Memecentral","Easily Peer-Pressured"],
             "profile":{"color":"#fcb041","accessory":"../images/prof_customization/sunglasses.svg"},
             "password":"98765"},
 
