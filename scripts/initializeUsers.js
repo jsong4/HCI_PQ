@@ -204,8 +204,9 @@ if (usersList) {
             "politics":"Other",
             "religion":"atheist",
             "alcohol":"no",
-            "tobacco":"no","cannabis":
-            "yes","checkbox":["Chronically Online","Easygoing","Memecentral","Easily Peer-Pressured"],
+            "tobacco":"no",
+            "cannabis":"yes",
+            "checkbox":["Chronically Online","Easygoing","Memecentral","Easily Peer-Pressured"],
             "profile":{"color":"#fcb041","accessory":"../images/prof_customization/sunglasses.svg"},
             "password":"98765"},
 
