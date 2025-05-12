@@ -256,18 +256,18 @@ function editCheckboxes() {
 }
 
 const accessories = [
-    "../images/prof_customization/beanie.svg",
-    "../images/prof_customization/bow.svg",
-    "../images/prof_customization/sunglasses.svg",
-    "../images/prof_customization/crown.svg",
-    "../images/prof_customization/glasses.svg",
-    "../images/prof_customization/baseballcap.svg",
-    "../images/prof_customization/earrings.svg",
-    "../images/prof_customization/mustache.svg",
-    "../images/prof_customization/scarf.svg",
-    "../images/prof_customization/partyhat.svg",
-    "../images/prof_customization/necklace.svg",
-    "../images/prof_customization/empty.svg"
+    "images/prof_customization/beanie.svg",
+    "images/prof_customization/bow.svg",
+    "images/prof_customization/sunglasses.svg",
+    "images/prof_customization/crown.svg",
+    "images/prof_customization/glasses.svg",
+    "images/prof_customization/baseballcap.svg",
+    "images/prof_customization/earrings.svg",
+    "images/prof_customization/mustache.svg",
+    "images/prof_customization/scarf.svg",
+    "images/prof_customization/partyhat.svg",
+    "images/prof_customization/necklace.svg",
+    "images/prof_customization/empty.svg"
 ]
 
 var profile_accessory = document.getElementById("profile-img-accessory");
