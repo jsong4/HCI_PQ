@@ -38,9 +38,9 @@ function drawGraph() {
 
         //calculate circle centerpoints
         radians = angles[counter] * Math.PI/180
-        endX = ((distance * Math.cos(radians)) + 0.05) * 250 
+        endX = ((distance * Math.cos(radians)) + 0.06) * 225
         endX = endX + centerX
-        endY = ((distance * Math.sin(radians)) + 0.05) * 250
+        endY = ((distance * Math.sin(radians)) + 0.06) * 225
         endY = endY + centerY
 
         //draw a line connecting to the circle
